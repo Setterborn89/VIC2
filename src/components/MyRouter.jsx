@@ -7,7 +7,7 @@ function MyRouter() {
     <body>
       <header>
         <h1 id="logo">Live Fanatic</h1>
-        <div className="search">
+        <div className="search-bar">
           <input placeholder="Search" />
           {/* <img src={} alt="/> */}
         </div>
