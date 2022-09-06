@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import MyRouter from "./components/MyRouter";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <body>
+      <header>
+        <h1 id="logo">Live Fanatic</h1>
+        <div className="search">
+          <input placeholder="Search" />
+          {/* <img src={} alt="/> */}
+        </div>
+        <div className="navBar">
+          <MyRouter />
+        </div>
+        <a href="" id="login">Login</a>
+      </header>
+      <main><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia ex sunt deleniti laboriosam eveniet corporis blanditiis itaque sit dolores exercitationem ipsam modi quo perferendis, non, repellat expedita minus adipisci?</p></main>
+      <footer>
+        <div className="info">
+        <h3>About</h3>
+        <p>Est. 2022</p>
+        <p>ViciousDevelopment2</p>
+        <p>@Copyright</p>
+        </div>
+        <div className="info">
+        <h3>Contact</h3>
+        <p>efraim@newton.se</p>
+        <p>+4675-530 40 50</p>
+        <p>MALMÖ</p>
+        </div>
+      </footer>
+    </body>
+  );
 }
 
-export default App
+export default App;

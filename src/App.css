@@ -1,41 +1,115 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*,
+*:before,
+*:active {
+  box-sizing: inherit;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+html {
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  background-color: #0f171e;
+  font-family: "Amazon Ember";
+  color: rgb(236, 231, 231);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+  display: grid;
+  height: 10vh;
+  min-height: 90px;
+  background-color: #1b2530;
+  display: grid;
+  grid-template-columns: 15vw 70vw 15vw;
+  grid-template-rows: 50% 50%;
+  position: fixed;
+  top:0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#logo {
+  display: flex;
+  grid-column: 1 / 2;
+  grid-row: 1/ 3;
+  justify-content: center;
+  align-self: center;
+  font-size: 120%;
+}
+.search {
+  width: 55vw;
+  height: 33px;
+  grid-area: 2 /3 / 1 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: center;
+  padding: 1vw 2.5vh;
+  margin: 1%;
+  margin-bottom: 0;
+  border-radius: 2rem;
+  background: rgb(236, 231, 231);
+}
+.search input {
+  flex: 1;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-right: 1rem;
+  color: #a1a1a1;
+  background: rgb(236, 231, 231);
 }
 
-.card {
-  padding: 2em;
+#login {
+  grid-area: 1 /3 / 3 / 3;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  color: rgb(236, 231, 231);
 }
 
-.read-the-docs {
-  color: #888;
+.navBar {
+  grid-area: 2 /2 / 3/3;
+  align-self: center;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav > a {
+  text-decoration: none;
+  color: rgb(236, 231, 231);
+}
+a:hover {
+  opacity: 0.5;
+}
+main {
+  margin-top: 15vh;
+  margin-left: 15vw;
+  margin-right: 15vw;
+}
+footer {
+  height: 10vh;
+  min-height: 90px;
+  background-color: #1b2530;
+  display: flex;
+  justify-content: space-around;
+}
+
+.info > h3 {
+  font-size: 80%;
+  font-weight: 100;
+  color: aqua;
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+.info > p {
+  font-size: 80%;
+  opacity: 0.5;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
