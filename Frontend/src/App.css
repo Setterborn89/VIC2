@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   background-color: #0f171e;
@@ -16,8 +15,8 @@ header {
   grid-template-columns: 15vw 70vw 15vw;
   grid-template-rows: 50% 50%;
   position: fixed;
-  top:0;
-  box-shadow: 2px 2px 2px black;;
+  top: 0;
+  box-shadow: 2px 2px 2px black;
 }
 
 #logo {
@@ -38,6 +37,7 @@ header {
   justify-self: center;
   align-self: center;
   border-radius: 60px;
+  box-shadow: 2px 2px 2px black;
 }
 .search-bar input {
   background: transparent;
