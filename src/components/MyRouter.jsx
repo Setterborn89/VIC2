@@ -12,11 +12,11 @@ function MyRouter() {
           {/* <img src={} alt="/> */}
         </div>
         <div className="navBar">
-        <nav>
-        <Link to="Home">Home</Link>
-        <Link to="Stream Concerts">Stream Concerts</Link>
-        <Link to="Live Concerts">Live Concerts</Link>
-     </nav>
+          <nav>
+            <Link to="Home">Home</Link>
+            <Link to="Stream Concerts">Stream Concerts</Link>
+            <Link to="Live Concerts">Live Concerts</Link>
+          </nav>
         </div>
         <a href="" id="login">Login</a>
       </header>
@@ -25,7 +25,6 @@ function MyRouter() {
           { <Route path="/Home" element={<MyComponent />}></Route>
           /*<Route path="/Stream Concerts" element={<Concerts />} />
           <Route path="/Live Concerts" element={<Artists />} /> */}
-          {/* <Route path="/" element={< />} /> */}
         </Routes>
       </main>
       <footer>
@@ -43,11 +42,7 @@ function MyRouter() {
         </div>
       </footer>
     </body>
-
-    
-     
-      
-    </Router>
+  </Router>
   );
 }
 

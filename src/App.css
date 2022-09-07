@@ -4,6 +4,7 @@ body {
   background-color: #0f171e;
   font-family: "Amazon Ember";
   color: rgb(236, 231, 231);
+  text-shadow: 2px 2px 2px black;
 }
 
 header {
@@ -16,6 +17,7 @@ header {
   grid-template-rows: 50% 50%;
   position: fixed;
   top:0;
+  box-shadow: 2px 2px 2px black;;
 }
 
 #logo {
@@ -37,7 +39,7 @@ header {
   width: 100%;
   height: 0;
   grid-area: 2 /3 / 1 / 2;
-  padding: 1vw 2.5vh;
+  padding: 17px 30px;
   margin: 1%;
   margin-bottom: 0;
   border-radius: 2rem;
@@ -45,6 +47,7 @@ header {
   border: none;
   font-size: 20px;
   background: rgb(236, 231, 231);
+  box-shadow: 5px 5px 5px black;;
 }
 
 #login {
