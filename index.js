@@ -33,7 +33,7 @@ server.listen(port,() => {
 })
 
 // front end directories
-server.use('/', express.static('whatever-directory-for-react-build')) // change 
+server.use('/', express.static('frontend/dist')) // change 
 server.use('/examples', express.static('examples'))
 
 // example REST API routes

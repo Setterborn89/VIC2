@@ -32,7 +32,7 @@ function MyRouter() {
         <h3>About</h3>
         <p>Est. 2022</p>
         <p>ViciousDevelopment2</p>
-        <p>@Copyright</p>
+        <p>©Copyright</p>
         </div>
         <div className="info">
         <h3>Contact</h3>
