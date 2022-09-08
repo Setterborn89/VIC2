@@ -38,7 +38,7 @@
   {
     "route": "/data/users*",
     "roles":[
-      {"role": "user", "methods": ["GET","PUT","POST","DELETE"]}
+      {"role": "*", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
 
@@ -59,6 +59,22 @@
 
   {
     "route": "/data/concerts*",
+    "roles":[
+      {"role": "anonymous", "methods": ["GET"]},
+      {"role": "user", "methods": ["POST", "DELETE"]}
+    ]
+  },
+
+  {
+    "route": "/data/tickets*",
+    "roles":[
+      {"role": "anonymous", "methods": ["GET"]},
+      {"role": "user", "methods": ["POST", "DELETE"]}
+    ]
+  },
+
+  {
+    "route": "/data/artists*",
     "roles":[
       {"role": "anonymous", "methods": ["GET"]},
       {"role": "user", "methods": ["POST", "DELETE"]}
