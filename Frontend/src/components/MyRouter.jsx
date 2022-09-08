@@ -24,7 +24,7 @@ function MyRouter() {
       <main>
         <Routes>
           <Route path="/Home" element={<MyComponent />} />
-          <Route path="/StreamConcerts" element={<Ticket id="2" />} />
+          <Route path="/StreamConcerts" element={<Ticket id="1" />} />
           {/* <Route path="/Live Concerts" element={<Artists />} /> */}
         </Routes>
       </main>
