@@ -12,11 +12,19 @@ function ConcertComponent(){
     </div>   
         <div className="ticketPrice">
             <div>
-            <a href="/LiveConcerts" className="redirect-buy">Buy Tickets</a>
+                <button>
+                    <a href="/LiveConcerts">Buy Tickets</a>
+                </button>
             </div>
         </div>
             <div className="moreConcerts">
                 <h1>Additional Concerts</h1>
+                <ul>
+                    <p>Loopa</p>
+                    <p>En</p>
+                    <p>Lista</p>
+                    <p>Här</p>
+                </ul>
             </div>
     </div> 
     </>
