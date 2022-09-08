@@ -144,51 +144,53 @@ a {
   margin-left: 60px;
   margin-right: 60px;
   margin-top: -20px;
-.concert{
+}
+
+.concert {
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
   grid-template-rows: 45% 10% 35% 10%;
 }
 
-.concertPicture{
+.concertPicture {
   display: flex;
-  grid-column: 2 / 4 ; 
+  grid-column: 2 / 4;
   justify-content: center;
   border-bottom: 2px solid red;
   border-right: 2px solid red;
   border-left: 2px solid red;
 }
 
-.concertPicture > img{
+.concertPicture > img {
   size: cover;
 }
 
-.quickInfo{
+.quickInfo {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-row: 2 / 3;
   grid-column: 2 / 4;
 }
 
-.quickInfo > #year{
+.quickInfo > #year {
   display: flex;
   grid-column: 1 / 2;
   justify-self: flex-start;
 }
 
-.quickInfo > #artist{
+.quickInfo > #artist {
   display: flex;
   grid-column: 2 / 3;
   justify-self: center;
 }
 
-.quickInfo > #location{
+.quickInfo > #location {
   display: flex;
   grid-column: 3 / 4;
   justify-self: flex-end;
-} 
+}
 
-.concert > .ticketPrice{
+.concert > .ticketPrice {
   display: grid;
   text-align: center;
   grid-row: 3 / 4;
@@ -197,7 +199,7 @@ a {
   border-bottom: 2px solid red;
 }
 
-.concert > .moreConcerts{
+.concert > .moreConcerts {
   display: grid;
   text-align: center;
   grid-row: 3 / 4;
@@ -326,11 +328,10 @@ button {
 }
 .ticket-selector {
   display: flex;
-  
 }
-.max-tickets{
+.max-tickets {
   font-size: 10px;
 }
-.event-buy-ticket{
+.event-buy-ticket {
   padding: 10px;
 }
