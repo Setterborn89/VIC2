@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import MyComponent from "./MyComponent";
+import CurrentConcerts from "./CurrentConcerts";
+
 
 function MyRouter() {
   return (<Router>
@@ -13,16 +15,20 @@ function MyRouter() {
         </div>
         <div className="navBar">
           <nav>
-            <Link to="Home">Home</Link>
-            <Link to="Stream Concerts">Stream Concerts</Link>
-            <Link to="Live Concerts">Live Concerts</Link>
+            <Link to="CurrentConcerts">Home</Link>
+            <Link to="StreamConcerts">Stream Concerts</Link>
+            <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
         <a href="" id="login">Login</a>
       </header>
       <main>
         <Routes>
-          { <Route path="/Home" element={<MyComponent />}></Route>
+          { 
+            <>
+              <Route path="/Home" element={<CurrentConcerts />}/>
+              <Route path="/CurrentConcerts" element={<CurrentConcerts />}/>
+            </>
           /*<Route path="/Stream Concerts" element={<Concerts />} />
           <Route path="/Live Concerts" element={<Artists />} /> */}
         </Routes>

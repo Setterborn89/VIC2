@@ -103,3 +103,41 @@ footer {
 a {
   text-decoration: none;
 }
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+.row_cards{
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+/* .row_cards::-webkit-scrollbar{
+  display: none;
+} */
+
+.row_poster{
+  object-fit: contain;
+  width: 100%;
+  max-height: 200px;
+  margin-right: 10px;
+  transition: transform 350ms;
+}
+
+.row_poster:hover{
+  transform: scale(1.08);
+}
