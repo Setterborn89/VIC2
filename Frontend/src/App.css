@@ -104,6 +104,48 @@ a {
   text-decoration: none;
 }
 
+<<<<<<< Updated upstream
+=======
+#ticket {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
+  height: 90%;
+  text-shadow: none;
+  color: black;
+  text-align: center;
+}
+
+#QrCode > img {
+  width: 50%;
+}
+
+#printbtn {
+  height: 25px;
+  background-color: #1b2530;
+  color: white;
+}
+
+#printbtn:hover {
+  opacity: 0.5;
+}
+
+#ticketComp {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+.event-container {
+  box-shadow: 2px 2px 2px black;
+  color: black;
+  background-color: rgb(236, 231, 231);
+  text-shadow: none;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: -20px;
+}
+>>>>>>> Stashed changes
 .concert{
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;

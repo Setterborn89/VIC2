@@ -3,6 +3,7 @@ import "../App.css";
 import MyComponent from "./MyComponent";
 import EventInformation from "./EventInformation";
 import ConcertComponent from "./ConcertComponent";
+import VideoPlayer from "./VideoPlayer";
 
 function MyRouter() {
   return (
@@ -31,7 +32,7 @@ function MyRouter() {
               <>
                 <Route path="/Home" element={<MyComponent />}></Route>
                 <Route path="/StreamConcerts" element={<ConcertComponent />} /> 
-                <Route path="/LiveConcerts" element={<EventInformation />} />
+                <Route path="/LiveConcerts" element={<VideoPlayer />} />
               </>
             }
           </Routes>
