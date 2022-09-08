@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import MyComponent from "./MyComponent";
+import EventInformation from "./EventInformation";
+import ConcertComponent from "./ConcertComponent";
 import SignUpIn from "./SignUpIn";
 
 function MyRouter() {
   return (
     <Router>
-      <body>
+      <section>
         <header>
           <h1 id="logo">Live Fanatic</h1>
           <div className="search-bar">
@@ -16,18 +18,21 @@ function MyRouter() {
           <div className="navBar">
             <nav>
               <Link to="Home">Home</Link>
-              <Link to="Stream Concerts">Stream Concerts</Link>
-              <Link to="Live Concerts">Live Concerts</Link>
+              <Link to="StreamConcerts">Stream Concerts</Link>
+              <Link to="LiveConcerts">Live Concerts</Link>
             </nav>
           </div>
-          <Link to="SignUpIn">Sign Up/Sign In</Link>
+          <a href="" id="login">
+            Login
+          </a>
         </header>
         <main>
           <Routes>
             {
               <>
                 <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/SignUpIn" element={<SignUpIn />}></Route>
+                <Route path="/StreamConcerts" element={<ConcertComponent />} />
+                <Route path="/LiveConcerts" element={<EventInformation />} />
               </>
             }
           </Routes>
@@ -41,12 +46,12 @@ function MyRouter() {
           </div>
           <div className="info">
             <h3>Contact</h3>
-            <p>efraim@livefanatic.se</p>
+            <p>efraim@newton.se</p>
             <p>+4675-530 40 50</p>
             <p>MALMÖ</p>
           </div>
         </footer>
-      </body>
+      </section>
     </Router>
   );
 }

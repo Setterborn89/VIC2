@@ -10,7 +10,7 @@ module.exports = function (server, db) {
   server.get("/data/users/:id", (request, res) => {
     let query = "SELECT id, email FROM users WHERE id = @id";
     let result = db.prepare(query).all(request.params);
-    res.json(result);
+    res.json(result[0]);
   });
 
   // registrera en ny användare
