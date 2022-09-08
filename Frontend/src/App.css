@@ -107,7 +107,7 @@ a {
 .concert{
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
-  grid-template-rows: 35% 5% 30% 30%;
+  grid-template-rows: 45% 10% 35% 10%;
 }
 
 .concertPicture{
@@ -120,11 +120,12 @@ a {
 }
 
 .concertPicture > img{
-  
+  size: cover;
 }
 
 .quickInfo{
   display: grid;
+  grid-template-columns: 33% 33% 33%;
   grid-row: 2 / 3;
   grid-column: 2 / 4;
 }

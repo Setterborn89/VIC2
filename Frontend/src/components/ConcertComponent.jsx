@@ -2,7 +2,7 @@ function ConcertComponent(){
 
     return<div class="concert">
         
-    <div class="concertPicture">
+    <div class="concertPicture" style={{backgroundUrl: ''}} >
         <img src="https://consequence.net/wp-content/uploads/2021/04/DMX-Woodstock-99.png" alt="" />
     </div>
     <div class="quickInfo">

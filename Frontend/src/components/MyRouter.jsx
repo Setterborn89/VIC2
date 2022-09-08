@@ -5,7 +5,6 @@ import ConcertComponent from "./ConcertComponent";
 
 function MyRouter() {
   return (<Router>
-    <body>
       <header>
         <h1 id="logo">Live Fanatic</h1>
         <div className="search-bar">
@@ -15,17 +14,17 @@ function MyRouter() {
         <div className="navBar">
           <nav>
             <Link to="Home">Home</Link>
-            <Link to="Stream Concerts">Stream Concerts</Link>
-            <Link to="Live Concerts">Live Concerts</Link>
+            <Link to="StreamConcerts">Stream Concerts</Link>
+            <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
         <a href="" id="login">Login</a>
       </header>
       <main>
         <Routes>
-          { <Route path="/Home" element={<MyComponent />}></Route>
-          /*<Route path="/Stream Concerts" element={<Concerts />} />
-          <Route path="/Live Concerts" element={<Artists />} /> */}
+          <Route path="/Home" element={<MyComponent />}></Route>
+          <Route path="/StreamConcerts" element={<ConcertComponent />} />
+          {/* <Route path="/LiveConcerts" element={<Artists />} />  */}
         </Routes>
       </main>
       <footer>
@@ -42,7 +41,6 @@ function MyRouter() {
         <p>MALMÖ</p>
         </div>
       </footer>
-    </body>
   </Router>
   );
 }
