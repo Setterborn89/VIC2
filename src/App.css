@@ -101,3 +101,63 @@ footer {
 a {
   text-decoration: none;
 }
+
+.concert{
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 35% 5% 30% 30%;
+}
+
+.concertPicture{
+  display: flex;
+  grid-column: 2 / 4 ; 
+  justify-content: center;
+  border-bottom: 2px solid red;
+  border-right: 2px solid red;
+  border-left: 2px solid red;
+}
+
+.concertPicture > img{
+  
+}
+
+.quickInfo{
+  display: grid;
+  grid-row: 2 / 3;
+  grid-column: 2 / 4;
+}
+
+.quickInfo > #year{
+  display: flex;
+  grid-column: 1 / 2;
+  justify-self: flex-start;
+}
+
+.quickInfo > #artist{
+  display: flex;
+  grid-column: 2 / 3;
+  justify-self: center;
+}
+
+.quickInfo > #location{
+  display: flex;
+  grid-column: 3 / 4;
+  justify-self: flex-end;
+} 
+
+.concert > .ticketPrice{
+  display: grid;
+  text-align: center;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+}
+
+.concert > .moreConcerts{
+  display: grid;
+  text-align: center;
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  border-bottom: 2px solid red;
+}
