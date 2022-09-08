@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Ticket(props) {
-    
     const id = props.id
-
     const [data, updateData] = useState({})
 
     useEffect(() => {     
@@ -16,37 +14,36 @@ function Ticket(props) {
                 email:null,
                 artistId:null,
                 location:null,
+                date:null,
                 artistName:null
             }
 
-            let response1 = await fetch("/data/tickets/" + id)
-            response1 = await response1.json()
-            responseData.ticketId= response1.id,
-            responseData.userId= response1.userId,
-            responseData.concertId= response1.concertId
+            let ticketResponse = await fetch("/data/tickets/" + id)
+            ticketResponse = await ticketResponse.json()
+            responseData.ticketId = ticketResponse.id,
+            responseData.userId = ticketResponse.userId,
+            responseData.concertId = ticketResponse.concertId
 
-            let response2 = await fetch("/data/users/" + responseData.userId)
-            response2 = await response2.json()
-            responseData.email=response2.email
+            let userResponse = await fetch("/data/users/" + responseData.userId)
+            userResponse = await userResponse.json()
+            responseData.email = userResponse.email
 
-            let response3 = await fetch("/data/concerts/" + responseData.concertId)
-            response3 = await response3.json()
-            responseData.artistId=response3.artistId,
-            responseData.location=response3.location
+            let concertResponse = await fetch("/data/concerts/" + responseData.concertId)
+            concertResponse = await concertResponse.json()
+            responseData.artistId = concertResponse.artistId,
+            responseData.location = concertResponse.location,
+            responseData.date = concertResponse.date
 
-            let response4 = await fetch("/data/artists/" + responseData.artistId)
-            response4 = await response4.json()
-            responseData.artistName=response4.name
+            let artistResponse = await fetch("/data/artists/" + responseData.artistId)
+            artistResponse = await artistResponse.json()
+            responseData.artistName = artistResponse.name
 
             updateData(responseData)
         }
         loadData()
-        
-        
     },[id])
     
-        return<div id="ticketComp">
-        
+    return<div id="ticketComp">
         <div id="ticket">
         <a href="#" onClick={window.print} id="printbtn">Print</a>
             <div id="QrCode">
@@ -63,7 +60,6 @@ function Ticket(props) {
             </div>
         </div>
     </div>
-
     }
 
 export default Ticket
