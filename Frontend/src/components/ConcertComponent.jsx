@@ -1,36 +1,25 @@
+import ArtistInfo from "./ArtistInfo";
+
+
+
 function ConcertComponent(){
 
-    return<div class="concert">
-        
-    <div class="concertPicture" style={{backgroundUrl: ''}} >
-        <img src="https://consequence.net/wp-content/uploads/2021/04/DMX-Woodstock-99.png" alt="" />
-    </div>
-    <div class="quickInfo">
-        <div id="year">
-            <h2>1999</h2>
-        </div>
-        <div id="artist">
-            <h2>DMX</h2>
-        </div>
-        <div id="location">
-            <h2>Woodstock</h2>
-        </div>
-        
-        
-        
-    </div>
+    return<>
+   <div className="concert">
 
-        <div class="ticketPrice">
-            <h1>Tickets here</h1>
+    <div className="concertPicture" >        
+        <ArtistInfo />  
+    </div>   
+        <div className="ticketPrice">
+            <div>
+            <a href="/LiveConcerts" className="redirect-buy">Buy Tickets</a>
+            </div>
         </div>
-
-            <div class="moreConcerts">
+            <div className="moreConcerts">
                 <h1>Additional Concerts</h1>
             </div>
-
-
-
-    </div>
+    </div> 
+    </>
 }
 
 export default ConcertComponent

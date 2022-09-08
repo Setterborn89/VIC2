@@ -106,63 +106,42 @@ a {
 
 .concert{
   display: grid;
-  grid-template-columns: 10% 40% 40% 10%;
-  grid-template-rows: 45% 10% 35% 10%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  background-color: rgb(236, 231, 231);
 }
 
 .concertPicture{
   display: flex;
-  grid-column: 2 / 4 ; 
+  grid-column: 1 / 3 ;
+  grid-row: 1 / 2; 
   justify-content: center;
-  border-bottom: 2px solid red;
-  border-right: 2px solid red;
-  border-left: 2px solid red;
 }
-
-.concertPicture > img{
-  size: cover;
-}
-
-.quickInfo{
+.concertPicture > .event-image{
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-row: 2 / 3;
-  grid-column: 2 / 4;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  max-height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  
 }
-
-.quickInfo > #year{
-  display: flex;
-  grid-column: 1 / 2;
-  justify-self: flex-start;
-}
-
-.quickInfo > #artist{
-  display: flex;
-  grid-column: 2 / 3;
-  justify-self: center;
-}
-
-.quickInfo > #location{
-  display: flex;
-  grid-column: 3 / 4;
-  justify-self: flex-end;
-} 
 
 .concert > .ticketPrice{
+  color:#0f171e;
   display: grid;
   text-align: center;
-  grid-row: 3 / 4;
-  grid-column: 2 / 3;
-  border-right: 2px solid red;
-  border-bottom: 2px solid red;
+  align-self: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
 }
 
 .concert > .moreConcerts{
+  color: #0f171e;
   display: grid;
   text-align: center;
-  grid-row: 3 / 4;
-  grid-column: 3 / 4;
-  border-bottom: 2px solid red;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 }
 
 .event-container {
@@ -204,7 +183,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 105px;
   height: 100%;
   padding: 10px;
   background-color: #e21937;
