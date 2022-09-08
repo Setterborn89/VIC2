@@ -63,6 +63,14 @@
       {"role": "anonymous", "methods": ["GET"]},
       {"role": "user", "methods": ["POST", "DELETE"]}
     ]
+  },
+
+  {
+    "route": "/data/artists*",
+    "roles":[
+      {"role": "*", "methods": ["GET"]},
+      {"role": "user", "methods": ["POST", "DELETE"]}
+    ]
   }
 
 ]
