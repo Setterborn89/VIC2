@@ -335,3 +335,13 @@ button {
 .event-buy-ticket{
   padding: 10px;
 }
+
+#mediaplayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mediaplayer > video {
+  width: 100%;
+  text-shadow: none;
+}

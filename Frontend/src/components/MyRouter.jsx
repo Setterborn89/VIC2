@@ -32,7 +32,7 @@ function MyRouter() {
               <>
                 <Route path="/Home" element={<MyComponent />}></Route>
                 <Route path="/StreamConcerts" element={<ConcertComponent />} /> 
-                <Route path="/LiveConcerts" element={<VideoPlayer />} />
+                <Route path="/LiveConcerts" element={<VideoPlayer url="video/Chris-Do.mp4" />} />
               </>
             }
           </Routes>
