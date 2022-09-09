@@ -3,20 +3,39 @@ import React, { useState, useEffect } from 'react';
 
 function CurrentConcerts(){
 
-    const [concerts, updateData] = useState([])
-
+    let [concertList, updateConcertsData] = useState([]);
     useEffect(() => {     
         async function loadData(){
 
-            let responseData = [{}]
+            concertList = []
 
-            let concertsResponse = await fetch("/data/concerts")
-            responseData = await concertsResponse.json()
+            let concertsResponse = await fetch("/data/concerts");
+            const concertsData = await concertsResponse.json();
 
-            updateData(responseData)
+            let artistsResponse = await fetch("/data/artists");
+            const artistsData = await artistsResponse.json();
+
+            concertsData.forEach(concert => {
+                artistsData.forEach( artist =>  {
+                    if(concert.artistId == artist.id){
+                        concert.artistName = artist.name
+                        console.log(artist.name)
+                    }
+                });
+                concertList.push(concert)
+            });
+
+
+
+
+            updateConcertsData(concertList)
         }
         loadData()
-    })
+
+        console.log(concertList)
+
+
+    },[])
      
 
     return <>
@@ -24,17 +43,20 @@ function CurrentConcerts(){
         <h3>Live Concerts</h3>
         <div className="row" >
             <card className="row_cards">
-                {concerts.map( element => 
+
+                {concertList.map( element => 
                     <>
-                        <img
+                    <div>
+                    <img
                         className="row_poster"
                         src={element.image}
                         />
                         <div class="container">
-                            <h4><b>{element.artistId}</b></h4>
+                            <h4><b>{element.artistName}</b></h4>
                             <h3>{element.date}</h3>
                             <p>{element.location}</p>
                         </div>
+                    </div>
                     </>
                 ) }
             </card>
@@ -42,17 +64,19 @@ function CurrentConcerts(){
         <h3>Stream Concerts</h3>
         <div className="row" >
             <card className="row_cards">
-                {concerts.map( element => 
+                {concertList.map( element => 
                     <>
-                        <img
+                    <div>
+                    <img
                         className="row_poster"
                         src={element.image}
                         />
                         <div class="container">
-                            <h4><b>{element.artist}</b></h4>
+                            <h4><b>{element.artistName}</b></h4>
                             <h3>{element.date}</h3>
                             <p>{element.location}</p>
                         </div>
+                    </div>
                     </>
                 ) }
             </card>
