@@ -83,15 +83,25 @@ function Search(){
         <h3 class="card__title text--medium">
           {artist.name}
         </h3>
+        <a href ={artist.wiki} class="text--medium">Read more</a>
         
         <div class="card__info">
-          <p class="text--medium">Read more about the artist</p>
           
+           
           {concertSearch.filter(concert => concert.artistId == artist.id).map(concert => (
                 <div key={concert.id} className="card-concert">
-                     <p class="text--medium">Location: {concert.location}</p>
-                     <p class="text--medium">Price: {concert.price} $</p>
+                    <div>     
+                     {/* {
+                       ({concert.stream})=== true ? <p>Stream </p> : <p>Live</p>
+                     }  */}
+                    </div>
+                     
+                    <p class="text--medium">Location: {concert.location}</p>
+                    <p class="text--medium">Date: {concert.date} </p>
+                    <p class="text--medium">Price: {concert.price} $ </p>
+                    <p class="text--medium">Genre: {concert.genre}</p> 
                     <p class="card__price text--medium">Get Tickets</p>
+                    
                                 
                 </div>
                         ))}

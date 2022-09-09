@@ -177,6 +177,7 @@ card {
   padding: 5px 20px;
   background-color: #303032;
   border-radius: 10px;
+  
 }
 
 @media only screen and (max-width: 1000px) {
