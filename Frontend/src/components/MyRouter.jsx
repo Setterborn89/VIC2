@@ -5,7 +5,7 @@ import Search from "./Search";
 
 function MyRouter() {
   return (<Router>
-    <body>
+    <div>
       <header>
         <h1 id="logo">Live Fanatic</h1>
         <div className="navBar">
@@ -42,7 +42,7 @@ function MyRouter() {
         <p>MALMÖ</p>
         </div>
       </footer>
-    </body>
+    </div>
   </Router>
   );
 }

@@ -40,6 +40,8 @@ function Search(){
             )
     });
 
+    let searchList = artistSearch.concat(concertSearch)
+
     return <>
 
         <div className="search-bar">
@@ -69,35 +71,68 @@ function Search(){
 
 
 
-        {artistSearch.map(artist =>(
-            <div key={artist.id} class="card">
-                <div class="card__image-container">
-                    <img src={artist.image}/>
-                </div>
-                <div class="card__content">
-                    <h3 class="card__title text--medium">
-                        {artist.name}
-                    </h3>
-                    <a href ={artist.wiki} class="text--medium">Read more</a>
-                    <div class="card__info">
-                        <p class="text--medium">Read more about the artist</p>
-                        {concerts.map(concert => (
-                            concert.artistId == artist.id ?
-                                <div key={concert.id} className="card-concert">
-                                    <div>     
-                                        {/* {
-                                        ({concert.stream})=== true ? <p>Stream </p> : <p>Live</p>
-                                        }  */}
-                                    </div>
-                                    <p class="text--medium">Location: {concert.location}</p>
-                                    <p class="text--medium">Date: {concert.date} </p>
-                                    <p class="text--medium">Price: {concert.price} $ </p>
-                                    <p class="text--medium">Genre: {concert.genre}</p> 
-                                    <p class="card__price text--medium">Get Tickets</p>      
-                                </div>
-                            :<p></p>
-                        ))}
+        {searchList.map(item =>(
+            item.location == undefined ? 
+                <div key={item.id + Math.random()} className="card">
+                    <div className="card__image-container">
+                        <img src={item.image}/>
                     </div>
+                    <div className="card__content">
+                        <h3 className="card__title text--medium">
+                            {item.name}
+                        </h3>
+                        <a href ={item.wiki} className="text--medium">Read more</a>
+                        <div className="card__info">
+                            <p className="text--medium">Read more about the artist</p>
+                            <div>
+                                {concerts.map(concert => (
+                                    concert.artistId == item.id ?
+                                        <div key={concert.id + Math.random} className="card-concert">
+                                            <div>     
+                                                {
+                                                concert.stream == true ? <p>Stream </p> : <p>Live</p>
+                                                }
+                                            </div>
+                                            <p className="text--medium">Location: {concert.location}</p>
+                                            <p className="text--medium">Date: {concert.date} </p>
+                                            <p className="text--medium">Price: {concert.price} $ </p>
+                                            <p className="text--medium">Genre: {concert.genre}</p> 
+                                            <p className="card__price text--medium">Get Tickets</p>      
+                                        </div>
+                                    :<p key={concert.id + 1}></p>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            :
+            <div key={item.id + Math.random()} className="card">
+                <div className="card__image-container">
+                    <img src={item.image}/>
+                </div>
+                <div className="card__content">
+                    <h3 className="card__title text--medium">
+                        {item.name}
+                    </h3>
+                    <a href ={item.wiki} className="text--medium">Read more</a>
+                    <div className="card__info">
+                        <p className="text--medium">Read more about the artist</p>
+                    </div>
+                </div>
+                <div className="card-concert">
+                    <div>     
+                        {
+                            item.stream == "true" ? 
+                            <p>Stream</p> 
+                            :
+                            <p>Live</p>
+                        }
+                    </div> 
+                    <p className="text--medium">Location: {item.location}</p>
+                    <p className="text--medium">Date: {item.date} </p>
+                    <p className="text--medium">Price: {item.price} $ </p>
+                    <p className="text--medium">Genre: {item.genre}</p> 
+                    <p className="card__price text--medium">Get Tickets</p>
                 </div>
             </div>
         ))}
