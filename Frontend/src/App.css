@@ -107,11 +107,13 @@ a {
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: transform 350ms;
 }
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: scale(1.08);
 }
 
 /* Add some padding inside the card container */
@@ -124,29 +126,25 @@ a {
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
+
 }
 
 .card{
   margin-right: 20px;
-  width: 40vw;
+  width: 300px;
 }
 
-.card > img{
-  height: 40%;
-}
 
 .row_cards::-webkit-scrollbar{
-  display: none;
+  /* display: none; */
 }
 
-.row_poster{
-  object-fit: contain;
-  width: 100%;
-  max-height: 150px;
-  margin-right: 10px;
-  transition: transform 350ms;
+.card_poster{
+  width:  300px;
+  height: 100px;
+  object-fit: cover;
 }
-
-.row_poster:hover{
-  transform: scale(1.08);
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }
