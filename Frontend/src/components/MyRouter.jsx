@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import MyComponent from "./MyComponent";
-import EventInformation from "./EventInformation";
+import EventDetails from "./EventDetails";
 import ConcertComponent from "./ConcertComponent";
+import VideoPlayer from "./VideoPlayer";
 
 function MyRouter() {
   return (
@@ -29,12 +30,10 @@ function MyRouter() {
           <Routes>
             {
               <>
-                <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/StreamConcerts" element={<ConcertComponent/>} /> 
-                <Route path="/LiveConcerts" element={<EventInformation />} />
-
-
-                <Route exact path="/Consert" element={<ConcertComponent/>} />
+                <Route path="/home" element={<MyComponent />}></Route>
+                <Route path="/streamconcerts" element={<ConcertComponent />} /> 
+                <Route path="/liveconcerts" element={<VideoPlayer url="video/Chris-Do.mp4" />} />
+                <Route path="/eventdetails/:id" element={<EventDetails />} />
               </>
             }
           </Routes>
