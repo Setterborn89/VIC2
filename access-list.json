@@ -1,67 +1,71 @@
 [
-
   {
     "route": "/data",
-    "roles":[
-      {"role":"*", "methods": ["GET"]}
-    ]
+    "roles": [{ "role": "*", "methods": ["GET"] }]
   },
 
   {
     "route": "/data/video_streams*",
-    "roles":[
-      {"role": "user", "methods": ["GET"]}
-    ]
+    "roles": [{ "role": "user", "methods": ["GET"] }]
   },
 
   {
     "route": "/data/video_example",
-    "roles":[
-      {"role": "*", "methods": ["GET"]}      
-    ]
+    "roles": [{ "role": "*", "methods": ["GET"] }]
   },
 
   {
     "route": "/data/audio_streams*",
-    "roles":[
-      {"role": "*", "methods": ["GET"]}
-    ]
+    "roles": [{ "role": "*", "methods": ["GET"] }]
   },
 
   {
     "route": "/data/audio_example",
-    "roles":[
-      {"role": "*", "methods": ["GET"]}
-    ]
+    "roles": [{ "role": "*", "methods": ["GET"] }]
   },
 
   {
     "route": "/data/users*",
-    "roles":[
-      {"role": "user", "methods": ["GET","PUT","POST","DELETE"]}
+    "roles": [
+      { "role": "anonymous", "methods": ["POST"] },
+      { "role": "user", "methods": ["GET", "PUT", "DELETE"] }
     ]
   },
 
   {
     "route": "/data/users/password",
-    "roles":[
-      {"role": "user", "methods": ["DELETE","PATCH"]}
-    ]
+    "roles": [{ "role": "user", "methods": ["DELETE", "PATCH"] }]
   },
 
   {
     "route": "/data/login",
-    "roles":[
-      {"role": "anonymous", "methods": ["POST","GET"]},
-      {"role": "user", "methods": ["GET", "DELETE"]}
+    "roles": [
+      { "role": "anonymous", "methods": ["POST", "GET"] },
+      { "role": "user", "methods": ["GET", "DELETE"] }
     ]
   },
 
   {
     "route": "/data/concerts*",
-    "roles":[
-      {"role": "anonymous", "methods": ["GET"]},
-      {"role": "user", "methods": ["POST", "DELETE"]}
+    "roles": [
+      { "role": "anonymous", "methods": ["GET"] },
+      { "role": "user", "methods": ["POST", "DELETE"] }
+    ]
+  },
+
+  {
+    "route": "/data/tickets*",
+    "roles": [
+      { "role": "anonymous", "methods": ["GET"] },
+      { "role": "user", "methods": ["POST", "DELETE"] }
+    ]
+  },
+
+  {
+    "route": "/data/artists*",
+    "roles": [
+      { "role": "anonymous", "methods": ["GET"] },
+      { "role": "user", "methods": ["POST", "DELETE"] }
     ]
   },
 
@@ -72,5 +76,4 @@
       {"role": "user", "methods": ["POST", "DELETE"]}
     ]
   }
-
 ]

@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+database/live_fanatic.db
+database/live_fanatic.db
