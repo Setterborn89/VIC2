@@ -1,59 +1,67 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../App.css";
 import MyComponent from "./MyComponent";
-import EventInformation from "./EventInformation";
-import ConcertComponent from "./ConcertComponent";
-import VideoPlayer from "./VideoPlayer";
+import Search from "./Search";
+
 
 function MyRouter() {
-  return (
-    <Router>
-      <section>
-        <header>
-          <h1 id="logo">Live Fanatic</h1>
-          <div className="search-bar">
-            <input placeholder="Search" />
-            {/* <img src={} alt="/> */}
-          </div>
-          <div className="navBar">
-            <nav>
-              <Link to="Home">Home</Link>
-              <Link to="StreamConcerts">Stream Concerts</Link>
-              <Link to="LiveConcerts">Live Concerts</Link>
-            </nav>
-          </div>
-          <a href="" id="login">
-            Login
-          </a>
-        </header>
-        <main>
-          <Routes>
-            {
-              <>
-                <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/StreamConcerts" element={<ConcertComponent />} /> 
-                <Route path="/LiveConcerts" element={<VideoPlayer url="video/Chris-Do.mp4" />} />
-              </>
-            }
-          </Routes>
-        </main>
-        <footer>
-          <div className="info">
-            <h3>About</h3>
-            <p>Est. 2022</p>
-            <p>ViciousDevelopment2</p>
-            <p>©Copyright</p>
-          </div>
-          <div className="info">
-            <h3>Contact</h3>
-            <p>efraim@newton.se</p>
-            <p>+4675-530 40 50</p>
-            <p>MALMÖ</p>
-          </div>
-        </footer>
-      </section>
-    </Router>
+  const [searchWord, setSearchWord] = useState("searchword");
+  const navigate = useNavigate();
+
+  const searchText = event =>{
+    setSearchWord(event.target.value)
+    handleChange()
+  }
+
+  const handleChange = event => {
+    navigate({pathname: '/Lista', search:"?searchword=" + searchWord});
+  };
+
+  return (<div>
+      <header>
+        <h1 id="logo">Live Fanatic</h1>
+        <div className="search-bar">
+            <input type ="text" placeholder="Search" onChange={searchText.bind(this)} />
+        </div>
+        <div className="navBar">
+          
+          <nav>
+            <Link to="Home">Home</Link>
+            <Link to="Stream Concerts">Stream Concerts</Link>
+            <Link to="Live Concerts">Live Concerts</Link>
+            <Link to="Lista">Artister</Link>
+          </nav>
+        </div>
+        <a href="" id="login">Login</a>
+      </header>
+      <main>
+        <Routes>
+          { <Route path="/Home" element={<MyComponent />}></Route>
+          /*<Route path="/Stream Concerts" element={<Concerts />} />
+          <Route path="/Live Concerts" element={<Artists />} /> */}
+          <Route path="/Lista" element={<Search/>}></Route>
+          
+        </Routes>
+      </main>
+      <footer>
+        <div className="info">
+        <h3>About</h3>
+        <p>Est. 2022</p>
+        <p>ViciousDevelopment2</p>
+        <p>©Copyright</p>
+        </div>
+        <div className="info">
+        <h3>Contact</h3>
+        <p>efraim@newton.se</p>
+        <p>+4675-530 40 50</p>
+        <p>MALMÖ</p>
+        </div>
+      </footer>
+    </div>
   );
 }
+
+
 
 export default MyRouter;
