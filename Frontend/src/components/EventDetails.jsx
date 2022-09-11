@@ -47,7 +47,7 @@ function EventDetails() {
   useEffect(() => {
     let totalPrice = tickets * event.price;
     updateCost(totalPrice);
-  }, [tickets, cost]);
+  }, [cost,tickets]);
 
   if (event.seats < 100 && event.seats != 0) {
     className += "message";
@@ -98,11 +98,11 @@ function EventDetails() {
             <strong className="ticket-price">{event.price} kr</strong>
           </div>
           <div>
-            <p>
-              {tickets} {tickets == 1 ? "biljett" : "biljetter"}{" "}
-            </p>
+            {tickets > 0 ? <p>{tickets} {tickets == 1 ? "biljett" : "biljetter"}  {cost}.00 SEK </p> : <p> </p>}
           </div>
-          <button className="event-buy-ticket-link" disabled={tickets == 0}>Köp biljett</button>
+          <button className="event-buy-ticket-link" disabled={tickets == 0}>
+            Köp biljett
+          </button>
         </div>
       </div>
     </>
