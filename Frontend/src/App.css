@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: #0f171e;
@@ -116,29 +120,53 @@ footer {
 
 .accountform {
   display: grid;
-  font-family: "Amazon Ember";
   grid-template-columns: 50% 50%;
-  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-  border: 1px solid white;
+  align-items: center;
+}
+
+.accountform h3 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.accountform label {
+  margin: 5px;
+  font-weight: lighter;
+}
+
+.accountform > div > div {
+  display: grid;
+  font-family: "Amazon Ember";
+  grid-template-columns: 80%;
+  justify-content: space-evenly;
+  gap: 20px;
+  grid-auto-rows: auto;
   align-content: center;
+  align-items: flex-end;
 }
 
-.accountform > h3 {
-  display: flex;
+.accountform > div input {
+  width: 100%;
+  font-family: "Amazon Ember";
 }
 
-.accountform > h4 {
-  display: flex;
+.accountform #registerform {
+  border-right: 1px solid white;
 }
 
-.accountform > input {
-  display: flex;
+.accountform button {
+  font-family: "Amazon Ember";
+  display: block;
+  margin-top: 15px;
 }
-button {
+
+/* button {
   font-family: icomoon !important;
-}
+} */
+
 .ticket-selector {
   display: flex;
+}
 
 #ticket {
   display: flex;
@@ -170,6 +198,7 @@ button {
   flex-direction: row-reverse;
   text-align: right;
 }
+
 .event-container {
   box-shadow: 2px 2px 2px black;
   color: black;
@@ -178,51 +207,53 @@ button {
   margin-left: 60px;
   margin-right: 60px;
   margin-top: -20px;
-.concert{
+}
+
+.concert {
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
   grid-template-rows: 45% 10% 35% 10%;
 }
 
-.concertPicture{
+.concertPicture {
   display: flex;
-  grid-column: 2 / 4 ; 
+  grid-column: 2 / 4;
   justify-content: center;
   border-bottom: 2px solid red;
   border-right: 2px solid red;
   border-left: 2px solid red;
 }
 
-.concertPicture > img{
+.concertPicture > img {
   size: cover;
 }
 
-.quickInfo{
+.quickInfo {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-row: 2 / 3;
   grid-column: 2 / 4;
 }
 
-.quickInfo > #year{
+.quickInfo > #year {
   display: flex;
   grid-column: 1 / 2;
   justify-self: flex-start;
 }
 
-.quickInfo > #artist{
+.quickInfo > #artist {
   display: flex;
   grid-column: 2 / 3;
   justify-self: center;
 }
 
-.quickInfo > #location{
+.quickInfo > #location {
   display: flex;
   grid-column: 3 / 4;
   justify-self: flex-end;
-} 
+}
 
-.concert > .ticketPrice{
+.concert > .ticketPrice {
   display: grid;
   text-align: center;
   grid-row: 3 / 4;
@@ -231,7 +262,7 @@ button {
   border-bottom: 2px solid red;
 }
 
-.concert > .moreConcerts{
+.concert > .moreConcerts {
   display: grid;
   text-align: center;
   grid-row: 3 / 4;
@@ -355,16 +386,15 @@ button {
   background-color: rgba(0, 0, 0, 0.87);
   color: #fff;
 }
-button {
+/* button {
   font-family: icomoon !important;
-}
+} */
 .ticket-selector {
   display: flex;
-  
 }
-.max-tickets{
+.max-tickets {
   font-size: 10px;
 }
-.event-buy-ticket{
+.event-buy-ticket {
   padding: 10px;
 }
