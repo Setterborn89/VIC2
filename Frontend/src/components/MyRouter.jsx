@@ -3,6 +3,7 @@ import "../App.css";
 import MyComponent from "./MyComponent";
 import EventDetails from "./EventDetails";
 import ConcertComponent from "./ConcertComponent";
+import SignUpIn from "./SignUpIn";
 import VideoPlayer from "./VideoPlayer";
 
 function MyRouter() {
@@ -22,17 +23,25 @@ function MyRouter() {
               <Link to="LiveConcerts">Live Concerts</Link>
             </nav>
           </div>
-          <a href="" id="login">
-            Login
-          </a>
+          <Link to="SignUpIn">Sign Up/Sign In</Link>
         </header>
         <main>
           <Routes>
             {
               <>
+                <Route path="/Home" element={<MyComponent />}></Route>
+                <Route path="/StreamConcerts" element={<ConcertComponent />} />
+                <Route path="/LiveConcerts" element={<EventInformation />} />
+                <Route path="/SignUpIn" element={<SignUpIn />} />
                 <Route path="/home" element={<MyComponent />}></Route>
-                <Route path="/streamconcerts/:id" element={<ConcertComponent />} /> 
-                <Route path="/liveconcerts" element={<VideoPlayer url="video/Chris-Do.mp4" />} />
+                <Route
+                  path="/streamconcerts/:id"
+                  element={<ConcertComponent />}
+                />
+                <Route
+                  path="/liveconcerts"
+                  element={<VideoPlayer url="video/Chris-Do.mp4" />}
+                />
                 <Route path="/eventdetails/:id" element={<EventDetails />} />
               </>
             }
