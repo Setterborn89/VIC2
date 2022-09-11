@@ -170,7 +170,6 @@ a {
   max-height: 100%;
   max-width: 100%;
   background-size: cover;
-  
 }
 
 .quickInfo > #year {
@@ -211,8 +210,8 @@ a {
   color: black;
   background-color: rgb(236, 231, 231);
   text-shadow: none;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 15vw;
+  margin-right: 15vw;
   margin-top: -20px;
 }
 
@@ -223,14 +222,13 @@ a {
   transform: translateY(-10px);
 }
 
-.event-image {
-  flex: 50%;
-  width: 100%;
+.artistInfo > img {
+  width: 10px;
+  /* width: 100%;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
-  height: 400px;
-  background-color: #1b2530;
+  background-color: #1b2530; */
 }
 
 .event-title {
@@ -303,7 +301,8 @@ a {
 }
 
 .event-buy-ticket-link:hover {
-  background-color: #e21937;
+  background-color: #1b2530;
+  cursor: pointer;
 }
 
 .event-buy-ticket-link {
@@ -321,15 +320,23 @@ a {
   background-color: rgba(0, 0, 0, 0.87);
   color: #fff;
 }
-button {
+.ticket-selector > button {
   font-family: icomoon !important;
+  margin: 10px;
+  cursor: pointer;
 }
 .ticket-selector {
   display: flex;
+  justify-content: center;
 }
 .max-tickets {
   font-size: 10px;
 }
 .event-buy-ticket {
   padding: 10px;
+  text-align: center;
+}
+
+.event-buy-ticket-link {
+  margin: 5px;
 }

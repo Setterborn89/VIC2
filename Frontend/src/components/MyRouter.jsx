@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import MyComponent from "./MyComponent";
-import EventInformation from "./EventInformation";
+import EventDetails from "./EventDetails";
 import ConcertComponent from "./ConcertComponent";
 
 function MyRouter() {
@@ -29,9 +29,11 @@ function MyRouter() {
           <Routes>
             {
               <>
-                <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/StreamConcerts" element={<ConcertComponent />} /> 
-                <Route path="/LiveConcerts" element={<EventInformation />} />
+                <Route path="/home" element={<MyComponent />}></Route>
+                <Route path="/streamconcerts" element={<ConcertComponent />} /> 
+                <Route path="/liveconcerts" element={<EventDetails />} />
+                <Route path="/eventdetails/:id" element={<EventDetails />} />
+
               </>
             }
           </Routes>
