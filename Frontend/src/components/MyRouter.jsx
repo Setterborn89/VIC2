@@ -5,6 +5,7 @@ import EventDetails from "./EventDetails";
 import ConcertComponent from "./ConcertComponent";
 import SignUpIn from "./SignUpIn";
 import VideoPlayer from "./VideoPlayer";
+import CurrentConcerts from "./CurrentConcerts";
 
 function MyRouter() {
   return (
@@ -18,7 +19,7 @@ function MyRouter() {
           </div>
           <div className="navBar">
             <nav>
-              <Link to="Home">Home</Link>
+              <Link to="/">Home</Link>
               <Link to="streamconcerts">Stream Concerts</Link>
               <Link to="LiveConcerts">Live Concerts</Link>
             </nav>
@@ -30,7 +31,7 @@ function MyRouter() {
             {
               <>
                 <Route path="/SignUpIn" element={<SignUpIn />} />
-                <Route path="/home" element={<MyComponent />}></Route>
+                <Route path="/" element={<CurrentConcerts />}></Route>
                 <Route
                   path="/streamconcerts/:id"
                   element={<ConcertComponent />}
