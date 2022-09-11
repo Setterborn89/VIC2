@@ -53,6 +53,8 @@ function MyRouter() {
                   element={<VideoPlayer url="video/Chris-Do.mp4" />}
                 />
                 <Route path="/eventdetails/:id" element={<EventDetails />} />
+
+                <Route path="/Lista" element={<Search/>}></Route>
               </>
             }
           </Routes>

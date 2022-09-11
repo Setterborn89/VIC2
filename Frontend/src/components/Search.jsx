@@ -55,7 +55,7 @@ function Search(){
 
         {searchList.map(item =>(
             item.location == undefined ? 
-                <div key={item.id + Math.random()} className="card">
+                <div key={item.id + Math.random()} className="card-Search">
                     <div className="card__image-container">
                         <img src={item.image}/>
                     </div>
