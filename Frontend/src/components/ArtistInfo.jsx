@@ -38,7 +38,7 @@ function ArtistInfo() {
 
   return (
     <>
-      <div className="artistInfo>">
+      <div className="artistInfo">
           <img src={event.image} />
         <div className="event-info">
           <div className="event-date">

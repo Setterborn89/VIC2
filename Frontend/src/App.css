@@ -230,13 +230,10 @@ a {
   margin-top: -10px;
 }
 
-.artistInfo > img {
-  width: 10px;
-  /* width: 100%;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: cover;
-  background-color: #1b2530; */
+.artistInfo img {
+  max-width: 100%;
+  min-height: 50%;
+  max-height: auto;
 }
 
 .event-title {
@@ -255,6 +252,8 @@ a {
   padding: 10px;
   background-color: #e21937;
   color: #fff;
+  min-height: 13vh;
+  width: 7vw;
 }
 
 .event-details {
