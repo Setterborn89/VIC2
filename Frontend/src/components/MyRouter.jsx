@@ -29,9 +29,6 @@ function MyRouter() {
           <Routes>
             {
               <>
-                <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/StreamConcerts" element={<ConcertComponent />} />
-                <Route path="/LiveConcerts" element={<EventInformation />} />
                 <Route path="/SignUpIn" element={<SignUpIn />} />
                 <Route path="/home" element={<MyComponent />}></Route>
                 <Route
