@@ -145,8 +145,7 @@ a {
   margin-right: 60px;
   margin-top: -20px;
 }
-
-.concert {
+.concert{
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
@@ -339,4 +338,14 @@ a {
 
 .event-buy-ticket-link {
   margin: 5px;
+}
+
+#mediaplayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mediaplayer > video {
+  width: 100%;
+  text-shadow: none;
 }
