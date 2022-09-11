@@ -1,23 +1,20 @@
-function ArtistInfo() {
-  const time = "12:30";
-  const eventPlace = "Avicii Arena | Stockholm";
-  const artist = "Tove Lo";
+function ArtistInfo(props) {
+  const event = props.event;
+  const time = "20:30";
 
   return (
     <>
-      <section className="event-image">
-        <img src="" alt="artist-image" />
-      </section>
-      <div className="event-info">
-        <div className="event-date">
-          <span>Mån</span>
-          <span>17</span>
-          <span>okt. 2022</span>
-        </div>
-        <div className="event-details">
-          <h1 className="event-title">{artist}</h1>
-          <a href="">{eventPlace}</a>
-          <h3 className="event-time">Tid: {time}</h3>
+      <div className="artistInfo>">
+          <img src="" />
+        <div className="event-info">
+          <div className="event-date">
+            <span>{event.date}</span>
+          </div>
+          <div className="event-details">
+            <h1 className="event-title">{event.artistName}</h1>
+            <a href="">{event.location}</a>
+            <h3 className="event-time">Tid: {time}</h3>
+          </div>
         </div>
       </div>
     </>

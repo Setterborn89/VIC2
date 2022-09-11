@@ -147,63 +147,61 @@ a {
 }
 .concert{
   display: grid;
-  grid-template-columns: 10% 40% 40% 10%;
-  grid-template-rows: 45% 10% 35% 10%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  background-color: rgb(236, 231, 231);
 }
 
-.concertPicture{
+.concertPicture {
   display: flex;
-  grid-column: 2 / 4 ; 
+  grid-column: 2 / 4;
   justify-content: center;
-  border-bottom: 2px solid red;
-  border-right: 2px solid red;
-  border-left: 2px solid red;
 }
 
-.concertPicture > img{
+.concertPicture > img {
   size: cover;
 }
 
-.quickInfo{
+.quickInfo {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-row: 2 / 3;
-  grid-column: 2 / 4;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  max-height: 100%;
+  max-width: 100%;
+  background-size: cover;
 }
 
-.quickInfo > #year{
+.quickInfo > #year {
   display: flex;
   grid-column: 1 / 2;
   justify-self: flex-start;
 }
 
-.quickInfo > #artist{
+.quickInfo > #artist {
   display: flex;
   grid-column: 2 / 3;
   justify-self: center;
 }
 
-.quickInfo > #location{
+.quickInfo > #location {
   display: flex;
   grid-column: 3 / 4;
   justify-self: flex-end;
-} 
-
-.concert > .ticketPrice{
-  display: grid;
-  text-align: center;
-  grid-row: 3 / 4;
-  grid-column: 2 / 3;
-  border-right: 2px solid red;
-  border-bottom: 2px solid red;
 }
 
-.concert > .moreConcerts{
+.concert > .ticketPrice {
   display: grid;
   text-align: center;
-  grid-row: 3 / 4;
-  grid-column: 3 / 4;
-  border-bottom: 2px solid red;
+  align-self: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.concert > .moreConcerts {
+  display: grid;
+  text-align: center;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 }
 
 .event-container {
@@ -211,8 +209,8 @@ a {
   color: black;
   background-color: rgb(236, 231, 231);
   text-shadow: none;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 15vw;
+  margin-right: 15vw;
   margin-top: -20px;
 }
 
@@ -223,14 +221,13 @@ a {
   transform: translateY(-10px);
 }
 
-.event-image {
-  flex: 50%;
-  width: 100%;
+.artistInfo > img {
+  width: 10px;
+  /* width: 100%;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
-  height: 400px;
-  background-color: #1b2530;
+  background-color: #1b2530; */
 }
 
 .event-title {
@@ -245,7 +242,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 105px;
   height: 100%;
   padding: 10px;
   background-color: #e21937;
@@ -304,7 +300,8 @@ a {
 }
 
 .event-buy-ticket-link:hover {
-  background-color: #e21937;
+  background-color: #1b2530;
+  cursor: pointer;
 }
 
 .event-buy-ticket-link {
@@ -322,18 +319,25 @@ a {
   background-color: rgba(0, 0, 0, 0.87);
   color: #fff;
 }
-button {
+.ticket-selector > button {
   font-family: icomoon !important;
+  margin: 10px;
+  cursor: pointer;
 }
 .ticket-selector {
   display: flex;
-  
+  justify-content: center;
 }
-.max-tickets{
+.max-tickets {
   font-size: 10px;
 }
-.event-buy-ticket{
+.event-buy-ticket {
   padding: 10px;
+  text-align: center;
+}
+
+.event-buy-ticket-link {
+  margin: 5px;
 }
 
 #mediaplayer {
