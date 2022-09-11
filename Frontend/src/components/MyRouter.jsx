@@ -18,7 +18,7 @@ function MyRouter() {
           <div className="navBar">
             <nav>
               <Link to="Home">Home</Link>
-              <Link to="StreamConcerts">Stream Concerts</Link>
+              <Link to="streamconcerts">Stream Concerts</Link>
               <Link to="LiveConcerts">Live Concerts</Link>
             </nav>
           </div>
@@ -31,7 +31,7 @@ function MyRouter() {
             {
               <>
                 <Route path="/home" element={<MyComponent />}></Route>
-                <Route path="/streamconcerts" element={<ConcertComponent />} /> 
+                <Route path="/streamconcerts/:id" element={<ConcertComponent />} /> 
                 <Route path="/liveconcerts" element={<VideoPlayer url="video/Chris-Do.mp4" />} />
                 <Route path="/eventdetails/:id" element={<EventDetails />} />
               </>

@@ -153,16 +153,6 @@ a {
   color:#0f171e;
 }
 
-.concertPicture {
-  display: flex;
-  grid-column: 2 / 4;
-  justify-content: center;
-}
-
-.concertPicture > img {
-  size: cover;
-}
-
 .quickInfo {
   display: grid;
   grid-column: 1 / 3;
