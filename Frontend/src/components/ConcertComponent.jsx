@@ -52,7 +52,7 @@ function pickConcerts(item){
                 {data[0].location != undefined ?               
                 data.map(conserts =>
                     <section key={conserts.id}>   
-                        <a href={"/StreamConcerts?id=" + conserts.id} className="concert-location">{conserts.location}</a>
+                        <a href={"/streamconcerts?id=" + conserts.id} className="concert-location">{conserts.location}</a>
                         <p className="concert-date">Date: {conserts.date}</p>
                      </section>                                                                      
                         ) : <p></p> 
