@@ -128,15 +128,7 @@ a {
 }
 
 
-card {
-  grid-column-end: span 4;
-  display: flex;
-  flex-direction: column;
-  background-color: #39393b;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
- 
-}
+
 
 .card:hover {
   transform: translateY(-7px);
@@ -160,17 +152,17 @@ card {
 
 .card__content {
   padding: 20px;
+  
 }
 
 .card__title {
-  margin-bottom: 20px;
-}
-
-.card__info {
+  margin-bottom: 10px;
   display: flex;
   align-self: end;
   align-items: center;
 }
+
+
 
 .card__price {
   margin-left: auto;

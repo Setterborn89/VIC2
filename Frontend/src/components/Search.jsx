@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
+import Filter from "./Filter"
 
 function Search(){
     const {search} = useLocation()
@@ -50,33 +51,7 @@ function Search(){
     let searchList = artistSearch.concat(concertSearch)
 
     return <>
-
-        {/* <div className="search-bar">
-            <input type ="text" placeholder="Search" value={filter} onChange={""} />
-        </div> */}
-
-
-            {/*         
-            <div className="output">
-                {artistSearch.map(artist =>(
-                    <div key={artist.id} className="card">
-                        <img src={artist.image} alt="" style={{width:'100%'}}/>
-                        <div className="container">
-                            <h4><b>{artist.name}</b></h4>
-                            <p>Read more about the artist:{artist.wiki}</p>
-                            {concertSearch.filter(concert => concert.artistId == artist.id).map(concert => (
-                                <div key={concert.id} className="card-concert">
-                                    <h4><b>{concert.location}</b></h4>
-                                    <h4><b>Ticket price {concert.price} $</b></h4>
-                                    <h4><b>{concert.genre} </b></h4>
-                                </div>
-                            ))}
-                        </div>
-                    </div>     
-                ))}
-            </div> */}
-
-
+    <Filter/>
 
         {searchList.map(item =>(
             item.location == undefined ? 
