@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import MyComponent from "./MyComponent";
-import EventInformation from "./EventInformation";
+import EventDetails from "./EventDetails";
 import ConcertComponent from "./ConcertComponent";
 import SignUpIn from "./SignUpIn";
+import VideoPlayer from "./VideoPlayer";
 
 function MyRouter() {
   return (
@@ -18,7 +19,7 @@ function MyRouter() {
           <div className="navBar">
             <nav>
               <Link to="Home">Home</Link>
-              <Link to="StreamConcerts">Stream Concerts</Link>
+              <Link to="streamconcerts">Stream Concerts</Link>
               <Link to="LiveConcerts">Live Concerts</Link>
             </nav>
           </div>
@@ -32,6 +33,16 @@ function MyRouter() {
                 <Route path="/StreamConcerts" element={<ConcertComponent />} />
                 <Route path="/LiveConcerts" element={<EventInformation />} />
                 <Route path="/SignUpIn" element={<SignUpIn />} />
+                <Route path="/home" element={<MyComponent />}></Route>
+                <Route
+                  path="/streamconcerts/:id"
+                  element={<ConcertComponent />}
+                />
+                <Route
+                  path="/liveconcerts"
+                  element={<VideoPlayer url="video/Chris-Do.mp4" />}
+                />
+                <Route path="/eventdetails/:id" element={<EventDetails />} />
               </>
             }
           </Routes>

@@ -1,32 +1,65 @@
+import ArtistInfo from "./ArtistInfo";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 function ConcertComponent() {
+  const [data, updateData] = useState([{}]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function loadData() {
+      let concertResponse = await fetch("/data/concerts/");
+      concertResponse = await concertResponse.json();
+
+      let array = [];
+
+      concertResponse.map(pickConcerts);
+
+      function pickConcerts(item) {
+        if (item.artistId == id) {
+          array.push(item);
+        }
+      }
+      updateData(array);
+    }
+    loadData();
+  }, [id]);
+
   return (
-    <div class="concert">
-      <div class="concertPicture" style={{ backgroundUrl: "" }}>
-        <img
-          src="https://consequence.net/wp-content/uploads/2021/04/DMX-Woodstock-99.png"
-          alt=""
-        />
-      </div>
-      <div class="quickInfo">
-        <div id="year">
-          <h2>1999</h2>
-        </div>
-        <div id="artist">
-          <h2>DMX</h2>
-        </div>
-        <div id="location">
-          <h2>Woodstock</h2>
-        </div>
-      </div>
+    <>
+      <div className="event-container">
+        <ArtistInfo />
+        <div className="concert">
+          <div className="ticketPrice">
+            <div>
+              <button>
+                <a href={"/eventdetails/" + id}>Buy Tickets</a>
+              </button>
+            </div>
+          </div>
 
-      <div class="ticketPrice">
-        <h1>Tickets here</h1>
-      </div>
+          <div className="moreConcerts">
+            <h1>Additional Concerts</h1>
 
-      <div class="moreConcerts">
-        <h1>Additional Concerts</h1>
+            {data[0].location != undefined ? (
+              data.map((conserts) => (
+                <section key={conserts.id}>
+                  <a
+                    href={"/streamconcerts/" + conserts.id}
+                    className="concert-location"
+                  >
+                    {conserts.location}
+                  </a>
+                  <p className="concert-date">Date: {conserts.date}</p>
+                </section>
+              ))
+            ) : (
+              <p></p>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

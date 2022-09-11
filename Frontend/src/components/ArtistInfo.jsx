@@ -1,23 +1,54 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 function ArtistInfo() {
-  const time = "12:30";
-  const eventPlace = "Avicii Arena | Stockholm";
-  const artist = "Tove Lo";
+  
+  const time = "20:30";
+  const [event, setEvent] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function loadEvent() {
+      let eventData = {
+        artistName: null,
+        artistId: null,
+        location: null,
+        date: null,
+        price: null,
+        image: null,
+        seats: null,
+      };
+
+      let eventResponse = await fetch("/data/concerts/" + id);
+      let eventResult = await eventResponse.json();
+      eventData.location = eventResult.location;
+      eventData.price = eventResult.price;
+      eventData.date = eventResult.date;
+      eventData.artistId = eventResult.artistId;
+      eventData.seats = eventResult.seats;
+
+      let artistResponse = await fetch("/data/artists/" + eventData.artistId);
+      let artistResult = await artistResponse.json();
+      eventData.artistName = artistResult.name;
+      eventData.image = artistResult.image;
+      setEvent(eventData);
+    }
+    loadEvent();
+  }, []);
 
   return (
     <>
-      <section className="event-image">
-        <img src="" alt="artist-image" />
-      </section>
-      <div className="event-info">
-        <div className="event-date">
-          <span>Mån</span>
-          <span>17</span>
-          <span>okt. 2022</span>
-        </div>
-        <div className="event-details">
-          <h1 className="event-title">{artist}</h1>
-          <a href="">{eventPlace}</a>
-          <h3 className="event-time">Tid: {time}</h3>
+      <div className="artistInfo">
+          <img src={event.image} />
+        <div className="event-info">
+          <div className="event-date">
+            <span>{event.date}</span>
+          </div>
+          <div className="event-details">
+            <h1 className="event-title">{event.artistName}</h1>
+            <a href="">{event.location}</a>
+            <h3 className="event-time">Tid: {time}</h3>
+          </div>
         </div>
       </div>
     </>
