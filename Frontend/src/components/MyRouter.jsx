@@ -1,15 +1,31 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../App.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 
+
 function MyRouter() {
-  return (<Router>
-    <div>
+  const [searchWord, setSearchWord] = useState("searchword");
+  const navigate = useNavigate();
+
+  const searchText = event =>{
+    setSearchWord(event.target.value)
+    handleChange()
+  }
+
+  const handleChange = event => {
+    navigate({pathname: '/Lista', search:"?searchword=" + searchWord});
+  };
+
+  return (<div>
       <header>
         <h1 id="logo">Live Fanatic</h1>
+        <div className="search-bar">
+            <input type ="text" placeholder="Search" onChange={searchText.bind(this)} />
+        </div>
         <div className="navBar">
-       
+          
           <nav>
             <Link to="Home">Home</Link>
             <Link to="Stream Concerts">Stream Concerts</Link>
@@ -43,8 +59,9 @@ function MyRouter() {
         </div>
       </footer>
     </div>
-  </Router>
   );
 }
+
+
 
 export default MyRouter;

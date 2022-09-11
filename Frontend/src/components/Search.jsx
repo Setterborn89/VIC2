@@ -1,12 +1,21 @@
 import React,{useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Search(){
+    const {search} = useLocation()
     const[artists, setArtists]= useState([])
     const[concerts, setConcerts]= useState([])
-    const [filter, setFilter] = useState('');
-    const searchText = (event) =>{
-        setFilter(event.target.value)
-    }
+    const [filter, setFilter] = useState();
+
+    const queryParams = new URLSearchParams(search)
+    const test = (queryParams.get('searchword'))
+
+    useEffect(() => {
+        function loadSearchWord(){
+            setFilter(test)
+        }
+        loadSearchWord()
+    }, [test])
   
     useEffect(() => {
         async function loadArtists(){
@@ -26,8 +35,6 @@ function Search(){
         loadConcerts()
     }, [])
 
-    
-
     let artistSearch = artists.filter(item=>{
         return Object.keys(item).some(key => 
             item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
@@ -44,9 +51,9 @@ function Search(){
 
     return <>
 
-        <div className="search-bar">
-            <input type ="text" placeholder="Search" value={filter} onChange={searchText.bind(this)} />
-        </div>
+        {/* <div className="search-bar">
+            <input type ="text" placeholder="Search" value={filter} onChange={""} />
+        </div> */}
 
 
             {/*         
@@ -136,7 +143,6 @@ function Search(){
                 </div>
             </div>
         ))}
-        
     </>
 }
 
