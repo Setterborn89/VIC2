@@ -30,7 +30,7 @@ function MyRouter() {
             {
               <>
                 <Route path="/Home" element={<MyComponent />}></Route>
-                <Route path="/StreamConcerts" element={<ConcertComponent id="2" />} /> 
+                <Route path="/StreamConcerts" element={<ConcertComponent/>} /> 
                 <Route path="/LiveConcerts" element={<EventInformation />} />
 
 

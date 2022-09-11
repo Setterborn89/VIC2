@@ -1,12 +1,14 @@
 import ArtistInfo from "./ArtistInfo";
 import React, { useState, useEffect } from 'react';
-import { userLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function ConcertComponent(){
 const [data, updateData] = useState([{}])
-const { consert } = userLocation();
-const queryParams = new URLSearchParams(consert);
+
+const { search } = useLocation();
+const queryParams = new URLSearchParams(search);
 const id = queryParams.get('id')
+console.log(id)
 
 useEffect(() => {     
     async function loadData(){
@@ -39,7 +41,7 @@ function pickConcerts(item){
         <div className="ticketPrice">
             <div>
                 <button>
-                    <a href="/LiveConcerts">Buy Tickets</a>
+                    <a href={"/LiveConcerts?id=" + id}>Buy Tickets</a>
                 </button>
             </div>
         </div>
@@ -50,7 +52,7 @@ function pickConcerts(item){
                 {data[0].location != undefined ?               
                 data.map(conserts =>
                     <section key={conserts.id}>   
-                        <a href={"/Concerts?id=" + conserts.id} className="concert-location">{conserts.location}</a>
+                        <a href={"/StreamConcerts?id=" + conserts.id} className="concert-location">{conserts.location}</a>
                         <p className="concert-date">Date: {conserts.date}</p>
                      </section>                                                                      
                         ) : <p></p> 
