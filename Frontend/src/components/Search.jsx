@@ -1,12 +1,10 @@
 import React,{useState, useEffect} from 'react';
 
-function Search(){
+
+function Search(props){
     const[artists, setArtists]= useState([])
     const[concerts, setConcerts]= useState([])
-    const [filter, setFilter] = useState('');
-    const searchText = (event) =>{
-        setFilter(event.target.value)
-    }
+   
   
     useEffect(() => {
         async function loadArtists(){
@@ -30,45 +28,19 @@ function Search(){
 
     let artistSearch = artists.filter(item=>{
         return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+            item[key].toString().toLowerCase().includes(props.input)
             )
     });
 
     let concertSearch = concerts.filter(item=>{
         return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+            item[key].toString().toLowerCase().includes(props.input)
             )
     });
 
     let searchList = artistSearch.concat(concertSearch)
 
     return <>
-
-        <div className="search-bar">
-            <input type ="text" placeholder="Search" value={filter} onChange={searchText.bind(this)} />
-        </div>
-
-
-            {/*         
-            <div className="output">
-                {artistSearch.map(artist =>(
-                    <div key={artist.id} className="card">
-                        <img src={artist.image} alt="" style={{width:'100%'}}/>
-                        <div className="container">
-                            <h4><b>{artist.name}</b></h4>
-                            <p>Read more about the artist:{artist.wiki}</p>
-                            {concertSearch.filter(concert => concert.artistId == artist.id).map(concert => (
-                                <div key={concert.id} className="card-concert">
-                                    <h4><b>{concert.location}</b></h4>
-                                    <h4><b>Ticket price {concert.price} $</b></h4>
-                                    <h4><b>{concert.genre} </b></h4>
-                                </div>
-                            ))}
-                        </div>
-                    </div>     
-                ))}
-            </div> */}
-
 
 
         {searchList.map(item =>(
