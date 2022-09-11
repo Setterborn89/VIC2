@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react';
+import Filter from './Filter'
 
 
 function Search(props){
@@ -41,8 +42,7 @@ function Search(props){
     let searchList = artistSearch.concat(concertSearch)
 
     return <>
-
-
+    <Filter/>
         {searchList.map(item =>(
             item.location == undefined ? 
                 <div key={item.id + Math.random()} className="card">
