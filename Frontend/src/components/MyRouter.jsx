@@ -3,6 +3,11 @@ import { useState } from "react";
 import "../App.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
+import SignUpIn from "./SignUpIn";
+import CurrentConcerts from "./CurrentConcerts";
+import ConcertComponent from "./ConcertComponent";
+import EventDetails from "./EventDetails";
+import VideoPlayer from "./VideoPlayer";
 
 
 function MyRouter() {
@@ -25,24 +30,32 @@ function MyRouter() {
             <input type ="text" placeholder="Search" onChange={searchText.bind(this)} />
         </div>
         <div className="navBar">
-          
-          <nav>
-            <Link to="Home">Home</Link>
-            <Link to="Stream Concerts">Stream Concerts</Link>
-            <Link to="Live Concerts">Live Concerts</Link>
-            <Link to="Lista">Artister</Link>
-          </nav>
-        </div>
-        <a href="" id="login">Login</a>
-      </header>
-      <main>
-        <Routes>
-          { <Route path="/Home" element={<MyComponent />}></Route>
-          /*<Route path="/Stream Concerts" element={<Concerts />} />
-          <Route path="/Live Concerts" element={<Artists />} /> */}
-          <Route path="/Lista" element={<Search/>}></Route>
-          
-        </Routes>
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="streamconcerts">Stream Concerts</Link>
+              <Link to="LiveConcerts">Live Concerts</Link>
+            </nav>
+          </div>
+          <Link to="SignUpIn">Sign Up/Sign In</Link>
+        </header>
+        <main>
+          <Routes>
+            {
+              <>
+                <Route path="/SignUpIn" element={<SignUpIn />} />
+                <Route path="/" element={<CurrentConcerts />}></Route>
+                <Route
+                  path="/streamconcerts/:id"
+                  element={<ConcertComponent />}
+                />
+                <Route
+                  path="/liveconcerts"
+                  element={<VideoPlayer url="video/Chris-Do.mp4" />}
+                />
+                <Route path="/eventdetails/:id" element={<EventDetails />} />
+              </>
+            }
+          </Routes>
       </main>
       <footer>
         <div className="info">
