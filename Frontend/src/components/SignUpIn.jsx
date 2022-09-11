@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from "react";
 
 function SignUpIn() {
-  async function createAccount() {
-    let data = {
-      firstName: "Kelly",
-      lastName: "Tran",
-      email: "kelly@hotmail.com",
-      password: "abc123",
-    };
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = {
+      // firstName : firstName,
+      // lastName : lastName,
+      email : email,
+      password : password
+    }
+    console.log(data)
     let dataResponse = await fetch("/data/users", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     let response = await dataResponse.json();
+    console.log(response)
   }
 
   return (
     <>
-      <form className="accountform">
+      <form onSubmit={handleSubmit} className="accountform">
         <div>
           <h3 id="register">Create account</h3>
           <div id="registerform">
@@ -30,6 +38,8 @@ function SignUpIn() {
                 placeholder="Enter first name..."
                 name="firstName"
                 required
+                value={firstName}
+                onChange={(e)=>setFirstName(e. target. value)}
               />
             </div>
             <div>
@@ -39,6 +49,8 @@ function SignUpIn() {
                 placeholder="Enter last name..."
                 name="lastName"
                 required
+                value={lastName}
+                onChange={(e)=>setLastName(e. target. value)}
               />
             </div>
             <div>
@@ -48,6 +60,8 @@ function SignUpIn() {
                 placeholder="Enter e-mail..."
                 name="emailAdress"
                 required
+                value={email}
+                onChange={(e)=>setEmail(e. target. value)}
               />
             </div>
             <div>
@@ -57,6 +71,8 @@ function SignUpIn() {
                 placeholder="At least 6 characters..."
                 name="password"
                 required
+                value={password}
+                onChange={(e)=>setPassword(e. target. value)}
               />
             </div>
             <div>
@@ -69,7 +85,7 @@ function SignUpIn() {
               />
             </div>
             <div>
-              <button type="submit">Register</button>
+              <button>Register</button>
             </div>
           </div>
         </div>
