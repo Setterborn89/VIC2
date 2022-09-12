@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
-import "./Search.css"
+import "../css/Search.css"
 
 
 
@@ -54,6 +54,7 @@ function Search(){
     let searchList = artistSearch.concat(concertSearch)
 
     return <>
+    <div className="container-Search-wrapper">
     <Filter/>
 
         {searchList.map(item =>(
@@ -126,6 +127,7 @@ function Search(){
             </div>
             </div>
         ))}
+        </div>
     </>
 }
 
