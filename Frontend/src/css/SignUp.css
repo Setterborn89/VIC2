@@ -1,0 +1,41 @@
+.accountform {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.accountform h3 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.accountform label {
+  margin: 5px;
+  font-weight: lighter;
+}
+
+.accountform > div > div {
+  display: grid;
+  font-family: "Amazon Ember";
+  grid-template-columns: 80%;
+  justify-content: space-evenly;
+  gap: 20px;
+  grid-auto-rows: auto;
+  align-content: center;
+  align-items: flex-end;
+}
+
+.accountform > div input {
+  width: 100%;
+  font-family: "Amazon Ember";
+}
+
+.accountform #registerform {
+  border-right: 1px solid white;
+}
+
+.accountform button {
+  font-family: "Amazon Ember";
+  display: block;
+  margin-top: 15px;
+}

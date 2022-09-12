@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../Css/ticket.css"
 
 function Ticket(props) {
   const id = props.id;
@@ -68,27 +69,5 @@ function Ticket(props) {
     </div>
   );
 }
-
-return (
-  <div id="ticketComp">
-    <div id="ticket">
-      <a href="#" onClick={window.print} id="printbtn">
-        Print
-      </a>
-      <div id="QrCode">
-        <img src="https://sv.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"></img>
-      </div>
-      <div id="TicketText">
-        <h2>{data.email}</h2>
-        <h2>{data.artistName}</h2>
-        <h2>{data.location}</h2>
-        <h2>{data.date}</h2>
-      </div>
-      <div id="TicketId">
-        <p>ticket # {data.ticketId}</p>
-      </div>
-    </div>
-  </div>
-);
 
 export default Ticket;
