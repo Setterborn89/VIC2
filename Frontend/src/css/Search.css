@@ -55,6 +55,7 @@
     overflow: hidden;
     position: relative;
     border-radius: 10px;
+    z-index: -1;
   }
   
   .card__image-container img {
