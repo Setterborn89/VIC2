@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import "../css/eventdetails.css";
+
 function ArtistInfo() {
   
   const time = "20:30";
