@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
 
+
+
 function Search(){
     const {search} = useLocation()
     const[artists, setArtists]= useState([])
@@ -55,7 +57,8 @@ function Search(){
 
         {searchList.map(item =>(
             item.location == undefined ? 
-                <div key={item.id + Math.random()} className="card-Search">
+            <div className="card-Search">
+                <div key={item.id + Math.random()} className="Container-card">
                     <div className="card__image-container">
                         <img src={item.image}/>
                     </div>
@@ -65,14 +68,14 @@ function Search(){
                         </h3>
                         <a href ={item.wiki} className="text--medium">Read more</a>
                         <div className="card__info">
-                            <p className="text--medium">Read more about the artist</p>
+                            
                             <div>
                                 {concerts.map(concert => (
                                     concert.artistId == item.id ?
                                         <div key={concert.id + Math.random} className="card-concert">
                                             <div>     
                                                 {
-                                                concert.stream == true ? <p>Stream </p> : <p>Live</p>
+                                                concert.stream == true ? <p>Stream <FontAwesomeIcon icon="fa-regular fa-signal-stream" /> </p> : <p>Live</p>
                                                 }
                                             </div>
                                             <p className="text--medium">Location: {concert.location}</p>
@@ -87,7 +90,9 @@ function Search(){
                         </div>
                     </div>
                 </div>
+            </div>
             :
+            <div className="card-Search">
             <div key={item.id + Math.random()} className="card">
                 <div className="card__image-container">
                     <img src={item.image}/>
@@ -96,9 +101,9 @@ function Search(){
                     <h3 className="card__title text--medium">
                         {item.name}
                     </h3>
-                    <a href ={item.wiki} className="text--medium">Read more</a>
+                    <a href ={item.wiki} className="text-link">Read more</a>
                     <div className="card__info">
-                        <p className="text--medium">Read more about the artist</p>
+                    
                     </div>
                 </div>
                 <div className="card-concert">
@@ -116,6 +121,7 @@ function Search(){
                     <p className="text--medium">Genre: {item.genre}</p> 
                     <p className="card__price text--medium">Get Tickets</p>
                 </div>
+            </div>
             </div>
         ))}
     </>

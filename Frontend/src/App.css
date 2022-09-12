@@ -464,6 +464,11 @@ a, a:hover, a:focus, a:active {
 
 
 }
+.text-link{
+  font-weight:light;
+  font-size:15px
+
+}
 
 /* On mouse-over, add a deeper shadow */
 .card-Search:hover {
