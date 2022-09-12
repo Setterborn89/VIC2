@@ -4,7 +4,7 @@ import "../App.css";
 import "../css/ConcertComponent.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
-import SignUpIn from "./SignUp";
+import SignUp from "./SignUp";
 import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
@@ -41,13 +41,13 @@ function MyRouter() {
             <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
-        <Link to="SignUpIn">Sign Up/Sign In</Link>
+        <Link to="SignUp">Sign Up/Sign In</Link>
       </header>
       <main>
         <Routes>
           {
             <>
-              <Route path="/SignUpIn" element={<SignUpIn />} />
+              <Route path="/SignUp" element={<SignUp />} />
               <Route path="/" element={<CurrentConcerts />}></Route>
               <Route
                 path="/streamconcerts/:id"
