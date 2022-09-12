@@ -201,16 +201,6 @@ footer {
   text-align: right;
 }
 
-.event-container {
-  box-shadow: 2px 2px 2px black;
-  color: black;
-  background-color: rgb(236, 231, 231);
-  text-shadow: none;
-  margin-left: 60px;
-  margin-right: 60px;
-  margin-top: -20px;
-}
-
 #mediaplayer {
   display: flex;
   justify-content: center;
@@ -221,32 +211,10 @@ footer {
   text-shadow: none;
 }
 
-.row_cards{
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  padding: 20px;
-
-}
 /*Seach*/
 .card-Search{
   margin-right: 20px;
   width: 300px;
-}
-
-
-.row_cards::-webkit-scrollbar{
-  /* display: none; */
-}
-
-.card_poster{
-  width:  300px;
-  height: 100px;
-  object-fit: cover;
-}
-a, a:hover, a:focus, a:active {
-  text-decoration: none;
-  color: inherit;
 }
 
 .card-Search {
