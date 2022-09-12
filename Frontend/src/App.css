@@ -89,7 +89,8 @@ a:hover {
 }
 
 main {
-  
+  display: flex;
+  margin-top: 15vh;
   margin-top: calc(20px + max(90px, 10vh));
   margin-left: 15vw;
   margin-right: 15vw;
@@ -226,24 +227,6 @@ footer {
   background-size: cover;
 }
 
-.quickInfo > #year {
-  display: flex;
-  grid-column: 1 / 2;
-  justify-self: flex-start;
-}
-
-.quickInfo > #artist {
-  display: flex;
-  grid-column: 2 / 3;
-  justify-self: center;
-}
-
-.quickInfo > #location {
-  display: flex;
-  grid-column: 3 / 4;
-  justify-self: flex-end;
-}
-
 .concert > .ticketPrice {
   display: grid;
   text-shadow: none;
@@ -251,7 +234,7 @@ footer {
   align-self: center;
   grid-row: 2 / 3;
   grid-column: 1 / 2;
-}
+} 
 
 .concert button {
   padding: 14px 28px;
@@ -270,6 +253,7 @@ footer {
 
 .concert .concert-location {
   border: 2px dotted #1b2530;
+  justify-content: center;
 }
 
 .concert a {
