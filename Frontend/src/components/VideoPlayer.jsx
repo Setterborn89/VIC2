@@ -1,3 +1,5 @@
+import "../css/videoPlayer.css"
+
 function VideoPlayer(props) {
     const url = props.url
 
