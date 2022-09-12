@@ -1,0 +1,52 @@
+/* CSS FIL */
+
+
+.concert {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .concert > .ticketPrice {
+    color: #0f171e;
+  }
+  
+  .quickInfo {
+    display: grid;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    max-height: 100%;
+    max-width: 100%;
+    background-size: cover;
+  }
+  
+  .concert > .ticketPrice {
+    display: grid;
+    text-shadow: none;
+    text-align: center;
+    align-self: center;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  } 
+  
+  .concert button {
+    padding: 14px 28px;
+    font-size: 25px;
+  }
+  
+  .concert > .moreConcerts {
+    color: #0f171e;
+    display: grid;
+    text-align: center;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    font-size: large;
+    border-left: 1px solid black;
+  }
+  
+  .concert .concert-location {
+    border: 2px dotted #1b2530;
+    justify-content: center;
+  }
+  
+  .concert a {
+    color: black;
+  }

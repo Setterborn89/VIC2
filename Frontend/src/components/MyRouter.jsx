@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
+import "../ConcertComponent.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUpIn from "./SignUpIn";
