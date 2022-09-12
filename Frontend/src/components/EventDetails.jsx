@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
 function EventDetails() {
@@ -102,7 +103,9 @@ function EventDetails() {
               {tickets} {tickets == 1 ? "biljett" : "biljetter"}{" "}
             </p>
           </div>
-          <button className="event-buy-ticket-link" disabled={tickets == 0}>Köp biljett</button>
+          <button className="event-buy-ticket-link" disabled={tickets == 0}>
+            Köp biljett
+          </button>
         </div>
       </div>
     </>
