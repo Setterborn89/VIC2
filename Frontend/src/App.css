@@ -201,16 +201,6 @@ footer {
   text-align: right;
 }
 
-.event-container {
-  box-shadow: 2px 2px 2px black;
-  color: black;
-  background-color: rgb(236, 231, 231);
-  text-shadow: none;
-  margin-left: 60px;
-  margin-right: 60px;
-  margin-top: -20px;
-}
-
 #mediaplayer {
   display: flex;
   justify-content: center;
@@ -230,3 +220,102 @@ footer {
 }
 
 
+/*Seach*/
+.card-Search{
+  margin-right: 20px;
+  width: 300px;
+}
+
+.card-Search {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 40px;
+  align-items: center;
+
+
+}
+
+/* On mouse-over, add a deeper shadow */
+.card-Search:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+.card-Search:hover {
+  transform: translateY(-7px);
+}
+
+.card__image-container {
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.card__image-container img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__content {
+  padding: 20px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+}
+
+.card__info {
+  display: flex;
+  align-self: end;
+  align-items: center;
+}
+
+.card__price {
+  margin-left: auto;
+  padding: 5px 20px;
+  background-color: #303032;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .card-Search {
+    grid-column-end: span 6;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  main {
+    grid-gap: 20px;
+  }
+  .card-Search {
+    grid-column-end: span 12;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    grid-template-columns: 10px repeat(6, 1fr) 10px;
+    grid-gap: 10px;
+  }
+  .cards-Search {
+    grid-column: 2 / span 6;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+  }
+  .card-Search {
+    grid-column-end: span 6;
+  }
+}
