@@ -225,24 +225,6 @@ footer {
   background-size: cover;
 }
 
-.quickInfo > #year {
-  display: flex;
-  grid-column: 1 / 2;
-  justify-self: flex-start;
-}
-
-.quickInfo > #artist {
-  display: flex;
-  grid-column: 2 / 3;
-  justify-self: center;
-}
-
-.quickInfo > #location {
-  display: flex;
-  grid-column: 3 / 4;
-  justify-self: flex-end;
-}
-
 .concert > .ticketPrice {
   display: grid;
   text-shadow: none;
