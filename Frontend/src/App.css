@@ -211,6 +211,15 @@ footer {
   text-shadow: none;
 }
 
+.row_cards{
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+
+}
+
+
 /*Seach*/
 .card-Search{
   margin-right: 20px;
