@@ -89,6 +89,7 @@ a:hover {
 }
 
 main {
+  
   margin-top: calc(20px + max(90px, 10vh));
   margin-left: 15vw;
   margin-right: 15vw;
