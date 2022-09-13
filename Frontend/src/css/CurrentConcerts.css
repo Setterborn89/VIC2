@@ -6,9 +6,6 @@ body {
   text-shadow: 2px 2px 2px black;
 }
 
-.current-concert-container{
-  /* display: inline-block; */
-}
 header {
   display: grid;
   height: 10vh;
@@ -135,11 +132,6 @@ a {
 .card{
   margin-right: 20px;
   width: 300px;
-}
-
-
-.row_cards::-webkit-scrollbar{
-  /* display: none; */
 }
 
 .card_poster{
