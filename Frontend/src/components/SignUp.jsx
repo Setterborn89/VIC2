@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SignIn from "./SignIn";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -14,6 +15,7 @@ function SignUp() {
       lastName: lastName,
       email: email,
       password: password,
+      role: "user",
       confirmPassword: confirmPassword,
     };
 
@@ -98,23 +100,8 @@ function SignUp() {
             </div>
           </div>
         </div>
-        <div>
-          <h3>Sign In</h3>
-          <div>
-            <div>
-              <label htmlFor="email">E-mail</label>
-              <input type="email" placeholder="Enter e-mail..." />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input type="password" placeholder="Enter password..." />
-            </div>
-            <div>
-              <button type="submit">Sign In</button>
-            </div>
-          </div>
-        </div>
       </form>
+      <SignIn />
     </>
   );
 }

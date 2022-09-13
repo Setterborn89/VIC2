@@ -1,0 +1,13 @@
+.loginform{
+    display: flex;
+}
+
+.loginform form {
+    display: grid;
+    font-family: "Amazon Ember";
+    grid-template-columns: 80%;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: flex-end;
+}
+

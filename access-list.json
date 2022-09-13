@@ -49,7 +49,7 @@
     "route": "/data/concerts*",
     "roles": [
       { "role": "anonymous", "methods": ["GET"] },
-      { "role": "user", "methods": ["POST", "DELETE"] }
+      { "role": "user", "methods": ["POST", "GET", "DELETE"] }
     ]
   },
 
