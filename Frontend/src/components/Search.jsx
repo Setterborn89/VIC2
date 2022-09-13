@@ -84,7 +84,9 @@ function Search(){
                                             <p className="text--medium">Date: {concert.date} </p>
                                             <p className="text--medium">Price: {concert.price} $ </p>
                                             <p className="text--medium">Genre: {concert.genre}</p> 
-                                            <button className ="card__price text--medium">Get Tickets</button>     
+                                            <button className ="card__price text--medium" >
+                                            <a href={"/EventDetails/" + concert.id}>Get tickets !</a>
+                                            </button>     
                                         </div>
                                     :<p key={concert.id + 1}></p>
                                 ))}
@@ -122,7 +124,9 @@ function Search(){
                     <p className="text--medium">Date: {item.date} </p>
                     <p className="text--medium">Price: {item.price} $ </p>
                     <p className="text--medium">Genre: {item.genre}</p> 
-                    <button className="card__price text--medium">Get Tickets</button>
+                    <button className ="card__price text--medium" >
+                        <a href={"/EventDetails/" + item.id}>Get tickets !</a>
+                    </button> 
                 </div>
             </div>
             </div>
