@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
-import "../css/Search.css"
+import "../css/CurrentConcerts.css"
+
 
 
 
@@ -54,48 +55,32 @@ function Search(){
     let searchList = artistSearch.concat(concertSearch)
 
     return <>
-    <div className="container-Search-wrapper">
+  <div className="container-Search-wrapper">
     <Filter/>
-
-        {searchList.map(item =>(
-            item.location == undefined ? 
-            <div className="card-Search">
-                <div key={item.id + Math.random()} className="Container-card">
-                    <div className="card__image-container">
-                        <img src={item.image}/>
-                    </div>
-                    <div className="card__content">
-                        <h3 className="card__title text--medium">
-                            {item.name}
-                        </h3>
-                        <a href ={item.wiki} className="text--medium">Read more</a>
-                        <div className="card__info">
-                            
-                            <div>
-                                {concerts.map(concert => (
-                                    concert.artistId == item.id ?
-                                        <div key={concert.id + Math.random} className="card-concert">
-                                            <div>     
-                                                {
-                                                concert.stream == true ? <p>Stream </p> : <p>Live</p>
-                                                }
-                                            </div>
-                                            <p className="text--medium">Location: {concert.location}</p>
-                                            <p className="text--medium">Date: {concert.date} </p>
-                                            <p className="text--medium">Price: {concert.price} $ </p>
-                                            <p className="text--medium">Genre: {concert.genre}</p> 
-                                            <button className ="card__price text--medium" >
-                                            <a href={"/EventDetails/" + concert.id}>Get tickets !</a>
-                                            </button>     
-                                        </div>
-                                    :<p key={concert.id + 1}></p>
-                                ))}
-                            </div>
-                            
+    {searchList.map(item =>(
+    item.location == undefined ? 
+        <div className="row">
+            <div className="row_cards">
+                <div key={item.id + Math.random()}>
+                    <div className="card">
+                        <img className="card_poster" src={artists.image} />
+                        <div className="container">
+                            <h4>
+                                <b>{artists.name}</b>
+                            </h4>
+                            {concerts.map(concert => (
+                                concert.artistId == item.id ?
+                                <div key={concert.id + Math.random}>
+                                    <h3>{concert.date}</h3>
+                                    <p>{concert.location}</p>
+                                </div>
+                            :<p key={concert.id + 1}></p>
+                            ))}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
             :
             <div className="card-Search">
             <div key={item.id + Math.random()} className="card">
