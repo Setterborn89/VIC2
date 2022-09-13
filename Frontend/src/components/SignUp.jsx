@@ -14,6 +14,7 @@ function SignUp() {
       // lastName : lastName,
       email: email,
       password: password,
+      role: "user"
     };
     console.log(data);
     let dataResponse = await fetch("/data/users", {
