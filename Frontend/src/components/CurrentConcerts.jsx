@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 
 import "../css/CurrentConcerts.css"
 function CurrentConcerts() {
-  let [liveConcertList, updateLiveConcertsData] = useState([]);
-  let [streamConcertList, updateStreamConcertsData] = useState([]);
+  const [liveConcertList, updateLiveConcertsData] = useState([]);
+  const [streamConcertList, updateStreamConcertsData] = useState([]);
 
   useEffect(() => {
     async function loadData() {
-      liveConcertList = [];
-      streamConcertList = [];
+      let liveTempConcertList = [];
+      let streamTempConcertList = [];
 
       let concertsResponse = await fetch("/data/concerts");
       const concertsData = await concertsResponse.json();
@@ -27,18 +27,17 @@ function CurrentConcerts() {
         }
 
         if (concert.stream) {
-          streamConcertList.push(concert);
+          streamTempConcertList.push(concert);
         } else {
-          liveConcertList.push(concert);
+          liveTempConcertList.push(concert);
         }
       });
 
-      updateStreamConcertsData(streamConcertList);
-      updateLiveConcertsData(liveConcertList);
-      console.log(liveConcertList);
-      console.log(streamConcertList);
+      updateStreamConcertsData(streamTempConcertList);
+      updateLiveConcertsData(liveTempConcertList);
     }
     loadData();
+    
   }, []);
 
   return (
