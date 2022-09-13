@@ -42,11 +42,12 @@ function CurrentConcerts() {
 
   return (
     <>
-      <div>
+      <div className="concert_container">
         <h2>Upcoming Concerts</h2>
+        <hr />
         <h3>Live Concerts</h3>
         <div className="row">
-          <card className="row_cards">
+          <div className="row_cards">
             {liveConcertList.map((element) => (
               <>
                 <a href={"/streamconcerts/" + element.id}  key={element.id + Math.random()}>
@@ -63,9 +64,8 @@ function CurrentConcerts() {
                 </a>
               </>
             ))}
-          </card>
+          </div>
         </div>
-        <hr />
         <h3>Stream Concerts</h3>
         <div className="row">
           <card className="row_cards">
@@ -80,6 +80,9 @@ function CurrentConcerts() {
                       </h4>
                       <h3>{element.date}</h3>
                       <p>{element.location}</p>
+                      <div className="stream_tag">
+                        <h2>STREAM</h2>
+                      </div>
                     </div>
                   </div>
                 </a>
