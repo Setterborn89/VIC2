@@ -5,10 +5,7 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [validPassword, setValidPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,19 +16,6 @@ function SignUp() {
       password: password,
       confirmPassword: confirmPassword,
     };
-
-    useEffect(() => {
-      setValidPassword(password);
-      if (password === confirmPassword) {
-        validMatch = true;
-      }
-    }, [password, confirmPassword]);
-
-    console.log(password, confirmPassword);
-
-    // useEffect(() => {
-    //   setErrorMessage("");
-    // }, [email, firstName, lastName, password, confirmPassword]);
 
     console.log(data);
 
@@ -106,8 +90,8 @@ function SignUp() {
               />
             </div>
             <div>
-              {validMatch ? (
-                <button className="registerbtn">Register</button>
+              {password == confirmPassword ? (
+                <button>Register</button>
               ) : (
                 "Password doesn't match"
               )}
