@@ -49,8 +49,9 @@ function CurrentConcerts() {
         <div className="row">
           <div className="row_cards">
             {liveConcertList.map((element) => (
-              <>
-                <a href={"/streamconcerts/" + element.id}  key={element.id + Math.random()}>
+              
+              <div key={element.id + Math.random()}>
+                <a href={"/streamconcerts/" + element.id} >
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
@@ -62,18 +63,18 @@ function CurrentConcerts() {
                     </div>
                   </div>
                 </a>
-              </>
+              </div>
             ))}
           </div>
         </div>
         <h3>Stream Concerts</h3>
         <div className="row">
-          <card className="row_cards">
+          <div className="row_cards">
             {streamConcertList.map((element) => (
-              <>
-                <a href={"/streamconcerts/" + element.id} key={element.id + Math.random()} >
+              <div key={element.id + Math.random()}>
+                <a href={"/streamconcerts/" + element.id}  >
                   <div className="card">
-                    <img className="card_poster" src={element.image} />
+                    <img className="card_poster" src={element.image}/>
                     <div className="container">
                       <h4>
                         <b>{element.artistName}</b>
@@ -86,9 +87,9 @@ function CurrentConcerts() {
                     </div>
                   </div>
                 </a>
-              </>
+              </div>
             ))}
-          </card>
+          </div>
         </div>
       </div>
     </>
