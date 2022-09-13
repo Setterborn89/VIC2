@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
 import "../css/CurrentConcerts.css"
+import { FcCalendar } from "react-icons/fc";
+import { GoLocation } from "react-icons/go";
 
 
 
@@ -63,16 +65,24 @@ function Search(){
             <div className="row_cards">
                 <div key={item.id + Math.random()}>
                     <div className="card">
-                        <img className="card_poster" src={artists.image} />
+                        <img className="card_poster" src={item.image} />
                         <div className="container">
                             <h4>
-                                <b>{artists.name}</b>
+                                <b>{item.name}</b>
                             </h4>
                             {concerts.map(concert => (
                                 concert.artistId == item.id ?
+
                                 <div key={concert.id + Math.random}>
-                                    <h3>{concert.date}</h3>
-                                    <p>{concert.location}</p>
+                                    <div>     
+                                        {
+                                        concert.stream == true ? <p>Stream </p> : <p>Live</p>
+                                        }
+                                    </div>
+                                    <h3> <FcCalendar/> {concert.date}</h3>
+                                    <p><GoLocation/> {concert.location}</p>
+
+
                                 </div>
                             :<p key={concert.id + 1}></p>
                             ))}
