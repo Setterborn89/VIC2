@@ -8,6 +8,11 @@
     margin-top: -20px;
   }
 
+  .artistInfo{
+    justify-content: center;
+    text-align: center;
+  }
+
   .artistInfo img {
     max-height: 45vh;
   }
@@ -15,6 +20,7 @@
   .event-info {
     display: flex;
     margin-top: -10px;
+    position: relative;
     background-color: rgb(236, 231, 231);
   }
   
