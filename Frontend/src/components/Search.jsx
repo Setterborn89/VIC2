@@ -77,7 +77,7 @@ function Search(){
                                         <div key={concert.id + Math.random} className="card-concert">
                                             <div>     
                                                 {
-                                                concert.stream == true ? <p>Stream <FontAwesomeIcon icon="fa-regular fa-signal-stream" /> </p> : <p>Live</p>
+                                                concert.stream == true ? <p>Stream </p> : <p>Live</p>
                                                 }
                                             </div>
                                             <p className="text--medium">Location: {concert.location}</p>

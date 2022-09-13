@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from "react";
-import SignIn from "./SignIn"
+import SignIn from "./SignIn";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      // firstName : firstName,
-      // lastName : lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       password: password,
+      role: "user",
+      confirmPassword: confirmPassword,
     };
+
     console.log(data);
+
     let dataResponse = await fetch("/data/users", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+
     let response = await dataResponse.json();
     console.log(response);
   };
 
   return (
     <>
-    
       <form onSubmit={handleSubmit} className="accountform">
         <div>
           <h3 id="register">Create account</h3>
@@ -38,7 +43,7 @@ function SignUp() {
                 type="text"
                 placeholder="Enter first name..."
                 name="firstName"
-                required
+                required={"Required field. Enter your first name"}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -71,9 +76,9 @@ function SignUp() {
                 type="password"
                 placeholder="At least 6 characters..."
                 name="password"
-                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -82,17 +87,21 @@ function SignUp() {
                 type="password"
                 placeholder="Confirm password..."
                 name="confirmPassword"
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
             <div>
-              <button>Register</button>
+              {password == confirmPassword ? (
+                <button>Register</button>
+              ) : (
+                "Password doesn't match"
+              )}
             </div>
           </div>
         </div>
-      
       </form>
-      <SignIn/>
+      <SignIn />
     </>
   );
 }
