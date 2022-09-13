@@ -5,21 +5,42 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [validMatch, setValidMatch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      // firstName : firstName,
-      // lastName : lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       password: password,
+      confirmPassword: confirmPassword,
     };
+
+    useEffect(() => {
+      setValidPassword(password);
+      if (password === confirmPassword) {
+        validMatch = true;
+      }
+    }, [password, confirmPassword]);
+
+    console.log(password, confirmPassword);
+
+    // useEffect(() => {
+    //   setErrorMessage("");
+    // }, [email, firstName, lastName, password, confirmPassword]);
+
     console.log(data);
+
     let dataResponse = await fetch("/data/users", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+
     let response = await dataResponse.json();
     console.log(response);
   };
@@ -36,7 +57,7 @@ function SignUp() {
                 type="text"
                 placeholder="Enter first name..."
                 name="firstName"
-                required
+                required={"Required field. Enter your first name"}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -69,9 +90,9 @@ function SignUp() {
                 type="password"
                 placeholder="At least 6 characters..."
                 name="password"
-                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -80,11 +101,16 @@ function SignUp() {
                 type="password"
                 placeholder="Confirm password..."
                 name="confirmPassword"
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
             <div>
-              <button>Register</button>
+              {validMatch ? (
+                <button className="registerbtn">Register</button>
+              ) : (
+                "Password doesn't match"
+              )}
             </div>
           </div>
         </div>

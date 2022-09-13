@@ -2,6 +2,7 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
 import "../css/ConcertComponent.css";
+import "../css/SignUp.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUp from "./SignUp";
