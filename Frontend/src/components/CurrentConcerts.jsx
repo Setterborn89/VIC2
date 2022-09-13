@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 
 import "../css/CurrentConcerts.css"
 function CurrentConcerts() {
-  let [liveConcertList, updateLiveConcertsData] = useState([]);
-  let [streamConcertList, updateStreamConcertsData] = useState([]);
+  const [liveConcertList, updateLiveConcertsData] = useState([]);
+  const [streamConcertList, updateStreamConcertsData] = useState([]);
 
   useEffect(() => {
     async function loadData() {
-      liveConcertList = [];
-      streamConcertList = [];
+      let liveTempConcertList = [];
+      let streamTempConcertList = [];
 
       let concertsResponse = await fetch("/data/concerts");
       const concertsData = await concertsResponse.json();
@@ -27,27 +27,27 @@ function CurrentConcerts() {
         }
 
         if (concert.stream) {
-          streamConcertList.push(concert);
+          streamTempConcertList.push(concert);
         } else {
-          liveConcertList.push(concert);
+          liveTempConcertList.push(concert);
         }
       });
 
-      updateStreamConcertsData(streamConcertList);
-      updateLiveConcertsData(liveConcertList);
-      console.log(liveConcertList);
-      console.log(streamConcertList);
+      updateStreamConcertsData(streamTempConcertList);
+      updateLiveConcertsData(liveTempConcertList);
     }
     loadData();
+    
   }, []);
 
   return (
     <>
-      <div>
+      <div className="concert_container">
         <h2>Upcoming Concerts</h2>
+        <hr />
         <h3>Live Concerts</h3>
         <div className="row">
-          <card className="row_cards">
+          <div className="row_cards">
             {liveConcertList.map((element) => (
               <>
                 <a href={"/streamconcerts/" + element.id}  key={element.id + Math.random()}>
@@ -64,9 +64,8 @@ function CurrentConcerts() {
                 </a>
               </>
             ))}
-          </card>
+          </div>
         </div>
-        <hr />
         <h3>Stream Concerts</h3>
         <div className="row">
           <card className="row_cards">
@@ -81,6 +80,9 @@ function CurrentConcerts() {
                       </h4>
                       <h3>{element.date}</h3>
                       <p>{element.location}</p>
+                      <div className="stream_tag">
+                        <h2>STREAM</h2>
+                      </div>
                     </div>
                   </div>
                 </a>
