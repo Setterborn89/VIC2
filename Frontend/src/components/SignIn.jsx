@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/useUserContext";
 
-function SignIn(props) {
+function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { loggedIn, setLoggedIn } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,9 +21,9 @@ function SignIn(props) {
       body: JSON.stringify(data),
     });
     let response = await dataResponse.json();
-    props.isLoggedIn == true;
+
     if (response.loggedIn) {
-      localStorage.setItem("user", JSON.stringify(true));
+      setLoggedIn(response.loggedIn);
       navigate({ pathname: "/" });
     } else {
       console.log("Could not login");

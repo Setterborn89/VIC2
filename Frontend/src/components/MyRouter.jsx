@@ -1,11 +1,14 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
 import "../css/EventDetails.css";
-import MyComponent from "./MyComponent";
+
+import { useUserContext } from "../contexts/useUserContext";
+
 import Search from "./Search";
 import SignUp from "./SignUp";
 import CurrentConcerts from "./CurrentConcerts";
@@ -15,21 +18,8 @@ import VideoPlayer from "./VideoPlayer";
 import Logout from "./Logout";
 
 function MyRouter() {
-  const [isLogged, setisLogged] = useState(false);
-
-  useEffect(() => {
-    checkStorage();
-    return () => {};
-  }, [isLogged]);
-
-  function checkStorage() {
-    if (localStorage.getItem("user")) {
-      setisLogged(true);
-    } else {
-      setisLogged(false);
-    }
-  }
-
+  const { loggedIn, setLoggedIn } = useUserContext();
+  console.log(loggedIn);
   const [searchWord, setSearchWord] = useState("searchword");
   const navigate = useNavigate();
 
@@ -60,14 +50,18 @@ function MyRouter() {
             <Link to="/">Home</Link>
             <Link to="streamconcerts">Stream Concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
+            <Link to="Logout">Logout</Link>
           </nav>
         </div>
-        {!isLogged ? (
+        <Link to="SignUp">Sign Up/Sign In</Link>
+
+        {/* {!loggedIn ? (
           <Link to="SignUp">Sign Up/Sign In</Link>
         ) : (
-          <Link to="SignOut">Sign Out</Link>
-        )}
+          <Link to="/">Sign out</Link>
+        )} */}
       </header>
+
       <main>
         <Routes>
           {
@@ -91,6 +85,7 @@ function MyRouter() {
           }
         </Routes>
       </main>
+
       <footer>
         <div className="info">
           <h3>About</h3>
