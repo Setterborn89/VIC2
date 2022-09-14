@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 function Ticket(props) {
     let { id } = useParams();
     const [data, updateData] = useState({});
+    let vis = "visible"
 
     if (id == undefined){
         id = props.id
+        vis = "hidden"
     }
 
     useEffect(() => {
@@ -55,7 +57,7 @@ function Ticket(props) {
     return (
         <div id="ticketComp">
         <div id="ticket">
-            <a href="#" onClick={window.print} id="printbtn">
+            <a href="#" onClick={window.print} id="printbtn" style={{visibility: vis}}>
             Print
             </a>
             <div id="QrCode">

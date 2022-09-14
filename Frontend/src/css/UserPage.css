@@ -1,18 +1,20 @@
 .UserPage{
     display: grid;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: 40% 60%;
-
+    grid-template-columns: 65% 35%;
+    align-self: flex-end;
     width: 100%;
-
 }
 .UserPageDisplayBox{
-    display: flex;
-    grid-area: 2 /2/ 3 / 3;
-    width: 80%;
-    justify-content: center;
+    grid-area: 1 /2/ 3 / 3;
+}
+
+.ticketBox{
+    margin-bottom: 20px;
 }
 
 .UserEventButton{
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 50px;
 }

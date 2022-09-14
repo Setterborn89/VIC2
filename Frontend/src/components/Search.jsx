@@ -2,12 +2,12 @@ import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
 import "../css/Search.css"
-import { FcCalendar } from "react-icons/fc";
-import { GoLocation } from "react-icons/go";
-import { HiOutlineTicket} from "react-icons/hi";
-import {MdAttachMoney} from "react-icons/md";
-import { BiMusic } from "react-icons/bi";
-import { FiInfo} from "react-icons/fi";
+// import { FcCalendar } from "react-icons/fc";
+// import { GoLocation } from "react-icons/go";
+// import { HiOutlineTicket} from "react-icons/hi";
+// import {MdAttachMoney} from "react-icons/md";
+// import { BiMusic } from "react-icons/bi";
+// import { FiInfo} from "react-icons/fi";
 
 
 
