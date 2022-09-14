@@ -4,7 +4,7 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
-import "../css/EventDetails.css"
+import "../css/EventDetails.css";
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUp from "./SignUp";
@@ -15,19 +15,20 @@ import VideoPlayer from "./VideoPlayer";
 import Logout from "./Logout";
 
 function MyRouter() {
-  const [loggedIn, setLoggedInStatus] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [isLogged, setisLogged] = useState(false);
 
   useEffect(() => {
-    async function getCurrentUser() {
-      let response = await fetch("/data/login");
-      let result = await response.json();
-      setLoggedInStatus(result.loggedIn);
-      setLoaded(true);
-      console.log(result.loggedIn);
+    checkStorage();
+    return () => {};
+  }, [isLogged]);
+
+  function checkStorage() {
+    if (localStorage.getItem("user")) {
+      setisLogged(true);
+    } else {
+      setisLogged(false);
     }
-    getCurrentUser();
-  }, []);
+  }
 
   const [searchWord, setSearchWord] = useState("searchword");
   const navigate = useNavigate();
@@ -44,9 +45,9 @@ function MyRouter() {
   return (
     <div>
       <header>
-        <a href="/" id="logo">
+        <Link to="/" id="logo">
           <h1>Live Fanatic</h1>
-        </a>
+        </Link>
         <div className="search-bar">
           <input
             type="text"
@@ -61,7 +62,7 @@ function MyRouter() {
             <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
-        {!loggedIn ? (
+        {!isLogged ? (
           <Link to="SignUp">Sign Up/Sign In</Link>
         ) : (
           <Link to="SignOut">Sign Out</Link>
