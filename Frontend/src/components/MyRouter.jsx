@@ -29,7 +29,9 @@ function MyRouter() {
   return (
     <div>
       <header>
-        <h1 id="logo">Live Fanatic</h1>
+        <a href="/" id="logo">
+          <h1>Live Fanatic</h1>
+        </a>
         <div className="search-bar">
           <input
             type="text"
