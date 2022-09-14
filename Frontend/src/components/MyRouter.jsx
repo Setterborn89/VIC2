@@ -4,6 +4,7 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
+import "../Css/ticket.css"
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUp from "./SignUp";
@@ -11,6 +12,8 @@ import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
 import VideoPlayer from "./VideoPlayer";
+import UserPage from "./UserPage";
+import Ticket from "./Ticket";
 
 function MyRouter() {
   const [searchWord, setSearchWord] = useState("searchword");
@@ -41,6 +44,7 @@ function MyRouter() {
             <Link to="/">Home</Link>
             <Link to="streamconcerts">Stream Concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
+            <Link to="UserPage">UserPage</Link>
           </nav>
         </div>
         <Link to="SignUp">Sign Up/Sign In</Link>
@@ -62,6 +66,8 @@ function MyRouter() {
               <Route path="/eventdetails/:id" element={<EventDetails />} />
 
               <Route path="/Lista" element={<Search />}></Route>
+              <Route path="/UserPage" element={<UserPage />}></Route>
+              <Route path="/ticket/:id" element={<Ticket />}></Route>
             </>
           }
         </Routes>
