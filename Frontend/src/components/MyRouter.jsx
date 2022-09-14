@@ -15,11 +15,10 @@ import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
 import VideoPlayer from "./VideoPlayer";
-import Logout from "./Logout";
+import Signout from "./Signout";
 
 function MyRouter() {
-  const { loggedIn, setLoggedIn } = useUserContext();
-  console.log(loggedIn);
+  const { loggedIn } = useUserContext();
   const [searchWord, setSearchWord] = useState("searchword");
   const navigate = useNavigate();
 
@@ -50,16 +49,14 @@ function MyRouter() {
             <Link to="/">Home</Link>
             <Link to="streamconcerts">Stream Concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
-            <Link to="Logout">Logout</Link>
           </nav>
         </div>
-        <Link to="SignUp">Sign Up/Sign In</Link>
 
-        {/* {!loggedIn ? (
+        {!loggedIn ? (
           <Link to="SignUp">Sign Up/Sign In</Link>
         ) : (
-          <Link to="/">Sign out</Link>
-        )} */}
+          <Link to="Signout">Sign out</Link>
+        )}
       </header>
 
       <main>
@@ -67,7 +64,7 @@ function MyRouter() {
           {
             <>
               <Route path="/SignUp" element={<SignUp />} />
-              <Route path="/SignOut" element={<Logout />} />
+              <Route path="/SignOut" element={<Signout />} />
 
               <Route path="/" element={<CurrentConcerts />}></Route>
               <Route

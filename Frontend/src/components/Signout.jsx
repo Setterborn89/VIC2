@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useUserContext } from "../contexts/useUserContext";
 
-function Logout() {
+function Signout() {
+  const { loggedIn, setLoggedIn } = useUserContext();
+
   let navigate = useNavigate();
   useEffect(() => {
     async function signOutUser() {
@@ -10,13 +13,12 @@ function Logout() {
       });
       let dataResponse = await response.json();
       if (!dataResponse.loggetIn) {
-        localStorage.removeItem("user");
+        setLoggedIn(dataResponse.loggedIn);
       }
     }
     signOutUser();
     navigate("/");
   }, []);
-
 }
 
-export default Logout;
+export default Signout;
