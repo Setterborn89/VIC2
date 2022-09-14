@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
-function Ticket() {
-    const { id } = useParams();
+function Ticket(props) {
+    let { id } = useParams();
     const [data, updateData] = useState({});
+
+    if (id == undefined){
+        id = props.id
+    }
 
     useEffect(() => {
         async function loadData() {

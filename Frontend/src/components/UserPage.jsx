@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import Ticket from "./Ticket";
 
 function UserPage(){
 
     const [user, updateUser] = useState({});
     const [tickets, updateTickets] = useState([]);
-    const [concerts, updateConcerts] = useState([]);
 
     useEffect(() => {
         async function loadData() {
@@ -20,38 +20,26 @@ function UserPage(){
                     updateTickets(tickets.concat(ticket))
                 }
             }) 
-
-            let concertResponse = await fetch("/data/concerts");
-            concertResponse = await concertResponse.json();
-            concertResponse.forEach((concert) => {
-                ticketResponse.forEach((ticket)=> {
-                    if(ticket.concertId == concert.id){
-                        updateConcerts(concerts.concat(concert))
-                    }
-                })
-            })
         }
         loadData();
     }, []);
 
-    function checkId(id) {
-        return concertId = id;
-      }
-    
-    
 
-    return (<div>
+    return (<div className="UserPage">
+        <div className="UserPageDisplayBox">
+            {tickets.map(ticket => (
+                <div key={ticket.id}>
+                    <Ticket id={ticket.id}/>
+                    <a className="UserEventButton" href={"/eventdetails/" + ticket.concertId}>event</a>
+                </div>
+            ))}
+        </div>
 
-        {tickets.map(ticket => (
-            <div key={ticket.id}>
-                <p>{concerts[concerts.indexOf(concertId=="1")]}</p>
-                <a href={"/eventdetails/" + ticket.concertId}>event</a>
-                <a href={"/ticket/" + ticket.id}>ticket</a>
-            </div>
-        ))}
-
+        
+ 
     </div>
     )
+    
 
 }
 
