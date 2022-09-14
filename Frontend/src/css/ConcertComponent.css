@@ -48,6 +48,13 @@
     justify-content: center;
   }
   
+  .concert .green{
+    border: 2px dotted #1b2530;
+    justify-content: center;
+    font-size: medium;
+    background-color: rgb(33, 217, 26);
+  }
+
   .concert a {
     color: black;
   }
