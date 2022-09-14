@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SignIn(){
+function SignIn(props){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,9 +20,8 @@ function SignIn(){
           body: JSON.stringify(data),
         });
         let response = await dataResponse.json();
-
+        props.isLoggedIn == true
         response.loggedIn == true ? navigate({pathname: '/'}) : console.log("Could not login")        
-        console.log(response);
       };
 
     return <>

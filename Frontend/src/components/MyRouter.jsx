@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
@@ -11,8 +11,23 @@ import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
 import VideoPlayer from "./VideoPlayer";
+import Logout from "./Logout";
 
 function MyRouter() {
+  const [loggedIn, setLoggedInStatus] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    async function getCurrentUser() {
+      let response = await fetch("/data/login");
+      let result = await response.json();
+      setLoggedInStatus(result.loggedIn);
+      setLoaded(true);
+      console.log(result.loggedIn);
+    }
+    getCurrentUser();
+  }, []);
+
   const [searchWord, setSearchWord] = useState("searchword");
   const navigate = useNavigate();
 
@@ -43,13 +58,19 @@ function MyRouter() {
             <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
-        <Link to="SignUp">Sign Up/Sign In</Link>
+        {!loggedIn ? (
+          <Link to="SignUp">Sign Up/Sign In</Link>
+        ) : (
+          <Link to="SignOut">Sign Out</Link>
+        )}
       </header>
       <main>
         <Routes>
           {
             <>
               <Route path="/SignUp" element={<SignUp />} />
+              <Route path="/SignOut" element={<Logout />} />
+
               <Route path="/" element={<CurrentConcerts />}></Route>
               <Route
                 path="/streamconcerts/:id"
