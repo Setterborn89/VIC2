@@ -39,20 +39,23 @@ function ConcertComponent() {
           </div>
 
           <div className="moreConcerts">
-            <h1>Additional Concerts</h1>
-
+            <h3>Additional Concerts</h3>
             {data[0].location != undefined ? (
               data.map((conserts) => (
                 <section key={conserts.id}>
-                  <a
-                    href={"/streamconcerts/" + conserts.id}
-                    className="concert-location"
-                  >
-                    {conserts.location}
-                  </a>
-                  <p className="concert-date">Date: {conserts.date}</p>
+                  {conserts.id == id ? 
+                  <p></p>
+                  : 
+                  <div>
+                    <a
+                      href={"/streamconcerts/" + conserts.id}
+                      className="concert-location">{conserts.location}
+                    </a>
+                    <p className="concert-date" >Date: {conserts.date}</p>
+                  </div>
+                  }
                 </section>
-              ))
+                  ))
             ) : (
               <p></p>
             )}
