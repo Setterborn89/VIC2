@@ -3,16 +3,17 @@ function Filter(){
 
   return <>
     <div className="navbar">
-  <a href="#home"></a>
-  <a href="#news"></a>
+  <a href="#home">Date</a>
+  <a href="#news">Date</a>
   <div className="dropdown">
     <button className="dropbtn">Genre 
       <i className="fa fa-caret-down"></i>
     </button>
     <div className="dropdown-content">
-      <a href="#">pop</a>
-      <a href="#">rap</a>
-      <a href="#">hiphop 3</a>
+    <a href="#">All</a>
+      <a href="#">Pop</a>
+      <a href="#">Rap</a>
+      <a href="#">Hiphop 3</a>
     </div>
   </div> 
 </div>

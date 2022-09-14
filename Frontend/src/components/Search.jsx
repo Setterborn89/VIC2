@@ -17,6 +17,8 @@ function Search(){
     const[artists, setArtists]= useState([])
     const[concerts, setConcerts]= useState([])
     const [filter, setFilter] = useState();
+    const[activeGenre, setActiveGenre]= useState("all");
+   
 
     const queryParams = new URLSearchParams(search)
     const test = (queryParams.get('searchword'))
