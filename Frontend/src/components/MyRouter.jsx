@@ -4,6 +4,7 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
+import "../css/EventDetails.css"
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUp from "./SignUp";
@@ -28,7 +29,9 @@ function MyRouter() {
   return (
     <div>
       <header>
-        <h1 id="logo">Live Fanatic</h1>
+        <a href="/" id="logo">
+          <h1>Live Fanatic</h1>
+        </a>
         <div className="search-bar">
           <input
             type="text"
