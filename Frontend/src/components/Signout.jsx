@@ -12,7 +12,7 @@ function Signout() {
         method: "delete",
       });
       let dataResponse = await response.json();
-      if (!dataResponse.loggetIn) {
+      if (!dataResponse.loggedIn) {
         setLoggedIn(dataResponse.loggedIn);
       }
     }
