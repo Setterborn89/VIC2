@@ -19,7 +19,7 @@
   padding: 2px 16px;
 }
 
-.row_cards{
+.row{
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
