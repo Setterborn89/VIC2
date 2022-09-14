@@ -65,10 +65,11 @@ function Search(){
     return <>
   <div className="container-Search-wrapper">
     <Filter/>
+    <div className="row">
     {searchList.map(item =>(
     item.location == undefined ? 
-        <div className="row">
-            <div className="row_cards">
+        
+            
                 <div key={item.id + Math.random()}>
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -102,11 +103,10 @@ function Search(){
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+           
             :
-            <div className="row">
-            <div className="row_cards">
+            
+            
                 <div key={item.id + Math.random()} className="card-Search">
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -137,10 +137,11 @@ function Search(){
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+           
         ))}
         </div>
+        </div>
+
     </>
 }
 
