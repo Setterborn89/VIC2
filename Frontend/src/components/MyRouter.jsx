@@ -4,6 +4,7 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
+import "../css/EventDetails.css"
 import MyComponent from "./MyComponent";
 import Search from "./Search";
 import SignUp from "./SignUp";

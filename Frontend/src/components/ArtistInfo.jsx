@@ -41,7 +41,7 @@ function ArtistInfo() {
   return (
     <>
       <div className="artistInfo">
-          <img src={event.image} />
+            <img src={event.image} />
         <div className="event-info">
           <div className="event-date">
             <span>{event.date}</span>
