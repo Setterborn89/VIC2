@@ -35,8 +35,8 @@ function SignIn() {
     <>
       <form onSubmit={handleSubmit} className="loginform">
         <div>
-          <h3 id="signIn">Sign In</h3>
-          <div id="signinform">
+          <h3>Sign In</h3>
+          <div>
             <div>
               <label htmlFor="email">E-mail</label>
               <input
@@ -52,7 +52,7 @@ function SignIn() {
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                placeholder="At least 6 characters..."
+                placeholder="Enter password..."
                 name="password"
                 required
                 value={password}
