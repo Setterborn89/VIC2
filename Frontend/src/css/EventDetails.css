@@ -12,12 +12,15 @@
 .artistInfo {
   justify-content: center;
   text-align: center;
+  margin-bottom: 2vh;
 }
 
 .artistInfo img {
   max-height: 30vh;
   width: 100%;
   background-size: cover;
+  border-bottom: solid #1b2530 ;
+  border-top: solid #1b2530;
 }
 
 .event-info {
@@ -77,7 +80,6 @@
 
 .extra-event-info {
   padding: 10px;
-  margin: 2vw;
 }
 
 .extra-event-info > h1 {
