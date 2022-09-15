@@ -10,7 +10,7 @@ function ArtistInfo() {
   const time = "20:30";
   const [event, setEvent] = useState({});
   const { id } = useParams();
-  let googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=$"
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=$";
 
   useEffect(() => {
     async function loadEvent() {
@@ -53,7 +53,7 @@ function ArtistInfo() {
           </div>
           <div className="event-details">
             <h1 className="event-title">{event.artistName}</h1>
-            <a href={googleMapsUrl+event.location} className="event-location">
+            <a href={googleMapsUrl + event.location} className="event-location">
               <GoLocation />
               {event.location}
             </a>
