@@ -5,6 +5,10 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
+import "../Css/ticket.css"
+import "../Css/UserPage.css"
+import "../css/EventDetails.css"
+import MyComponent from "./MyComponent";
 import "../css/EventDetails.css";
 
 import { useUserContext } from "../contexts/useUserContext";
@@ -15,6 +19,8 @@ import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
 import VideoPlayer from "./VideoPlayer";
+import UserPage from "./UserPage";
+import Ticket from "./Ticket";
 import Signout from "./Signout";
 
 function MyRouter() {
@@ -49,6 +55,7 @@ function MyRouter() {
             <Link to="/">Home</Link>
             <Link to="streamconcerts">Stream Concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
+            <Link to="UserPage">UserPage</Link>
           </nav>
         </div>
 
@@ -78,6 +85,8 @@ function MyRouter() {
               <Route path="/eventdetails/:id" element={<EventDetails />} />
 
               <Route path="/Lista" element={<Search />}></Route>
+              <Route path="/UserPage" element={<UserPage />}></Route>
+              <Route path="/ticket/:id" element={<Ticket />}></Route>
             </>
           }
         </Routes>
