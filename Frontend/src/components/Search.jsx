@@ -17,6 +17,7 @@ function Search(){
     const[artists, setArtists]= useState([])
     const[concerts, setConcerts]= useState([])
     const [filter, setFilter] = useState();
+    const [filterGenre, setFilterGenre] = useState([]);
     const[activeGenre, setActiveGenre]= useState("all");
    
 
@@ -35,6 +36,7 @@ function Search(){
             let response =  await fetch("/data/artists")
             response= await response.json()
             setArtists(response)
+            setFilterGenre(response)
         }
         loadArtists()
     }, [])
@@ -44,6 +46,7 @@ function Search(){
             let response =  await fetch("/data/concerts")
             response= await response.json()
             setConcerts(response)
+            setFilterGenre(response)
         }
         loadConcerts()
     }, [])
@@ -64,7 +67,7 @@ function Search(){
 
     return <>
   <div className="container-Search-wrapper">
-    <Filter/>
+    <Filter searchList={searchList} setFilterGenre={setFilterGenre} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
     <div className="row">
     {searchList.map(item =>(
     item.location == undefined ? 
@@ -143,7 +146,7 @@ function Search(){
         </div>
 
     </>
-}
+} 
 
 export default Search
 

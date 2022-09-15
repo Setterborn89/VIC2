@@ -1,8 +1,24 @@
 import "../css/Filter.css"
-function Filter(){
+import {useEffect} from "react";
+function Filter(props) {
+  useEffect(() => {
+    console.log(props.activeGenre);
+    if(props.activeGenre === "all"){
+      props.setFilterGenre(props.searchList);
+      return;
+    }
+    const filtered = props.searchList.filter((item) => 
+    item.genre.includes(props.activeGenre)
+    );
+    props.setFilterGenre(filtered);
 
+  }, [props.activeGenre])
   return <>
-    <div className="navbar">
+  <div>
+   <button onClick={() => props.setActiveGenre("all")}>All</button>
+   <button onClick={() => props.setActiveGenre("pop")}>Pop</button>
+  </div>
+    {/* <div className="navbar">
   <a href="#home">Date</a>
   <a href="#news">Date</a>
   <div className="dropdown">
@@ -16,7 +32,8 @@ function Filter(){
       <a href="#">Hiphop 3</a>
     </div>
   </div> 
-</div>
+</div> */}
+
   </>
 }
 export default Filter
