@@ -2,14 +2,17 @@ import "../css/Filter.css"
 import {useEffect} from "react";
 function Filter(props) {
   useEffect(() => {
-    console.log(props.activeGenre);
+    
     if(props.activeGenre === "all"){
       props.setFilterGenre(props.searchList);
       return;
     }
+   
     const filtered = props.searchList.filter((item) => 
+   
     item.genre.includes(props.activeGenre)
     );
+   console.log(filtered);
     props.setFilterGenre(filtered);
 
   }, [props.activeGenre])
@@ -17,6 +20,8 @@ function Filter(props) {
   <div>
    <button onClick={() => props.setActiveGenre("all")}>All</button>
    <button onClick={() => props.setActiveGenre("pop")}>Pop</button>
+   <button onClick={() => props.setActiveGenre("hiphop")}>hiphop</button>
+   <button onClick={() => props.setActiveGenre("rap")}>rap</button>
   </div>
     {/* <div className="navbar">
   <a href="#home">Date</a>
