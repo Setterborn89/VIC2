@@ -14,6 +14,7 @@ function Signout() {
       let dataResponse = await response.json();
       if (!dataResponse.loggedIn) {
         setLoggedIn(dataResponse.loggedIn);
+        localStorage.removeItem("user");
       }
     }
     signOutUser();

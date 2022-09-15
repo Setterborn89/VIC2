@@ -24,6 +24,7 @@ function SignIn() {
 
     if (response.loggedIn) {
       setLoggedIn(response.loggedIn);
+      localStorage.setItem("user", JSON.stringify(response.loggedIn));
       navigate({ pathname: "/" });
     } else {
       console.log("Could not login");
