@@ -5,11 +5,10 @@ import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
-import "../Css/ticket.css"
-import "../Css/UserPage.css"
-import "../css/EventDetails.css"
-import MyComponent from "./MyComponent";
+import "../Css/ticket.css";
+import "../Css/UserPage.css";
 import "../css/EventDetails.css";
+import "../css/ConcertByDate.css";
 
 import { useUserContext } from "../contexts/useUserContext";
 
