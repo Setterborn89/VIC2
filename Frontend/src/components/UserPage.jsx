@@ -24,7 +24,7 @@ function UserPage(){
                     
                 }
             }) 
-            ticketstoadd.sort((a,b) => Date.parse(b) - Date.parse(a))
+            ticketstoadd.sort((a,b) => Date.parse(a) - Date.parse(b)).reverse()
             updateTickets(ticketstoadd)
             
         }
