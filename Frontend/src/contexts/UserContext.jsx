@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createContext } from "react";
 
 const getState = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    let userLoggedIn = localStorage.getItem("user");
+    setLoggedIn(userLoggedIn);
+  }, [loggedIn]);
 
   return {
     loggedIn,
