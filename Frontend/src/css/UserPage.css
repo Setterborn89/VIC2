@@ -1,11 +1,13 @@
 .UserPage{
     display: grid;
-    grid-template-columns: 65% 35%;
-    align-self: flex-end;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 32.5% 35% 32.5%;
+    align-items: flex-end;
     width: 100%;
 }
 .UserPageDisplayBox{
-    grid-area: 1 /2/ 3 / 3;
+    grid-area: 2 /2/ 3 / 3;
+    height: 90%;
 }
 
 .ticketBox{
@@ -17,4 +19,32 @@
     justify-content: space-around;
     align-items: flex-start;
     height: 50px;
+}
+
+.WelcomeBox{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-area: 1 /1/ 2 / 4;
+    justify-content: center;
+    height: 100%;
+    align-self: flex-start;
+}
+
+.UserInfo{
+    grid-area: 2 /1/ 2 / 2;
+    height: 100%;
+    flex-direction: column;
+    justify-self: flex-start;
+}
+
+.CurrentInfo{
+    grid-area: 1 /1/ 2 / 2;
+}
+
+.WelcomeBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: aqua;
+    opacity: 0.4;
 }
