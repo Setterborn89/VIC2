@@ -58,12 +58,28 @@ function MyRouter() {
             <Link to="UserPage">UserPage</Link>
           </nav>
         </div>
-
+        
         {!loggedIn ? (
-          <Link to="SignUp">Sign Up/Sign In</Link>
+          <Link to="SignUp">Sign In/Up</Link>
         ) : (
           <Link to="Signout">Sign out</Link>
         )}
+      <div className="burger">
+        <section class="top-nav">       
+          <input id="menu-toggle" type="checkbox" />
+          <label class='menu-button-container' for="menu-toggle">
+          <div class='menu-button'></div>
+        </label>
+          <ul class="menu">
+            <li>
+              <Link to="/">Home</Link>
+              <Link to="streamconcerts">Stream Concerts</Link>
+              <Link to="LiveConcerts">Live Concerts</Link>
+              <Link to="UserPage">UserPage</Link>
+            </li>
+          </ul>
+        </section>
+      </div> 
       </header>
 
       <main>
