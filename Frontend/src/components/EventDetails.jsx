@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
-import { FaPlusCircle } from "react-icons/fa";
+import { BsCart3 } from "react-icons/bs";
 
 function EventDetails() {
   const { id } = useParams();
@@ -75,6 +75,8 @@ function EventDetails() {
           <p>{event.info}</p>
         </div>
 
+        <span className={className}>{message}</span>
+
         <div className="event-buy-ticket">
           <p>Choose tickets</p>
           <div className="ticket-selector">
@@ -100,14 +102,23 @@ function EventDetails() {
           <div>
             <strong className="ticket-price"> {event.price} SEK</strong>
           </div>
-          <div>
-            <p>
-              {tickets} {tickets == 1 ? "ticket" : "tickets"} {cost} SEK
-            </p>
-          </div>
-          <button className="event-buy-ticket-link" disabled={tickets == 0}>
-            Buy
-          </button>
+        </div>
+        <div className="cart">
+          {tickets > 0 ? (
+            <>
+              <p>
+                {" "}
+                <BsCart3 />
+              </p>
+              <p>
+                {tickets} {tickets == 1 ? "ticket" : "tickets"}
+              </p>
+              <p>{cost} SEK</p>
+              <button className="event-buy-ticket-link">Buy</button>
+            </>
+          ) : (
+            <p></p>
+          )}
         </div>
       </div>
     </>
