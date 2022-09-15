@@ -9,6 +9,10 @@ function CurrentConcerts() {
     async function loadData() {
       let liveTempConcertList = [];
       let streamTempConcertList = [];
+      let sortedLiveList = [];
+      let sortedStreamList = [];
+
+
 
       let concertsResponse = await fetch("/data/concerts");
       const concertsData = await concertsResponse.json();
@@ -16,7 +20,10 @@ function CurrentConcerts() {
       let artistsResponse = await fetch("/data/artists");
       const artistsData = await artistsResponse.json();
 
+      const currentDate = new Date();
+
       concertsData.forEach((concert) => {
+        
         for (const artist of artistsData) {
           if (concert.artistId == artist.id) {
             concert.artistName = artist.name;
@@ -25,16 +32,32 @@ function CurrentConcerts() {
             concert.artistName = "artist not found";
           }
         }
+        const concertDate = new Date(concert.date);
+        console.log(concertDate);
+        const diffTime = Math.abs(concertDate - currentDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        console.log("Days from today: " + diffDays);
 
-        if (concert.stream) {
-          streamTempConcertList.push(concert);
-        } else {
-          liveTempConcertList.push(concert);
+        if(diffDays <= 92){
+          if (concert.stream) {
+            streamTempConcertList.push(concert);
+          } else {
+            liveTempConcertList.push(concert);
+          }
         }
+
+        sortedLiveList = liveTempConcertList.sort(
+          (objA, objB) => Number(objA.date) - Number(objB.date)
+        );
+
+        sortedStreamList = streamTempConcertList.sort(
+          (objA, objB) => Number(objA.date) - Number(objB.date)
+        );
       });
 
-      updateStreamConcertsData(streamTempConcertList);
-      updateLiveConcertsData(liveTempConcertList);
+      updateStreamConcertsData(sortedStreamList);
+      updateLiveConcertsData(sortedLiveList);
+
     }
     loadData();
     
