@@ -25,6 +25,7 @@
     "express-session": "^1.17.3",
     "nodemon": "^2.0.19",
     "react-icons": "^4.4.0",
+    "react-responsive-carousel": "^3.2.23",
     "vite": "^3.1.0"
   }
 }

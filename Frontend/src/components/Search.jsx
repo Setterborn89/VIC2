@@ -2,12 +2,12 @@ import React,{useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from "./Filter"
 import "../css/Search.css"
-import { FcCalendar } from "react-icons/fc";
-import { GoLocation } from "react-icons/go";
-import { HiOutlineTicket} from "react-icons/hi";
-import {MdAttachMoney} from "react-icons/md";
-import { BiMusic } from "react-icons/bi";
-import { FiInfo} from "react-icons/fi";
+// import { FcCalendar } from "react-icons/fc";
+// import { GoLocation } from "react-icons/go";
+// import { HiOutlineTicket} from "react-icons/hi";
+// import {MdAttachMoney} from "react-icons/md";
+// import { BiMusic } from "react-icons/bi";
+// import { FiInfo} from "react-icons/fi";
 
 
 
@@ -63,10 +63,11 @@ function Search(){
     return <>
   <div className="container-Search-wrapper">
     <Filter/>
+    <div className="row">
     {searchList.map(item =>(
     item.location == undefined ? 
-        <div className="row">
-            <div className="row_cards">
+        
+            
                 <div key={item.id + Math.random()}>
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -100,11 +101,10 @@ function Search(){
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+           
             :
-            <div className="row">
-            <div className="row_cards">
+            
+            
                 <div key={item.id + Math.random()} className="card-Search">
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -135,10 +135,11 @@ function Search(){
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+           
         ))}
         </div>
+        </div>
+
     </>
 }
 
