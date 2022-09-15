@@ -10,6 +10,7 @@ import "../Css/UserPage.css"
 import "../css/EventDetails.css"
 import MyComponent from "./MyComponent";
 import "../css/EventDetails.css";
+import "../css/Mobileview.css";
 
 import { useUserContext } from "../contexts/useUserContext";
 
@@ -58,12 +59,13 @@ function MyRouter() {
             <Link to="UserPage">UserPage</Link>
           </nav>
         </div>
+
+          {!loggedIn ? (
+            <Link id="signUpOut" to="SignUp">Sign In/Up</Link>
+          ) : (
+            <Link id="signUpOut" to="Signout">Sign out</Link>
+          )}
         
-        {!loggedIn ? (
-          <Link to="SignUp">Sign In/Up</Link>
-        ) : (
-          <Link to="Signout">Sign out</Link>
-        )}
       <div className="burger">
         <section class="top-nav">       
           <input id="menu-toggle" type="checkbox" />
