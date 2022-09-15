@@ -150,9 +150,15 @@
 
     /* ****** Concert Sidan ****** */
 
+    main .event-container{
+        margin-top: 5vh;
+        margin-bottom: auto;
+        padding-bottom: 5vh;
+    }
+
     main .artistInfo img{
         max-height: 35vh;
-        margin-top: 10px;
+        min-width: 275px;
     }
 
     main .event-date{
@@ -161,5 +167,17 @@
 
     main .event-title{
         font-size: larger;
+    }
+
+    main .concert{
+        text-align: center;
+    }
+    main .concert button{
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    main .additionalConserts{
+        font-size: medium;
     }
 }
