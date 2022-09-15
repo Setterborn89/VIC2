@@ -18,10 +18,8 @@ function Search(){
     const[concerts, setConcerts]= useState([])
     const [filter, setFilter] = useState();
     const [filterGenre, setFilterGenre] = useState([]);
+    const [searchList, setSearchList] = useState([]);
     const[activeGenre, setActiveGenre]= useState("all");
-   
-    
-   
 
     const queryParams = new URLSearchParams(search)
     const test = (queryParams.get('searchword'))
@@ -53,28 +51,35 @@ function Search(){
         loadConcerts()
     }, [])
 
-    let artistSearch = artists.filter(item=>{
-        return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
-            )
-    });
-
-    let concertSearch = concerts.filter(item=>{
-        return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
-            )
-    });
-
-    setFilterGenre(artistSearch.concat(concertSearch))
-
-    return <>
-  <div className="container-Search-wrapper">
-    <Filter searchList={filterGenre} setFilterGenre={setFilterGenre} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
-    <div className="row">
-    {filterGenre.map(item =>(
-    item.location == undefined ? 
+    useEffect(() => {
+        function filterSearchList(){
+            let artistSearch = artists.filter(item=>{
+                return Object.keys(item).some(key => 
+                    item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+                    )
+            });
         
+            let concertSearch = concerts.filter(item=>{
+                return Object.keys(item).some(key => 
+                    item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+                    )
+            });
+        
+            let searchList = artistSearch.concat(concertSearch)
             
+            setFilterGenre(searchList)
+            setSearchList(searchList)
+            console.log(searchList)
+        }
+        filterSearchList()
+        
+    }, [test])
+
+    return <div className="container-Search-wrapper">
+        <Filter searchList={searchList} setFilterGenre={setFilterGenre} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
+        <div className="row">
+            {filterGenre.map(item =>(
+            item.location == undefined ? 
                 <div key={item.id + Math.random()}>
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -108,10 +113,7 @@ function Search(){
                         </div>
                     </div>
                 </div>
-           
             :
-            
-            
                 <div key={item.id + Math.random()} className="card-Search">
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
@@ -120,34 +122,24 @@ function Search(){
                                 <b>{item.name}</b>
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
-                           
-
-                               
-                                    <div>     
-                                        {
-                                        item.stream == true ? <p>Stream </p> : <p>Live</p>
-                                        }
-                                    </div>
-                                    <h3> <FcCalendar/> {item.date}</h3>
-                                    <p><GoLocation/> {item.location}</p>
-                                    <p><MdAttachMoney/> {item.price} </p>
-                                    <h4><BiMusic/> {item.genre}</h4>
-
-                                    <button className ="card__price text--medium" >
-                                    <a href={"/EventDetails/" + item.id}>Get tickets <HiOutlineTicket/></a>
-                                    </button>
-
-
-                           
+                            <div>     
+                                {
+                                item.stream == true ? <p>Stream </p> : <p>Live</p>
+                                }
+                            </div>
+                            <h3> <FcCalendar/> {item.date}</h3>
+                            <p><GoLocation/> {item.location}</p>
+                            <p><MdAttachMoney/> {item.price} </p>
+                            <h4><BiMusic/> {item.genre}</h4>
+                            <button className ="card__price text--medium" >
+                            <a href={"/EventDetails/" + item.id}>Get tickets <HiOutlineTicket/></a>
+                            </button>
                         </div>
                     </div>
                 </div>
-           
-        ))}
+            ))}
         </div>
-        </div>
-
-    </>
+    </div>
 } 
 
 export default Search
