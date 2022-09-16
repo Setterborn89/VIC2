@@ -34,7 +34,7 @@
 
   {
     "route": "/data/users/password",
-    "roles": [{ "role": "user", "methods": ["DELETE", "PATCH"] }]
+    "roles": [{ "role": "user", "methods": ["DELETE", "PUT"] }]
   },
 
   {

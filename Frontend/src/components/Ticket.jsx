@@ -1,3 +1,4 @@
+import { red } from "@material-ui/core/colors";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -23,13 +24,15 @@ function Ticket(props) {
             location: null,
             date: null,
             artistName: null,
+            used: null
         };
 
         let ticketResponse = await fetch("/data/tickets/" + id);
         ticketResponse = await ticketResponse.json();
-        (responseData.ticketId = ticketResponse.id),
-            (responseData.userId = ticketResponse.userId),
-            (responseData.concertId = ticketResponse.concertId);
+        responseData.ticketId = ticketResponse.id
+        responseData.userId = ticketResponse.userId
+        responseData.concertId = ticketResponse.concertId
+        responseData.used = ticketResponse.used
 
         let userResponse = await fetch("/data/users/" + responseData.userId);
         userResponse = await userResponse.json();
@@ -39,15 +42,15 @@ function Ticket(props) {
             "/data/concerts/" + responseData.concertId
         );
         concertResponse = await concertResponse.json();
-        (responseData.artistId = concertResponse.artistId),
-            (responseData.location = concertResponse.location),
-            (responseData.date = concertResponse.date);
+        responseData.artistId = concertResponse.artistId
+        responseData.location = concertResponse.location
+        responseData.date = concertResponse.date
 
         let artistResponse = await fetch(
             "/data/artists/" + responseData.artistId
         );
         artistResponse = await artistResponse.json();
-        responseData.artistName = artistResponse.name;
+        responseData.artistName = artistResponse.name
 
         updateData(responseData);
         }
@@ -61,16 +64,21 @@ function Ticket(props) {
             Print
             </a>
             <div id="QrCode">
-            <img src="https://sv.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"></img>
+                <img src="https://sv.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"></img>
             </div>
             <div id="TicketText">
-            <h2>{data.email}</h2>
-            <h2>{data.artistName}</h2>
-            <h2>{data.location}</h2>
-            <h2>{data.date}</h2>
+                <h2>{data.email}</h2>
+                <h2>{data.artistName}</h2>
+                <h2>{data.location}</h2>
+                <h2>{data.date}</h2>
             </div>
             <div id="TicketId">
-            <p>ticket # {data.ticketId}</p>
+                <p>ticket # {data.ticketId}</p>
+                {data.used?
+                    <h2 id="validText"><em>Not valid!</em></h2>
+                :
+                    <p></p>
+                }
             </div>
         </div>
         </div>
