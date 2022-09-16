@@ -22,6 +22,10 @@ import VideoPlayer from "./VideoPlayer";
 import UserPage from "./UserPage";
 import Ticket from "./Ticket";
 import Signout from "./Signout";
+import Checkout from "./checkoutcomponents/Checkout"
+import CheckoutSuccess from "./checkoutcomponents/CheckoutSuccess"
+import CheckoutCancel from "../../../whatever-directory-for-react-build/CheckoutCancel"
+
 
 function MyRouter() {
   const { loggedIn } = useUserContext();
@@ -89,6 +93,10 @@ function MyRouter() {
               <Route path="/Lista" element={<Search />}></Route>
               <Route path="/UserPage" element={<UserPage />}></Route>
               <Route path="/ticket/:id" element={<Ticket />}></Route>
+              <Route path="/checkout" element={<Checkout/>}></Route>
+              <Route path="/checkout-success" element={<CheckoutSuccess/>}></Route>
+              <Route path="/checkout-cancel" element={<CheckoutCancel/>}></Route>
+
             </>
           }
         </Routes>
