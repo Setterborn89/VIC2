@@ -34,7 +34,7 @@
 
   {
     "route": "/data/users/password",
-    "roles": [{ "role": "user", "methods": ["DELETE", "PATCH"] }]
+    "roles": [{ "role": "user", "methods": ["DELETE", "PUT"] }]
   },
 
   {
@@ -57,7 +57,7 @@
     "route": "/data/tickets*",
     "roles": [
       { "role": "anonymous", "methods": ["GET"] },
-      { "role": "user", "methods": ["POST", "DELETE"] }
+      { "role": "user", "methods": ["POST", "DELETE", "GET"] }
     ]
   },
 

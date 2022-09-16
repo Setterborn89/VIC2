@@ -1,19 +1,30 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
+import "../Css/ticket.css"
+import "../Css/UserPage.css"
 import "../css/EventDetails.css"
 import MyComponent from "./MyComponent";
+import "../css/EventDetails.css";
+
+import { useUserContext } from "../contexts/useUserContext";
+
 import Search from "./Search";
 import SignUp from "./SignUp";
 import CurrentConcerts from "./CurrentConcerts";
 import ConcertComponent from "./ConcertComponent";
 import EventDetails from "./EventDetails";
 import VideoPlayer from "./VideoPlayer";
+import UserPage from "./UserPage";
+import Ticket from "./Ticket";
+import Signout from "./Signout";
 
 function MyRouter() {
+  const { loggedIn } = useUserContext();
   const [searchWord, setSearchWord] = useState("searchword");
   const navigate = useNavigate();
 
@@ -29,9 +40,9 @@ function MyRouter() {
   return (
     <div>
       <header>
-        <a href="/" id="logo">
+        <Link to="/" id="logo">
           <h1>Live Fanatic</h1>
-        </a>
+        </Link>
         <div className="search-bar">
           <input
             type="text"
@@ -46,13 +57,24 @@ function MyRouter() {
             <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
-        <Link to="SignUp">Sign Up/Sign In</Link>
+        <div className="accountManagement">
+          {!loggedIn ? (
+            <Link to="SignUp">Sign Up/Sign In</Link>
+          ) : (<div>
+            <Link to="Signout">Sign out</Link>
+            <Link to="UserPage">Profile</Link>
+          </div>
+          )}
+        </div>
       </header>
+
       <main>
         <Routes>
           {
             <>
               <Route path="/SignUp" element={<SignUp />} />
+              <Route path="/SignOut" element={<Signout />} />
+
               <Route path="/" element={<CurrentConcerts />}></Route>
               <Route
                 path="/streamconcerts/:id"
@@ -65,10 +87,13 @@ function MyRouter() {
               <Route path="/eventdetails/:id" element={<EventDetails />} />
 
               <Route path="/Lista" element={<Search />}></Route>
+              <Route path="/UserPage" element={<UserPage />}></Route>
+              <Route path="/ticket/:id" element={<Ticket />}></Route>
             </>
           }
         </Routes>
       </main>
+
       <footer>
         <div className="info">
           <h3>About</h3>

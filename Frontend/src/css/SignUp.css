@@ -37,9 +37,5 @@
 .accountform button {
   font-family: "Amazon Ember";
   display: block;
-  margin-top: 15px;
-}
-
-.registerbtn {
-  visibility: hidden;
+  margin-top: 10px;
 }
