@@ -1,13 +1,37 @@
-.loginform{
-    display: flex;
+.loginform {
+  display: flex;
+  grid-template-columns: 50% 50%;
+  align-items: center;
 }
 
-.loginform form {
-    display: grid;
-    font-family: "Amazon Ember";
-    grid-template-columns: 80%;
-    justify-content: space-evenly;
-    align-content: center;
-    align-items: flex-end;
+.loginform h3 {
+  text-align: center;
+  text-transform: uppercase;
 }
 
+.loginform label {
+  margin: 5px;
+  font-weight: lighter;
+}
+
+.loginform > div > div {
+  display: grid;
+  font-family: "Amazon Ember";
+  grid-template-columns: 80%;
+  justify-content: space-evenly;
+  gap: 20px;
+  grid-auto-rows: auto;
+  align-content: center;
+  align-items: flex-end;
+}
+
+.loginform > div input {
+  width: 127%;
+  font-family: "Amazon Ember";
+}
+
+.loginform button {
+  font-family: "Amazon Ember";
+  display: block;
+  margin-top: 5px;
+}

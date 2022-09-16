@@ -43,7 +43,7 @@ module.exports = function (server, db) {
   });
 
   // ändra lösenord för användare
-  server.patch("/data/users/password", (request, response) => {
+  server.put("/data/users/password", (request, response) => {
     let user = request.body;
     let encryptedPassword = encrypt(user.password);
     let result;

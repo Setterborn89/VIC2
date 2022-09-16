@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import MyRouter from "./components/MyRouter";
+import { GlobalContextProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <MyRouter />
+    <GlobalContextProvider>
+      <MyRouter />
+    </GlobalContextProvider>
   );
 }
 
