@@ -106,7 +106,7 @@ function EventDetails() {
           </div>
 
           <BiAccessibility className="ticket-icons" />
-          <p>Accessibilty</p>
+          <p>Accessibility</p>
           <p> {event.price} SEK</p>
           <div>
             <div className="ticket-selector">
