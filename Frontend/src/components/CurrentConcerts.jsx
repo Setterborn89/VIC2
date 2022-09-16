@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import "../css/CurrentConcerts.css"
+import "../css/CurrentConcerts.css";
 function CurrentConcerts() {
   const [liveConcertList, updateLiveConcertsData] = useState([]);
   const [streamConcertList, updateStreamConcertsData] = useState([]);
@@ -34,10 +34,18 @@ function CurrentConcerts() {
       });
 
       updateStreamConcertsData(streamTempConcertList);
+      // Sort by date in ascending order
+      streamTempConcertList.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
+
       updateLiveConcertsData(liveTempConcertList);
+      // Sort by date in ascending order
+      liveTempConcertList.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
     }
     loadData();
-    
   }, []);
 
   return (
@@ -49,9 +57,8 @@ function CurrentConcerts() {
         <div className="row">
           <div className="row_cards">
             {liveConcertList.map((element) => (
-              
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id} >
+                <a href={"/streamconcerts/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
@@ -72,9 +79,9 @@ function CurrentConcerts() {
           <div className="row_cards">
             {streamConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id}  >
+                <a href={"/streamconcerts/" + element.id}>
                   <div className="card">
-                    <img className="card_poster" src={element.image}/>
+                    <img className="card_poster" src={element.image} />
                     <div className="container">
                       <h4>
                         <b>{element.artistName}</b>
