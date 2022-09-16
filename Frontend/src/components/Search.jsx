@@ -14,6 +14,10 @@ function Search(){
     const[artists, setArtists]= useState([])
     const[concerts, setConcerts]= useState([])
     const [filter, setFilter] = useState();
+    const [filterGenre, setFilterGenre] = useState([]);
+    const [searchList, setSearchList] = useState([]);
+    const[activeGenre, setActiveGenre]= useState("all");
+
     const queryParams = new URLSearchParams(search)
     const test = (queryParams.get('searchword'))
 
@@ -29,6 +33,7 @@ function Search(){
             let response =  await fetch("/data/artists")
             response= await response.json()
             setArtists(response)
+            
         }
         loadArtists()
     }, [])
@@ -38,34 +43,58 @@ function Search(){
             let response =  await fetch("/data/concerts")
             response= await response.json()
             setConcerts(response)
+            response.forEach((concert) => {
+                for (const artist of artists) {
+                  if (concert.artistId == artist.id) {
+                    concert.artistName = artist.name;
+                    break;
+                  } else {
+                    concert.artistName = "artist not found";
+                  }
+                }
+        
+             });
+            
         }
         loadConcerts()
     }, [])
 
-    let artistSearch = artists.filter(item=>{
-        return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
-            )
-    });
+    
 
-    let concertSearch = concerts.filter(item=>{
-        return Object.keys(item).some(key => 
-            item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
-            )
-    });
+    useEffect(() => {
+        function filterSearchList(){
+            let artistSearch = artists.filter(item=>{
+                return Object.keys(item).some(key => 
+                    item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+                    )
+            });
+        
+            let concertSearch = concerts.filter(item=>{
+                return Object.keys(item).some(key => 
+                    item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+                    )
+            });
+        
+            let searchList = artistSearch.concat(concertSearch)
+            
+            setFilterGenre(searchList)
+            setSearchList(searchList)
+            console.log(searchList)
+        }
+        filterSearchList()
+        
+    }, [test])
 
-    let searchList = artistSearch.concat(concertSearch)
-
-    return <>
-    <div className="container-Search-wrapper">
-        <Filter/>
+    return <div className="container-Search-wrapper">
+        <Filter searchList={searchList} setFilterGenre={setFilterGenre} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
         <div className="row">
-            {searchList.map(item =>(
+            {filterGenre.map(item =>(
             item.location == undefined ? 
                 <div key={item.id + Math.random()}>
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
                         <div className="container">
+                            <h2>Artist</h2>
                             <h3>
                                 <b>{item.name}</b>
                             </h3>
@@ -78,6 +107,7 @@ function Search(){
                                         concert.stream == true ? <p>Stream </p> : <p>Live</p>
                                         }
                                     </div>
+                                    
                                     <h3> <FcCalendar/> {concert.date}</h3>
                                     <p><GoLocation/> {concert.location}</p>
                                     <p><MdAttachMoney/> {concert.price} </p>
@@ -97,8 +127,10 @@ function Search(){
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
                         <div className="container">
+                            <h2>Concert</h2>
+                           
                             <h3>
-                                <b>{item.name}</b>
+                                {<b>{item.artistName}</b>}
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
                             <div>     
@@ -110,7 +142,6 @@ function Search(){
                             <p><GoLocation/> {item.location}</p>
                             <p><MdAttachMoney/> {item.price} </p>
                             <h4><BiMusic/> {item.genre}</h4>
-
                             <button className ="card__price text--medium" >
                             <a href={"/EventDetails/" + item.id}>Get tickets <HiOutlineTicket/></a>
                             </button>
@@ -120,8 +151,7 @@ function Search(){
             ))}
         </div>
     </div>
-    </>
-}
+} 
 
 export default Search
 

@@ -1,21 +1,38 @@
 import "../css/Filter.css"
-function Filter(){
+import {useEffect} from "react";
+function Filter(props) {
+  useEffect(() => {
+    
+    if(props.activeGenre === "all"){
+      props.setFilterGenre(props.searchList);
+      return;
+    }
+   
+    const filtered = props.searchList.filter((item) => 
+   
+    item.genre.includes(props.activeGenre)
+    );
+   console.log(filtered);
+    props.setFilterGenre(filtered);
 
+  }, [props.activeGenre])
   return <>
-    <div className="navbar">
-  <a href="#home"></a>
-  <a href="#news"></a>
-  <div className="dropdown">
-    <button className="dropbtn">Genre 
-      <i className="fa fa-caret-down"></i>
-    </button>
-    <div className="dropdown-content">
-      <a href="#">pop</a>
-      <a href="#">rap</a>
-      <a href="#">hiphop 3</a>
-    </div>
-  </div> 
-</div>
+  
+    
+    
+    <nav className="Navbar"> 
+    <h3>ADDITIONAL FILTERS </h3>
+
+    <button className = {props.activeGenre === "all" ? "active" : ""} onClick={() => props.setActiveGenre("all")}>All</button>
+   <button className = {props.activeGenre === "pop" ? "active" : ""} onClick={() => props.setActiveGenre("pop")}>Pop</button>
+   <button className = {props.activeGenre === "hiphop" ? "active" : ""} onClick={() => props.setActiveGenre("hiphop")}>hiphop</button>
+   <button className = {props.activeGenre === "rap" ? "active" : ""} onClick={() => props.setActiveGenre("rap")}>rap</button>
+    </nav>
+
+ 
+  
+ 
+
   </>
 }
 export default Filter
