@@ -9,9 +9,6 @@ import {MdAttachMoney} from "react-icons/md";
 import { BiMusic } from "react-icons/bi";
 import { FiInfo} from "react-icons/fi";
 
-
-
-
 function Search(){
     const {search} = useLocation()
     const[artists, setArtists]= useState([])
@@ -103,8 +100,7 @@ function Search(){
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
                             {concerts.map(concert => (
-                                concert.artistId == item.id ?
-
+                            concert.artistId == item.id ?
                                 <div key={concert.id + Math.random}>
                                     <div>     
                                         {
@@ -116,14 +112,12 @@ function Search(){
                                     <p><GoLocation/> {concert.location}</p>
                                     <p><MdAttachMoney/> {concert.price} </p>
                                     <h4><BiMusic/> {concert.genre}</h4>
-
                                     <button className ="card__price text--medium" >
-                                    <a href={"/EventDetails/" + concert.id}>Get tickets <HiOutlineTicket/></a>
+                                        <a href={"/EventDetails/" + concert.id}>Get tickets <HiOutlineTicket/></a>
                                     </button>
-
-
                                 </div>
-                            :<p key={concert.id + 1}></p>
+                            :
+                                <p key={concert.id + 1}></p>
                             ))}
                         </div>
                     </div>

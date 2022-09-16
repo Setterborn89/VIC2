@@ -4,7 +4,7 @@ server.use(express.json())
 const db = require("./modules/db.js")('./database/live_fanatic.db')
 const port = 3333
 const host = `http://localhost:${port}`
-  
+
 // sessions
 let cookieParser = require('cookie-parser')
 server.use(cookieParser())
@@ -19,12 +19,15 @@ server.use( session( {
   }
 }))
 
-// bypass 2FA verification (dev only)
-server.use(function(req,res,next){req.bypassVerification = true; next()})
+// set to true to bypass 2FA verification (do this in dev only)
+const bypass2FA = true
+
+// set bypass 2FA verification 
+server.use(function(req,res,next){req.bypassVerification = bypass2FA; next()})
 
 // ACL
 const acl = require('./services/acl.js')
-server.use(acl)
+//server.use(acl) // kommentera bort för att tillfälligt stänga av all autentisering
 
 // start
 server.listen(port,() => {
@@ -33,7 +36,7 @@ server.listen(port,() => {
 })
 
 // front end directories
-server.use('/', express.static('frontend/dist')) // change 
+server.use('/', express.static('whatever-directory-for-react-build')) // change 
 server.use('/examples', express.static('examples'))
 
 // example REST API routes
@@ -45,5 +48,16 @@ require('./api-description.js')(host, server)
 require('./routes/users.js')(server, db)
 require('./routes/login.js')(server, db)
 
+// stream routes
+require('./routes/video-stream.js')(server, db)
+// require('./routes/audio-stream.js')(server, db)
+
+// stripe payment api
+// require('./routes/checkout.js')(server, db, host)
+
 // generic REST API one-to-one table mappings
 require('./routes/generic-routes.js')(server, db)
+
+server.get('*', (req, res)=>{
+  res.sendFile(__dirname + '/whatever-directory-for-react-build/index.html')
+})
