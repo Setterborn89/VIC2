@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom";
 import "../css/CurrentConcerts.css"
 function CurrentConcerts() {
   const [liveConcertList, updateLiveConcertsData] = useState([]);
@@ -46,8 +46,8 @@ function CurrentConcerts() {
         }
       });
 
-      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date))
-      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date))
+      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
+      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
 
       updateStreamConcertsData(streamTempConcertList);
       updateLiveConcertsData(liveTempConcertList);
@@ -68,7 +68,7 @@ function CurrentConcerts() {
             {liveConcertList.map((element) => (
               
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id} >
+                <Link to={"/streamconcerts/" + element.id} >
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
@@ -79,7 +79,7 @@ function CurrentConcerts() {
                       <p>{element.location}</p>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -89,7 +89,7 @@ function CurrentConcerts() {
           <div className="row_cards">
             {streamConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id}  >
+                <Link to={"/streamconcerts/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image}/>
                     <div className="container">
@@ -103,7 +103,7 @@ function CurrentConcerts() {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
