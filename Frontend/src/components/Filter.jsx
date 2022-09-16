@@ -17,27 +17,21 @@ function Filter(props) {
 
   }, [props.activeGenre])
   return <>
-  <div>
-   <button onClick={() => props.setActiveGenre("all")}>All</button>
-   <button onClick={() => props.setActiveGenre("pop")}>Pop</button>
-   <button onClick={() => props.setActiveGenre("hiphop")}>hiphop</button>
-   <button onClick={() => props.setActiveGenre("rap")}>rap</button>
-  </div>
-    {/* <div className="navbar">
-  <a href="#home">Date</a>
-  <a href="#news">Date</a>
-  <div className="dropdown">
-    <button className="dropbtn">Genre 
-      <i className="fa fa-caret-down"></i>
-    </button>
-    <div className="dropdown-content">
-    <a href="#">All</a>
-      <a href="#">Pop</a>
-      <a href="#">Rap</a>
-      <a href="#">Hiphop 3</a>
-    </div>
-  </div> 
-</div> */}
+  
+    
+    
+    <nav className="Navbar"> 
+    <h3>ADDITIONAL FILTERS </h3>
+
+    <button className = {props.activeGenre === "all" ? "active" : ""} onClick={() => props.setActiveGenre("all")}>All</button>
+   <button className = {props.activeGenre === "pop" ? "active" : ""} onClick={() => props.setActiveGenre("pop")}>Pop</button>
+   <button className = {props.activeGenre === "hiphop" ? "active" : ""} onClick={() => props.setActiveGenre("hiphop")}>hiphop</button>
+   <button className = {props.activeGenre === "rap" ? "active" : ""} onClick={() => props.setActiveGenre("rap")}>rap</button>
+    </nav>
+
+ 
+  
+ 
 
   </>
 }

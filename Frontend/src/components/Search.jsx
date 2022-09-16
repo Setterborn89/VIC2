@@ -46,10 +46,23 @@ function Search(){
             let response =  await fetch("/data/concerts")
             response= await response.json()
             setConcerts(response)
+            response.forEach((concert) => {
+                for (const artist of artists) {
+                  if (concert.artistId == artist.id) {
+                    concert.artistName = artist.name;
+                    break;
+                  } else {
+                    concert.artistName = "artist not found";
+                  }
+                }
+        
+             });
             
         }
         loadConcerts()
     }, [])
+
+    
 
     useEffect(() => {
         function filterSearchList(){
@@ -84,6 +97,7 @@ function Search(){
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
                         <div className="container">
+                            <h2>Artist</h2>
                             <h3>
                                 <b>{item.name}</b>
                             </h3>
@@ -97,6 +111,7 @@ function Search(){
                                         concert.stream == true ? <p>Stream </p> : <p>Live</p>
                                         }
                                     </div>
+                                    
                                     <h3> <FcCalendar/> {concert.date}</h3>
                                     <p><GoLocation/> {concert.location}</p>
                                     <p><MdAttachMoney/> {concert.price} </p>
@@ -118,8 +133,10 @@ function Search(){
                     <div className="card-Search">
                         <img className="card_poster" src={item.image} />
                         <div className="container">
+                            <h2>Concert</h2>
+                           
                             <h3>
-                                <b>{item.name}</b>
+                                {<b>{item.artistName}</b>}
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
                             <div>     
