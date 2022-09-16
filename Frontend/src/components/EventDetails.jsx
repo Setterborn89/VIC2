@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
-import { FaPlusCircle } from "react-icons/fa";
+import { BsCart3 } from "react-icons/bs";
+import { BiAccessibility } from "react-icons/bi";
+import { HiOutlineTicket } from "react-icons/hi";
 
 function EventDetails() {
   const { id } = useParams();
 
   const [tickets, setCount] = useState(0);
+  const [accessibilityTickets, setAccessTickets] = useState(0);
+
   const [event, setEvent] = useState({});
   const [cost, updateCost] = useState(0);
 
@@ -54,9 +58,9 @@ function EventDetails() {
   }, []);
 
   useEffect(() => {
-    let totalPrice = tickets * event.price;
+    let totalPrice = tickets * event.price + accessibilityTickets * event.price;
     updateCost(totalPrice);
-  }, [tickets, cost]);
+  }, [tickets, accessibilityTickets, cost]);
 
   if (event.seats < 100 && event.seats != 0) {
     className += "message";
@@ -75,8 +79,12 @@ function EventDetails() {
           <p>{event.info}</p>
         </div>
 
-        <div className="event-buy-ticket">
-          <p>Choose tickets</p>
+        <span className={className}>{message}</span>
+        <section className="tickets-table-container">
+          <HiOutlineTicket className="ticket-icons" />
+          <p>Standard</p>
+          <p> {event.price} SEK</p>
+
           <div className="ticket-selector">
             <button
               disabled={tickets < 1}
@@ -96,18 +104,52 @@ function EventDetails() {
               +
             </button>
           </div>
+
+          <BiAccessibility className="ticket-icons" />
+          <p>Accessibility</p>
+          <p> {event.price} SEK</p>
+          <div>
+            <div className="ticket-selector">
+              <button
+                disabled={accessibilityTickets < 1}
+                className="minus-btn"
+                id="minus-btn"
+                onClick={() => setAccessTickets(accessibilityTickets - 1)}
+              >
+                -
+              </button>
+              <h1>{accessibilityTickets}</h1>
+
+              <button
+                disabled={accessibilityTickets > 9}
+                className="plus-btn"
+                onClick={() => setAccessTickets(accessibilityTickets + 1)}
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </section>
+        <div className="event-buy-ticket">
           <p className="max-tickets">Limit 10 tickets</p>
-          <div>
-            <strong className="ticket-price"> {event.price} SEK</strong>
-          </div>
-          <div>
-            <p>
-              {tickets} {tickets == 1 ? "ticket" : "tickets"} {cost} SEK
-            </p>
-          </div>
-          <button className="event-buy-ticket-link" disabled={tickets == 0}>
-            Buy
-          </button>
+        </div>
+        <div className="cart">
+          {tickets > 0 || accessibilityTickets > 0 ? (
+            <>
+              <p>
+                {" "}
+                <BsCart3 />
+              </p>
+              <p>
+                {tickets + accessibilityTickets}{" "}
+                {tickets == 1 ? "ticket" : "tickets"}
+              </p>
+              <p>{cost} SEK</p>
+              <button className="event-buy-ticket-link">Buy</button>
+            </>
+          ) : (
+            <p></p>
+          )}
         </div>
       </div>
     </>

@@ -9,6 +9,7 @@ import "../Css/ticket.css"
 import "../Css/UserPage.css"
 import "../css/EventDetails.css"
 import "../css/EventDetails.css";
+import "../css/ConcertByDate.css";
 
 import { useUserContext } from "../contexts/useUserContext";
 
@@ -21,6 +22,7 @@ import VideoPlayer from "./VideoPlayer";
 import UserPage from "./UserPage";
 import Ticket from "./Ticket";
 import Signout from "./Signout";
+import ConcertByDate from "./ConcertByDate";
 
 function MyRouter() {
   const { loggedIn } = useUserContext();
@@ -51,8 +53,10 @@ function MyRouter() {
         </div>
         <div className="navBar">
           <nav>
-            <Link to="">Stream Concerts</Link>
-            <Link to="">Live Concerts</Link>
+            <Link to="/">Home</Link>
+            <Link to="ConcertByDate">Concert By Date</Link>
+            <Link to="streamconcerts">Stream Concerts</Link>
+            <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
         <div className="accountManagement">
@@ -74,6 +78,7 @@ function MyRouter() {
             <>
               <Route path="/SignUp" element={<SignUp />} />
               <Route path="/SignOut" element={<Signout />} />
+              <Route path="ConCertByDate" element={<ConcertByDate />} />
               <Route path="/" element={<CurrentConcerts />}></Route>
               <Route path="/streamconcerts/:id" element={<ConcertComponent />} />
               <Route path="/videoPlayer/:url" element={<VideoPlayer/>}/>
