@@ -48,3 +48,33 @@
     color: aqua;
     opacity: 0.4;
 }
+
+#updateform{
+    display: flex;
+    flex-direction: column;
+}
+
+#updateform > div > input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#updateform > button {
+    width: 60px;
+    margin-top: 10px;
+}
+
+#updatePassowrdForm{
+    display: flex;
+    flex-direction: column;
+}
+
+#updatePassowrdForm > div > input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#updatePassowrdForm > button {
+    width: 60px;
+    margin-top: 10px;
+}

@@ -20,7 +20,7 @@ module.exports = function(host, server){
             },
             {
                 route:"/data/users/password",
-                methods: ["DELETE","PATCH"],
+                methods: ["DELETE","PUT"],
                 description:"Clear old password, add new password",
                 link: host  + "/data/users/password"
             },

@@ -10,9 +10,8 @@ function UserPage(){
     const [contentSelector, updateContentSelector] = useState(1)
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("t");
 
     useEffect(() => {
         async function loadData() {
@@ -32,11 +31,59 @@ function UserPage(){
             }) 
             ticketstoadd.sort((a,b) => Date.parse(a) - Date.parse(b)).reverse()
             updateTickets(ticketstoadd)
-            
         }
         loadData();
-        
     }, []);
+
+    const handleUpdateSubmit = async (e) => {
+
+        e.preventDefault();
+        const data = {
+            firstName: firstName,
+            lastName: lastName
+        };
+
+        if(firstName==""){data.firstName=user.firstname}
+        if(lastName==""){data.lastName=user.lastname}
+    
+        let dataResponse = await fetch("/data/users/" + user.id, {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+    
+        dataResponse = await dataResponse.json();
+    };
+
+    const handlePasswordUpdateSubmit = async (e) => {
+
+        e.preventDefault();
+        const data = {
+            email: user.email,
+            password: password
+        };
+
+        let deletePasswordResponse = await fetch("/data/users/password", {
+          method: "delete",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+    
+        deletePasswordResponse = await deletePasswordResponse.json();
+        console.log(deletePasswordResponse)
+
+        if(deletePasswordResponse.changes=1){
+            let updatePasswordResponse = await fetch("/data/users/password", {
+                method: "put",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              });
+          
+              updatePasswordResponse = await updatePasswordResponse.json();
+              console.log(updatePasswordResponse)
+        }
+        
+    };
 
     
 
@@ -44,7 +91,7 @@ function UserPage(){
     return (<div className="UserPage">
         <div className="WelcomeBox">
             <div className="WelcomeText">
-                <h1>Welcome fellow fanatic!</h1>
+                <h1>Welcome {user.email} fellow fanatic!</h1>
             </div>
             <div className="WelcomeBtns">
                 <a href="#" onClick={() =>updateContentSelector(1)}><h3>Tickets</h3></a>
@@ -74,10 +121,11 @@ function UserPage(){
                     <div className="CurrentInfo">
                         <form onSubmit={handleUpdateSubmit} className="personalInfoform">
                             <div>
-                                <h3 id="update">Update account</h3>
+                                <h3 id="update">Update name</h3>
                                 <div id="updateform">
                                     <div>
-                                        <label htmlFor="firstName">{user.firstName}</label>
+                                        <label htmlFor="firstName">{user.firstname}</label>
+                                        <br/>
                                         <input
                                             type="text"
                                             placeholder="Enter new first name"
@@ -88,6 +136,7 @@ function UserPage(){
                                     </div>
                                     <div>
                                         <label htmlFor="lastName">{user.lastname}</label>
+                                        <br/>
                                         <input
                                             type="text"
                                             placeholder="Enter new last name"
@@ -96,25 +145,17 @@ function UserPage(){
                                             onChange={(e) => setLastName(e.target.value)}
                                         />
                                     </div>
-                                    <div>
-                                        <label htmlFor="email">{user.email}</label>
-                                        <input
-                                            type="email"
-                                            placeholder="Enter new e-mail"
-                                            name="emailAdress"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
-                                    </div>
                                     <button>Update</button>
                                 </div>
                             </div>
                         </form>
                         <div>
+                            <form onSubmit={handlePasswordUpdateSubmit} className="passwordForm">
                             <h3 id="updatePassword">Update password</h3>
-                            <form onSubmit={handleUpdateSubmit} className="passwordForm">
+                            <div id="updatePassowrdForm">
                                 <div>
                                     <label htmlFor="password">Password</label>
+                                    <br/>
                                     <input
                                         type="password"
                                         placeholder="Enter new password"
@@ -126,6 +167,7 @@ function UserPage(){
                                 </div>
                                 <div>
                                     <label htmlFor="confirmPassword">Confirm password</label>
+                                    <br/>
                                     <input
                                         type="password"
                                         placeholder="Confirm password"
@@ -141,6 +183,8 @@ function UserPage(){
                                     "Password doesn't match"
                                 )}
                                 </div>
+                            </div>
+                                
                             </form>
                         </div>
                     </div>
