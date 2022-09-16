@@ -44,9 +44,6 @@ function CurrentConcerts() {
         }
       });
 
-      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
-      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
-
       updateStreamConcertsData(streamTempConcertList);
       // Sort by date in ascending order
       streamTempConcertList.sort(function (a, b) {
