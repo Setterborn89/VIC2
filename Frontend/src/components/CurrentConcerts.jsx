@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import "../css/CurrentConcerts.css";
+import { Link } from "react-router-dom";
+import "../css/CurrentConcerts.css";
 function CurrentConcerts() {
   const [liveConcertList, updateLiveConcertsData] = useState([]);
   const [streamConcertList, updateStreamConcertsData] = useState([]);
@@ -16,6 +18,8 @@ function CurrentConcerts() {
       let artistsResponse = await fetch("/data/artists");
       const artistsData = await artistsResponse.json();
 
+      const currentDate = new Date();
+
       concertsData.forEach((concert) => {
         for (const artist of artistsData) {
           if (concert.artistId == artist.id) {
@@ -25,13 +29,23 @@ function CurrentConcerts() {
             concert.artistName = "artist not found";
           }
         }
+        const concertDate = new Date(concert.date);
+        console.log(concertDate);
+        const diffTime = Math.abs(concertDate - currentDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        console.log("Days from today: " + diffDays);
 
-        if (concert.stream) {
-          streamTempConcertList.push(concert);
-        } else {
-          liveTempConcertList.push(concert);
+        if (diffDays <= 31) {
+          if (concert.stream) {
+            streamTempConcertList.push(concert);
+          } else {
+            liveTempConcertList.push(concert);
+          }
         }
       });
+
+      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
+      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
 
       updateStreamConcertsData(streamTempConcertList);
       // Sort by date in ascending order
@@ -58,18 +72,18 @@ function CurrentConcerts() {
           <div className="row_cards">
             {liveConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id}>
+                <Link to={"/streamconcerts/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
                       <h4>
                         <b>{element.artistName}</b>
                       </h4>
-                      <h3>{element.date}</h3>
+                      <h3>{new Date(element.date).toDateString()}</h3>
                       <p>{element.location}</p>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -79,21 +93,21 @@ function CurrentConcerts() {
           <div className="row_cards">
             {streamConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <a href={"/streamconcerts/" + element.id}>
+                <Link to={"/streamconcerts/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
                       <h4>
                         <b>{element.artistName}</b>
                       </h4>
-                      <h3>{element.date}</h3>
+                      <h3>{new Date(element.date).toDateString()}</h3>
                       <p>{element.location}</p>
                       <div className="stream_tag">
                         <h2>STREAM</h2>
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

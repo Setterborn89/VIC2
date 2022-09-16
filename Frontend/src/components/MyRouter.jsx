@@ -56,15 +56,17 @@ function MyRouter() {
             <Link to="ConcertByDate">Concert By Date</Link>
             <Link to="streamconcerts">Stream Concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
-            <Link to="UserPage">UserPage</Link>
           </nav>
         </div>
-
-        {!loggedIn ? (
-          <Link to="SignUp">Sign Up/Sign In</Link>
-        ) : (
-          <Link to="Signout">Sign out</Link>
-        )}
+        <div className="accountManagement">
+          {!loggedIn ? (
+            <Link to="SignUp">Sign Up/Sign In</Link>
+          ) : (<div>
+            <Link to="Signout">Sign out</Link>
+            <Link to="UserPage">Profile</Link>
+          </div>
+          )}
+        </div>
       </header>
 
       <main>
