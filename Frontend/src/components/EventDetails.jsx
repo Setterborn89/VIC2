@@ -106,7 +106,7 @@ function EventDetails() {
           </div>
 
           <BiAccessibility className="ticket-icons" />
-          <p>Accessibilty</p>
+          <p>Accessibility</p>
           <p> {event.price} SEK</p>
           <div>
             <div className="ticket-selector">
@@ -134,7 +134,7 @@ function EventDetails() {
           <p className="max-tickets">Limit 10 tickets</p>
         </div>
         <div className="cart">
-          {tickets > 0 ? (
+          {tickets > 0 || accessibilityTickets > 0 ? (
             <>
               <p>
                 {" "}
