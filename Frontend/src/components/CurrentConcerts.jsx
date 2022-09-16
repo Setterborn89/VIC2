@@ -37,7 +37,7 @@ function CurrentConcerts() {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         console.log("Days from today: " + diffDays);
 
-        if(diffDays <= 91){
+        if(diffDays <= 31){
           if (concert.stream) {
             streamTempConcertList.push(concert);
           } else {
@@ -46,10 +46,8 @@ function CurrentConcerts() {
         }
       });
 
-      streamTempConcertList.sort((a,b)=> Date.parse(b)- Date.parse(a));
-      liveTempConcertList.sort((a,b)=> Date.parse(b)- Date.parse(a));
-      console.log(streamTempConcertList)
-      console.log(liveTempConcertList)
+      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date))
+      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date))
 
       updateStreamConcertsData(streamTempConcertList);
       updateLiveConcertsData(liveTempConcertList);
@@ -77,7 +75,7 @@ function CurrentConcerts() {
                       <h4>
                         <b>{element.artistName}</b>
                       </h4>
-                      <h3>{element.date.substring(0,16)}</h3>
+                      <h3>{new Date(element.date).toDateString()}</h3>
                       <p>{element.location}</p>
                     </div>
                   </div>
@@ -98,7 +96,7 @@ function CurrentConcerts() {
                       <h4>
                         <b>{element.artistName}</b>
                       </h4>
-                      <h3>{element.date}</h3>
+                      <h3>{new Date(element.date).toDateString()}</h3>
                       <p>{element.location}</p>
                       <div className="stream_tag">
                         <h2>STREAM</h2>
