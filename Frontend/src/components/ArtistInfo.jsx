@@ -7,7 +7,6 @@ import { GoClock } from "react-icons/go";
 import "../css/eventdetails.css";
 
 function ArtistInfo() {
-  const time = "20:30";
   const [event, setEvent] = useState({});
   const { id } = useParams();
   const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=$";
@@ -29,7 +28,7 @@ function ArtistInfo() {
       let eventResult = await eventResponse.json();
       eventData.location = eventResult.location;
       eventData.price = eventResult.price;
-      eventData.date = eventResult.date.substring(0, 10);
+      eventData.date = new Date(eventResult.date).toDateString();
       eventData.artistId = eventResult.artistId;
       eventData.seats = eventResult.seats;
       eventData.image = eventResult.image;
@@ -58,7 +57,7 @@ function ArtistInfo() {
               {event.location}
             </a>
             <p className="event-time">
-              <GoClock /> Tid: {event.time}
+              <GoClock /> {event.time}
             </p>
           </div>
         </div>

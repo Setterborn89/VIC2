@@ -1,6 +1,6 @@
 import ArtistInfo from "./ArtistInfo";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function ConcertComponent() {
   const [data, updateData] = useState([{}]);
@@ -31,31 +31,31 @@ function ConcertComponent() {
         <ArtistInfo />
         <div className="concert">
           <div className="ticketPrice">
-            <div>
               <button>
-                <a href={"/eventdetails/" + id}>Buy Tickets</a>
+                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
               </button>
-            </div>
           </div>
 
           <div className="moreConcerts">
-            <h3>Additional Conserts </h3>
             {data[0].location != undefined ? (
               data.map((conserts) => (
                 <section key={conserts.id}>
-                  {conserts.id == id ? 
-                  <p></p>
-                  : 
-                  <div>
-                    <a
-                      href={"/streamconcerts/" + conserts.id}
-                      className="concert-location">{conserts.location}
-                    </a>
-                    <p className="concert-date" >Date: {conserts.date}</p>
-                  </div>
-                  }
+                  {conserts.id == id ? (
+                    <p></p>
+                  ) : (
+                    <div>
+                      <h3>Additional Conserts </h3>
+                      <Link
+                        to={"/streamconcerts/" + conserts.id}
+                        className="concert-location"
+                      >
+                        {conserts.location}
+                      </Link>
+                      <p className="concert-date">Date: {conserts.date}</p>
+                    </div>
+                  )}
                 </section>
-                  ))
+              ))
             ) : (
               <p></p>
             )}
