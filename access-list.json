@@ -5,8 +5,8 @@
   },
 
   {
-    "route": "/data/video_streams*",
-    "roles": [{ "role": "user", "methods": ["GET"] }]
+    "route": "/data/video-stream*",
+    "roles": [{ "role": "*", "methods": ["GET"] }]
   },
 
   {
@@ -68,17 +68,9 @@
       { "role": "user", "methods": ["POST", "DELETE"] }
     ]
   },
-
+  
   {
-    "route": "/data/artists*",
-    "roles":[
-      {"role": "anonymous", "methods": ["GET"]},
-      {"role": "user", "methods": ["POST", "DELETE"]}
-    ]
-  },
-
-  {
-    "route": "/data/artists*",
+    "route": "/data/videos*",
     "roles":[
       {"role": "*", "methods": ["GET"]},
       {"role": "user", "methods": ["POST", "DELETE"]}
