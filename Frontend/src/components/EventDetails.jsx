@@ -134,7 +134,7 @@ function EventDetails() {
           <p className="max-tickets">Limit 10 tickets</p>
         </div>
         <div className="cart">
-          {tickets > 0 ? (
+          {tickets > 0 || accessibilityTickets > 0 ? (
             <>
               <p>
                 {" "}
