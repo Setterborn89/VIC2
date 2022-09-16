@@ -26,12 +26,12 @@
 }
 
 .loginform > div input {
-  width: 125%;
+  width: 127%;
   font-family: "Amazon Ember";
 }
 
 .loginform button {
   font-family: "Amazon Ember";
   display: block;
-  margin-top: 10px;
+  margin-top: 5px;
 }
