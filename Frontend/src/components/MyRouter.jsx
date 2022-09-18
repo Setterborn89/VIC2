@@ -63,7 +63,7 @@ function MyRouter() {
         <div className="accountManagement">
           {!loggedIn ? 
           (
-            <Link to="SignUp">Sign Up/Sign In</Link>
+            <Link to="SignUp">Sign In/Up</Link>
           ) 
           : 
           (<div>
