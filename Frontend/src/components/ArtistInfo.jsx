@@ -4,6 +4,7 @@ import { GoLocation } from "react-icons/go";
 import { GoClock } from "react-icons/go";
 import "../css/eventdetails.css";
 import Slider from "./Slider"
+import song from "./audio/independent state-filioque.mp3"
  
 
 function ArtistInfo() {
@@ -27,6 +28,7 @@ function ArtistInfo() {
         image: null,
         seats: null,
         time: null,
+        sampleSong: null,
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -38,6 +40,7 @@ function ArtistInfo() {
       eventData.seats = eventResult.seats;
       eventData.image = eventResult.image;
       eventData.time = eventResult.date.substring(11, 16);
+      eventData.sampleSong = eventResult.sampleSong;
 
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
@@ -69,6 +72,12 @@ function ArtistInfo() {
             </p>
             <div className="app-container">
               <Slider percentage={percentage} onChange={onChange}/>
+              <audio
+      
+        src={song}
+        controls
+      ></audio>
+    
 
             </div>
           </div>
