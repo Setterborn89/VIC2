@@ -180,4 +180,10 @@
     main .additionalConserts{
         font-size: medium;
     }
+
+    /* ****** Buy Ticket Sidan ****** */
+    main .event-buy-ticket{
+        padding-top: 0;
+    }
+
 }

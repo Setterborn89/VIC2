@@ -3,7 +3,7 @@
 .concert {
   display: grid;
   grid-template-columns: 50% 50%;
-  /* background-color: rgb(236, 231, 231); */
+  margin-top: 1vh;
 }
 .concert > .ticketPrice {
   color: #0f171e;
