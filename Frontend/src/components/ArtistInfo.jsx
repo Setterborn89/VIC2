@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import { GoLocation } from "react-icons/go";
 import { GoClock } from "react-icons/go";
-
 import "../css/eventdetails.css";
+import Slider from "./Slider"
+ 
 
 function ArtistInfo() {
   const [event, setEvent] = useState({});
   const { id } = useParams();
   const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=$";
+  const [percentage, setPercentage] = useState(0)
+  const onChange = (e) => {
+   
+    setPercentage(e.target.value)
+  }
 
   useEffect(() => {
     async function loadEvent() {
@@ -49,7 +54,10 @@ function ArtistInfo() {
         <div className="event-info">
           <div className="event-date">
             <span>{event.date}</span>
+            
           </div>
+         
+          
           <div className="event-details">
             <h1 className="event-title">{event.artistName}</h1>
             <a href={googleMapsUrl + event.location} className="event-location">
@@ -59,6 +67,10 @@ function ArtistInfo() {
             <p className="event-time">
               <GoClock /> {event.time}
             </p>
+            <div className="app-container">
+              <Slider percentage={percentage} onChange={onChange}/>
+
+            </div>
           </div>
         </div>
       </div>
