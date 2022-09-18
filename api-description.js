@@ -20,7 +20,7 @@ module.exports = function(host, server){
             },
             {
                 route:"/data/users/password",
-                methods: ["DELETE","PATCH"],
+                methods: ["DELETE","PUT"],
                 description:"Clear old password, add new password",
                 link: host  + "/data/users/password"
             },
@@ -37,10 +37,10 @@ module.exports = function(host, server){
                 link: host  + "/data/video_streams"
             },
             {
-                route:"/data/video_streams/1",
+                route:"/data/video-stream/1",
                 methods: ["GET"],
                 description:"Get video stream",
-                link: host  + "/data/video_streams/1"
+                link: host  + "/data/video-stream/1"
             },
             {
                 route:"/data/audio_example",

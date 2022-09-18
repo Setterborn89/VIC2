@@ -33,11 +33,11 @@ function SignIn() {
 
   return (
     <>
-      <div className="loginform">
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="loginform">
+        <div>
           <h3>Sign In</h3>
           <div>
-            <div className="email-login">
+            <div>
               <label htmlFor="email">E-mail</label>
               <input
                 type="email"
@@ -48,11 +48,11 @@ function SignIn() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="password-login">
+            <div>
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                placeholder="At least 6 characters..."
+                placeholder="Enter password..."
                 name="password"
                 required
                 value={password}
@@ -63,8 +63,8 @@ function SignIn() {
               <button type="submit">Sign In</button>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </>
   );
 }

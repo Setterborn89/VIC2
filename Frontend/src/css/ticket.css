@@ -31,3 +31,12 @@
     flex-direction: row-reverse;
     text-align: right;
 }
+
+#TicketId{
+    display: flex;
+    justify-content: space-around;
+}
+
+#validText{
+    color: red
+}
