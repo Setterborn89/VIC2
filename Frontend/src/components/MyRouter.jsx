@@ -22,6 +22,9 @@ import VideoPlayer from "./VideoPlayer";
 import UserPage from "./UserPage";
 import Ticket from "./Ticket";
 import Signout from "./Signout";
+import Checkout from "./checkoutcomponents/Checkout";
+import CheckoutSuccess from "./checkoutcomponents/CheckoutSuccess";
+import CheckoutCancel from "./checkoutcomponents/CheckoutCancel";
 import ConcertByDate from "./ConcertByDate";
 
 function MyRouter() {
@@ -63,12 +66,12 @@ function MyRouter() {
           {!loggedIn ? 
           (
             <Link to="SignUp">Sign Up/Sign In</Link>
-          ) 
-          : 
-          (<div>
-            <Link to="Signout">Sign out</Link>
-            <Link to="UserPage">Profile</Link>
-          </div>)}
+          ) : (
+            <div>
+              <Link to="Signout">Sign out</Link>
+              <Link to="UserPage">Profile</Link>
+            </div>
+          )}
         </div>
       </header>
 
@@ -86,6 +89,15 @@ function MyRouter() {
               <Route path="/Lista" element={<Search />}></Route>
               <Route path="/UserPage" element={<UserPage />}></Route>
               <Route path="/ticket/:id" element={<Ticket />}></Route>
+              <Route path="/checkout" element={<Checkout />}></Route>
+              <Route
+                path="/checkout-success"
+                element={<CheckoutSuccess />}
+              ></Route>
+              <Route
+                path="/checkout-cancel"
+                element={<CheckoutCancel />}
+              ></Route>
             </>
           }
         </Routes>
