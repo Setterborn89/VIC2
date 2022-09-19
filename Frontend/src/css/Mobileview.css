@@ -211,4 +211,11 @@
     main .carousel .control-dots{
       margin: 0px ;
     }
+
+    main h3{
+        font-size: small;
+    }
+    main .Navbar button{
+      font-size: 10px;
+    }
 }
