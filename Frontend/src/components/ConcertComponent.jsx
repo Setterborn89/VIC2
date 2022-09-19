@@ -1,10 +1,12 @@
 import ArtistInfo from "./ArtistInfo";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useUserContext } from "../contexts/useUserContext";
 
 function ConcertComponent() {
   const [data, updateData] = useState([{}]);
   const { id } = useParams();
+  const { loggedIn } = useUserContext();
 
   useEffect(() => {
     async function loadData() {
@@ -31,9 +33,16 @@ function ConcertComponent() {
         <ArtistInfo />
         <div className="concert">
           <div className="ticketPrice">
-              <button>
-                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
-              </button>
+            {loggedIn ? 
+            (
+                <button>
+                    <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
+                </button>
+            ) : (
+                <p>Sign in to get tickets!</p>
+            )}
+
+              
           </div>
 
           <div className="moreConcerts">

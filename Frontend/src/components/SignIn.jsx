@@ -7,6 +7,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = useUserContext();
+  const [message, SetMessage] = useState("Sign In")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ function SignIn() {
       navigate({ pathname: "/" });
     } else {
       console.log("Could not login");
+      SetMessage("Could not login")
     }
   };
 
@@ -35,7 +37,7 @@ function SignIn() {
     <>
       <form onSubmit={handleSubmit} className="loginform">
         <div>
-          <h3>Sign In</h3>
+          <h3>{message}</h3>
           <div>
             <div>
               <label htmlFor="email">E-mail</label>
