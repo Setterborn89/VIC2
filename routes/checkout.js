@@ -7,7 +7,7 @@ const stripe = new Stripe(
 ); //
 
 module.exports = function (server, db, host) {
-  host = "http://localhost:5173"
+  host = "http://localhost:5173";
   // route to create a checkout session
   server.post("/data/checkout", async (req, res) => {
     // accept a list of payment items, body should be formatted like:
@@ -40,7 +40,7 @@ module.exports = function (server, db, host) {
           unit_amount: item.price * 100,
         },
 
-        quantity: 1,
+        quantity: item.quantity,
         adjustable_quantity: {
           enabled: true,
         },
