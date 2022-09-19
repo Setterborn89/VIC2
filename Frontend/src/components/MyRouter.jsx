@@ -68,7 +68,7 @@ function MyRouter() {
           : 
           (<div>
             <Link to="Signout">Sign out</Link>
-            <Link to="UserPage">Profile</Link>
+            <Link className="profilepage" to="UserPage">Profile</Link>
           </div>)}
         </div>
 

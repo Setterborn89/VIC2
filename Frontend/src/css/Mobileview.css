@@ -18,7 +18,7 @@
     }
   
     a{
-      margin-right: 20px;
+      margin-right: 25px;
     }
   
     header .accountManagement{
@@ -36,6 +36,10 @@
       color: #FFF;
       height: 50px;
       padding: 1em;
+    }
+
+    header .profilepage{
+      display: none;
     }
   
     .burger{
@@ -152,6 +156,10 @@
         padding: 0;
     }
 
+    main .card:hover{
+      transform: none;
+    }
+
     /* ****** Concert Sidan ****** */
 
     main .event-container{
@@ -190,4 +198,17 @@
         padding-top: 0;
     }
 
+    /* ****** Profile Page ****** */
+    main h1{
+      font-size: large;
+    }
+
+    main .UserPageDisplayBox{
+      grid-column: 1 / 4;
+      margin-bottom: 2vh;
+    }
+
+    main .carousel .control-dots{
+      margin: 0px ;
+    }
 }
