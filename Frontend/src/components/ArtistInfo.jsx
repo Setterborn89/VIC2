@@ -6,7 +6,7 @@ import "../css/eventdetails.css";
 import Slider from "./Slider"
 // import song from "../audio/independent state-filioque.mp3"
 import ControlPanel from '../components/AudioControl/ControlPanel'
- 
+import { BiMusic } from "react-icons/bi";
 
 function ArtistInfo() {
   const [event, setEvent] = useState({});
@@ -103,6 +103,7 @@ function ArtistInfo() {
             <p className="event-time">
               <GoClock /> {event.time}
             </p>
+            <p>Preview music <BiMusic/></p>
 
             <div className="app-container">
             <h6 className="detail-player">Audio Player: {event.artistName}</h6>
