@@ -11,9 +11,11 @@ function Checkout() {
         {
           artistName: testcart.artistName,
           price: testcart.price,
-          quantity: cart.quantity,
+          quantity: testcart.quantity,
         },
       ],
+      userId: testcart.userId,
+      concertId: testcart.concertId
     };
 
     console.log(body);
