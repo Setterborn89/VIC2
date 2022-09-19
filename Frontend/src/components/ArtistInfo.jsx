@@ -4,7 +4,7 @@ import { GoLocation } from "react-icons/go";
 import { GoClock } from "react-icons/go";
 import "../css/eventdetails.css";
 import Slider from "./Slider"
-import song from "../audio/independent state-filioque.mp3"
+// import song from "../audio/independent state-filioque.mp3"
 import ControlPanel from '../components/AudioControl/ControlPanel'
  
 
@@ -60,7 +60,7 @@ function ArtistInfo() {
         image: null,
         seats: null,
         time: null,
-        sampleSong: null,
+        sampleMusic: null,
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -72,12 +72,13 @@ function ArtistInfo() {
       eventData.seats = eventResult.seats;
       eventData.image = eventResult.image;
       eventData.time = eventResult.date.substring(11, 16);
-      eventData.sampleSong = eventResult.sampleSong;
+      eventData.sampleMusic = eventResult.sampleMusic;
 
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
       eventData.artistName = artistResult.name;
       setEvent(eventData);
+      console.log(eventData);
     }
     loadEvent();
   }, []);
@@ -111,7 +112,7 @@ function ArtistInfo() {
               onLoadedData={(e) => {
                 setDuration(e.currentTarget.duration.toFixed(2))
               }}
-              src={song}
+              src={event.sampleMusic}
               ></audio>
               <ControlPanel
               play={play}
@@ -120,6 +121,7 @@ function ArtistInfo() {
               currentTime={currentTime}
               />
             </div>
+
           </div>
         </div>
       </div>
