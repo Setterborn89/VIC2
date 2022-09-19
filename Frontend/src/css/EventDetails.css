@@ -171,8 +171,8 @@
 
 
 .app-container {
-  
-  padding: 0 10px;
+  width: 400px;
+  padding:  10px;
   background-color: #272727;
   padding: 20px 50px;
   border-radius: 10px;
