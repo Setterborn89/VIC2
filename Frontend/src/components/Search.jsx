@@ -46,7 +46,7 @@ function Search(){
             response.forEach((concert) => {
                 for (const artist of artists) {
                   if (concert.artistId == artist.id) {
-                    concert.artistName = artist.name;
+                    concert.artistName == artist.name;
                     break;
                   } else {
                     concert.artistName = "artist not found";

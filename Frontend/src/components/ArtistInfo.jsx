@@ -105,6 +105,7 @@ function ArtistInfo() {
             </p>
 
             <div className="app-container">
+            <h6 className="detail-player">Audio Player: {event.artistName}</h6>
               <Slider percentage={percentage} onChange={onChange}/>
               <audio
               ref={audioRef}
