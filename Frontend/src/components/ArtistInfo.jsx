@@ -72,7 +72,7 @@ function ArtistInfo() {
       eventData.seats = eventResult.seats;
       eventData.image = eventResult.image;
       eventData.time = eventResult.date.substring(11, 16);
-      eventData.sampleMusic = eventResult.sampleMusic;
+      eventData.sampleMusic = eventResult.audioId;
 
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
@@ -112,7 +112,7 @@ function ArtistInfo() {
               onLoadedData={(e) => {
                 setDuration(e.currentTarget.duration.toFixed(2))
               }}
-              src={event.sampleMusic}
+              src={"/data/audio-stream/" + event.sampleMusic}
               ></audio>
               <ControlPanel
               play={play}
