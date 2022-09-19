@@ -42,13 +42,13 @@ function Checkout() {
             <h2 className="checkout-title">Checkout</h2>
             <div className="checkout-container">
               <p className="checkout-item th">Name</p>
-              <p className="checkout-item th" >Quantity</p>
+              <p className="checkout-item th">Quantity</p>
               <p className="checkout-item th">Ticket price</p>
               <p className="checkout-item">{currentCart.artistName}</p>
               <p className="checkout-item">{currentCart.quantity}</p>
-              <p className="checkout-item">{currentCart.price}</p>
-              <p className="checkout-item-total">Total</p>
-              <p className="checkout-item">{totalPrice}</p>
+              <p className="checkout-item">{currentCart.price} kr</p>
+              <p className="checkout-item-total">Total(SEK)</p>
+              <p className="checkout-item">{totalPrice} kr</p>
             </div>
             <button
               className="checkout-btn"
