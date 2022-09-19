@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
-import "../css/CurrentConcerts.css"
+
+import "../css/CurrentConcerts.css";
+import { Link } from "react-router-dom";
+import "../css/CurrentConcerts.css";
 function CurrentConcerts() {
   const [liveConcertList, updateLiveConcertsData] = useState([]);
   const [streamConcertList, updateStreamConcertsData] = useState([]);
@@ -9,9 +11,6 @@ function CurrentConcerts() {
     async function loadData() {
       let liveTempConcertList = [];
       let streamTempConcertList = [];
-
-
-
 
       let concertsResponse = await fetch("/data/concerts");
       const concertsData = await concertsResponse.json();
@@ -22,7 +21,6 @@ function CurrentConcerts() {
       const currentDate = new Date();
 
       concertsData.forEach((concert) => {
-        
         for (const artist of artistsData) {
           if (concert.artistId == artist.id) {
             concert.artistName = artist.name;
@@ -34,10 +32,10 @@ function CurrentConcerts() {
         const concertDate = new Date(concert.date);
         console.log(concertDate);
         const diffTime = Math.abs(concertDate - currentDate);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         console.log("Days from today: " + diffDays);
 
-        if(diffDays <= 31){
+        if (diffDays <= 31) {
           if (concert.stream) {
             streamTempConcertList.push(concert);
           } else {
@@ -46,15 +44,19 @@ function CurrentConcerts() {
         }
       });
 
-      streamTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
-      liveTempConcertList.sort((a, b) => new Date(a.date) - new Date(b.date));
-
       updateStreamConcertsData(streamTempConcertList);
-      updateLiveConcertsData(liveTempConcertList);
+      // Sort by date in ascending order
+      streamTempConcertList.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
 
+      updateLiveConcertsData(liveTempConcertList);
+      // Sort by date in ascending order
+      liveTempConcertList.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
     }
     loadData();
-    
   }, []);
 
   return (
@@ -66,9 +68,8 @@ function CurrentConcerts() {
         <div className="row">
           <div className="row_cards">
             {liveConcertList.map((element) => (
-              
               <div key={element.id + Math.random()}>
-                <Link to={"/streamconcerts/" + element.id} >
+                <Link to={"/streamconcerts/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">
@@ -91,7 +92,7 @@ function CurrentConcerts() {
               <div key={element.id + Math.random()}>
                 <Link to={"/streamconcerts/" + element.id}>
                   <div className="card">
-                    <img className="card_poster" src={element.image}/>
+                    <img className="card_poster" src={element.image} />
                     <div className="container">
                       <h4>
                         <b>{element.artistName}</b>

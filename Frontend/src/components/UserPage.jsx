@@ -29,7 +29,7 @@ function UserPage(){
                     
                 }
             }) 
-            ticketstoadd.sort((a,b) => Date.parse(a) - Date.parse(b)).reverse()
+            ticketstoadd.reverse()
             updateTickets(ticketstoadd)
         }
         loadData();
@@ -84,9 +84,6 @@ function UserPage(){
         }
         
     };
-
-    
-
 
     return (<div className="UserPage">
         <div className="WelcomeBox">
@@ -193,10 +190,6 @@ function UserPage(){
         </div>
     </div>
     )
-
-    
-    
-
 }
 
 export default UserPage;
