@@ -5,7 +5,6 @@ import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
 import { BsCart3 } from "react-icons/bs";
-import { BiAccessibility } from "react-icons/bi";
 import { HiOutlineTicket } from "react-icons/hi";
 
 function EventDetails() {
@@ -38,6 +37,7 @@ function EventDetails() {
         seats: null,
         concertId: null,
         sampleMusic: null,
+        userId: null
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -55,6 +55,11 @@ function EventDetails() {
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
       eventData.artistName = artistResult.name;
+
+      let userResponse = await fetch("/data/login");
+      let userResult = await userResponse.json();
+      eventData.userId = userResult.id
+
       setEvent(eventData);
     }
     loadEvent();
@@ -76,9 +81,10 @@ function EventDetails() {
   function addToCart() {
     let shoppingCart = {
           quantity: tickets,
-          price: cost,
+          price: event.price,
           concertId: event.concertId,
           artistName: event.artistName,
+          userId: event.userId,
         }
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
   }

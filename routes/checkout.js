@@ -7,7 +7,7 @@ const stripe = new Stripe(
 ); //
 
 module.exports = function (server, db, host) {
-  host = "http://localhost:5173"
+  host = "http://localhost:5173";
   // route to create a checkout session
   server.post("/data/checkout", async (req, res) => {
     // accept a list of payment items, body should be formatted like:
@@ -40,7 +40,7 @@ module.exports = function (server, db, host) {
           unit_amount: item.price * 100,
         },
 
-        quantity: 1,
+        quantity: item.quantity,
         adjustable_quantity: {
           enabled: true,
         },
@@ -57,6 +57,7 @@ module.exports = function (server, db, host) {
         // They are complete urls
         success_url: host + "/checkout-success", // these should be client routes in the react app
         cancel_url: host + "/checkout-cancel",
+        metadata: {"userId":req.body.userId,"concertId":req.body.concertId}
       });
       // save current checkout session to user session, so we can check result after
       req.session.checkoutSession = checkoutSession;
@@ -73,10 +74,12 @@ module.exports = function (server, db, host) {
   // route to retrieve checkout session to check result
   server.get("/data/checkout", async (req, res) => {
     try {
-      const checkoutSession = await stripe.checkout.sessions.retrieve(
-        req.session.checkoutSession.id
-      );
+      const checkoutSession = await stripe.checkout.sessions.retrieve(req.session.checkoutSession.id)
+      db
+        .prepare("INSERT INTO tickets (id, concertId, userId, used) VALUES(?,?,?,?)")
+        .run([checkoutSession.id, checkoutSession.metadata.concertId, checkoutSession.metadata.userId, "0"]);
       res.json({ checkoutSession: checkoutSession });
+      
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
