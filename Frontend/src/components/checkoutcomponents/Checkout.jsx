@@ -1,10 +1,12 @@
 import "./checkout.css";
 import { useState, useEffect } from "react";
+import { GoClock } from "react-icons/go";
 
 function Checkout() {
   const cart = localStorage.getItem("shopping-cart");
   const currentCart = JSON.parse(cart);
 
+  const [tickets, setCount] = useState(currentCart.quantity);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -19,12 +21,14 @@ function Checkout() {
       items: [
         {
           artistName: currentCart.artistName,
+          date: currentCart.date,
+          location: currentCart.location,
           price: currentCart.price,
-          quantity: currentCart.quantity,
+          quantity: tickets,
         },
       ],
       userId: currentCart.userId,
-      concertId: currentCart.concertId
+      concertId: currentCart.concertId,
     };
 
     let response = await fetch("/data/checkout", {
@@ -38,31 +42,64 @@ function Checkout() {
 
   return (
     <>
-      <div className="checkout">
-        <form onSubmit={checkout}>
-          <div id="#checkout-session">
-            <h2 className="checkout-title">Checkout</h2>
-            <div className="checkout-container">
-              <p className="checkout-item th">Name</p>
-              <p className="checkout-item th">Quantity</p>
-              <p className="checkout-item th">Ticket price</p>
-              <p className="checkout-item td">{currentCart.artistName}</p>
-              <p className="checkout-item td">{currentCart.quantity}</p>
-              <p className="checkout-item td">{currentCart.price} kr</p>
-              <p className="checkout-item-total sum ">Total(SEK)</p>
-              <p className="checkout-item sum totalPrice">{totalPrice} kr</p>
+      <div className="entire-container">
+        <div className="title-container">
+          <h1>Checkout</h1>
+        </div>
+        <div className="form-container">
+          <div className="const-container">
+            <p>Name</p>
+            <p>Location</p>
+            <p>Quantity</p>
+            <p>Ticket Price</p>
+          </div>
+          <div className="var-container">
+            <p>{currentCart.artistName}</p>
+            <p>{currentCart.location}</p>
+            <div className="checkout-ticket-selector">
+              <button
+                disabled={currentCart.quantity < 1}
+                id="minus-btn"
+                onClick={() => setCount(tickets - 1)}
+              >
+                -
+              </button>
+              <p>{tickets}</p>
+
+              <button
+                disabled={currentCart.quantity > 9}
+                onClick={() => setCount(tickets + 1)}
+              >
+                +
+              </button>
             </div>
-            <div className="checkout-btn-container">
-            <button
-              className="checkout-btn"
-              type="submit"
-              disabled={currentCart == null}
-            >
-              Pay
-            </button>
+            <p>{currentCart.price},00 SEK</p>
           </div>
+          <div className="concert-info">
+            <p>
+              {new Date(currentCart.date).toDateString()} |{" "}
+              <GoClock className="clock-icon" />{" "}
+              {currentCart.date.substring(11, 16)}
+            </p>
           </div>
-        </form>
+          <div className="sum-container">
+            <p></p>
+            <p></p>
+            <p>Total</p>
+            <p>
+              <b>{tickets * currentCart.price},00 SEK</b>
+            </p>
+          </div>
+        </div>
+        <div className="checkout-btn-container">
+          <button
+            onClick={checkout}
+            className="checkout-btn"
+            disabled={currentCart == null}
+          >
+            Proceed to payment
+          </button>
+        </div>
       </div>
     </>
   );
