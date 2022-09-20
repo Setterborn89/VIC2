@@ -79,7 +79,6 @@ function Search(){
             
             setFilterGenre(searchList)
             setSearchList(searchList)
-            console.log(searchList)
         }
         filterSearchList()
         

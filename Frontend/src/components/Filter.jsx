@@ -3,8 +3,8 @@ import {useState, useEffect} from "react";
 function Filter(props) {
 
   const [showFilters, toggleFilters] = useState(false);
-  const [date1, setFirstDate] = useState("2022-01-01");
-  const [date2, setSecondDate] = useState("2023-01-01");
+  const [date1, setFirstDate] = useState("");
+  const [date2, setSecondDate] = useState("");
   const [filtered, setFilteredlList] = useState([]);
 
   console.log(date1);
@@ -18,47 +18,76 @@ function Filter(props) {
 
         console.log("Entered All");
         let tempList = []
+        let first_date=Date.parse(date1)
+        let second_date=Date.parse(date2)
     
         props.searchList.forEach((element) => {
-          console.log("adding an element to tempList");
-          tempList.push(element)
+          if(element.date!=undefined){
+            let el_dat=Date.parse(element.date)
+            if(el_dat >= first_date && el_dat <= second_date){
+              console.log("adding an element to tempList");
+              tempList.push(element);
+            }
+          }
         });
-    
-        props.setFilterGenre(tempList);
+
+        console.log(tempList)
+
+        let sortedFiltered = tempList.sort()
+
+        setFilteredlList(sortedFiltered)
+        props.setFilterGenre(sortedFiltered);
         return;
       }
 
       props.setFilterGenre(props.searchList);
       return;
     }
-   
+    else
+    {
+      if(showFilters && filtered.length > 0){
 
-    if(showFilters && filtered.length > 0){
+        console.log("Entered filtered");
+        let tempList = []
 
-      console.log("Entered filtered");
-      let tempList = []
-  
-      filtered.forEach((element) => {
-        console.log("adding an element to tempList");
+        let first_date=Date.parse(date1)
+        let second_date=Date.parse(date2)
+    
+        filtered.forEach((element) => {
+          
+          if(element.date!=undefined){
+            let el_dat=Date.parse(element.date)
+            if(el_dat >= first_date && el_dat <= second_date){
+              console.log("adding an element to tempList");
+              tempList.push(element);
+            }
+          }
+        });
+
         console.log(tempList)
-        
-        if(element.date >= date1 && element.date <= date2){
-          tempList.push(element);
-          console.log(tempList)
-        }
-      });
-      props.setFilterGenre(tempList);
-      return;
-    }
+
+        let sortedFiltered = tempList.sort()
+
+        setFilteredlList(sortedFiltered)
+        props.setFilterGenre(sortedFiltered);
+        return;
+      }
+
+      console.log(props.activeGenre)
       let tempList = props.searchList.filter((item) => 
       item.genre.includes(props.activeGenre)
-    );
+      );
+      
+      let sortedFiltered = tempList.sort()
 
-    setFilteredlList(tempList)
-    let sortedFiltered = filtered.sort()
-    props.setFilterGenre(sortedFiltered);
+      setFilteredlList(sortedFiltered)
+      console.log(sortedFiltered)
+      props.setFilterGenre(sortedFiltered);
+    }
 
-  }, [props.searchList, showFilters, props.activeGenre]);
+    
+
+  }, [date1, date2, showFilters, props.activeGenre]);
 
   return <>
   
