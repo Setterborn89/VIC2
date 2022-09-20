@@ -142,6 +142,7 @@
       width: 100%;
       color: white;
       background-color: #222;
+      font-size: smaller;
     }
 
     .menu > li:not(:last-child) {
