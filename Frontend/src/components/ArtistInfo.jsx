@@ -9,7 +9,7 @@ import ControlPanel from '../components/AudioControl/ControlPanel'
 import { BiMusic } from "react-icons/bi";
 
 function ArtistInfo() {
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState(null);
   const { id } = useParams();
   const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=$";
   // mediaplayer
@@ -40,6 +40,9 @@ function ArtistInfo() {
   }
 
   const getCurrDuration = (e) => {
+    if (!e.currentTarget.duration || isNaN(e.currentTarget.duration)) {
+      return;
+    }
     const percent = ((e.currentTarget.currentTime / e.currentTarget.duration) * 100).toFixed(2)
     const time = e.currentTarget.currentTime
 
@@ -82,6 +85,8 @@ function ArtistInfo() {
     }
     loadEvent();
   }, []);
+
+  if (!event) return;
 
   return (
     <>
