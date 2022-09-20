@@ -51,9 +51,6 @@ function ConcertComponent() {
     setCurrentTime(time.toFixed(2))
   }
 
-
-  console.log(id)
-
   useEffect(() => {
     async function loadData() {
         let array1 = [];
@@ -62,6 +59,8 @@ function ConcertComponent() {
 
         let concertResponse = await fetch("/data/concerts/");
         concertResponse = await concertResponse.json();
+
+        updateData(concertResponse)
 
         concertResponse.forEach((item)=>{
             if (item.id == id) {
