@@ -7,53 +7,22 @@ function Filter(props) {
   const [date2, setSecondDate] = useState("");
   const [filtered, setFilteredlList] = useState([]);
 
-  console.log(date1);
-  console.log(date2);
-
   useEffect(() => {
     
-    if(props.activeGenre === "all"){
+    let tempList = []
+    tempList = props.searchList
+    let filteredList = []
+
+      console.log("Looking at all genres");
 
       if(showFilters && props.searchList.length > 0){
 
-        console.log("Entered All");
-        let tempList = []
+        console.log("Filter by date is 'true' & search list is not empty")
+
         let first_date=Date.parse(date1)
         let second_date=Date.parse(date2)
     
         props.searchList.forEach((element) => {
-          if(element.date!=undefined){
-            let el_dat=Date.parse(element.date)
-            if(el_dat >= first_date && el_dat <= second_date){
-              console.log("adding an element to tempList");
-              tempList.push(element);
-            }
-          }
-        });
-
-        console.log(tempList)
-
-        let sortedFiltered = tempList.sort()
-
-        setFilteredlList(sortedFiltered)
-        props.setFilterGenre(sortedFiltered);
-        return;
-      }
-
-      props.setFilterGenre(props.searchList);
-      return;
-    }
-    else
-    {
-      if(showFilters && filtered.length > 0){
-
-        console.log("Entered filtered");
-        let tempList = []
-
-        let first_date=Date.parse(date1)
-        let second_date=Date.parse(date2)
-    
-        filtered.forEach((element) => {
           
           if(element.date!=undefined){
             let el_dat=Date.parse(element.date)
@@ -63,29 +32,32 @@ function Filter(props) {
             }
           }
         });
-
-        console.log(tempList)
-
-        let sortedFiltered = tempList.sort()
-
-        setFilteredlList(sortedFiltered)
-        props.setFilterGenre(sortedFiltered);
-        return;
       }
 
-      console.log(props.activeGenre)
-      let tempList = props.searchList.filter((item) => 
-      item.genre.includes(props.activeGenre)
-      );
+      // Filter by genre
+      if(props.activeGenre !== "all"){
+        console.log("Filtering by genre" + props.activeGenre)
+        filteredList = tempList.filter((item) => 
+        item.genre.includes(props.activeGenre)
+        );
+      }else{
+        console.log("Including all genres");
+        filteredList = tempList;
+      }
+
       
-      let sortedFiltered = tempList.sort()
+      let sortedFiltered = filteredList.sort()
 
-      setFilteredlList(sortedFiltered)
+      console.log("tempList: ")
+      console.log(tempList)
+      console.log("filteredList: ")
+      console.log(filteredList)
+      console.log("sortedFiltered: ")
       console.log(sortedFiltered)
+      setFilteredlList(sortedFiltered)
       props.setFilterGenre(sortedFiltered);
-    }
+      console.log("Updating search list ------------------------------------------------")
 
-    
 
   }, [date1, date2, showFilters, props.activeGenre]);
 
