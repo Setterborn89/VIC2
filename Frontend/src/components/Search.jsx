@@ -53,8 +53,6 @@ function Search(){
         loadConcerts()
     }, [artists])
 
-    
-
     useEffect(() => {
         function filterSearchList(){
             let artistSearch = artists.filter(item=>{
@@ -73,7 +71,6 @@ function Search(){
             
             setFilterGenre(searchList)
             setSearchList(searchList)
-            console.log(searchList)
         }
         filterSearchList()
         

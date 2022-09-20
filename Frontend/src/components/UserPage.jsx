@@ -70,7 +70,6 @@ function UserPage(){
         });
     
         deletePasswordResponse = await deletePasswordResponse.json();
-        console.log(deletePasswordResponse)
 
         if(deletePasswordResponse.changes=1){
             let updatePasswordResponse = await fetch("/data/users/password", {
@@ -80,7 +79,6 @@ function UserPage(){
               });
           
               updatePasswordResponse = await updatePasswordResponse.json();
-              console.log(updatePasswordResponse)
         }
         
     };

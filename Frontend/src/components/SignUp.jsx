@@ -19,8 +19,6 @@ function SignUp() {
       confirmPassword: confirmPassword,
     };
 
-    console.log(data);
-
     let dataResponse = await fetch("/data/users", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -28,7 +26,6 @@ function SignUp() {
     });
 
     let response = await dataResponse.json();
-    console.log(response);
   };
 
   return (

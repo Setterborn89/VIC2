@@ -1,6 +1,5 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
 import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
@@ -11,9 +10,7 @@ import "../css/EventDetails.css"
 import "../css/EventDetails.css";
 import "../css/Mobileview.css";
 import "../css/ConcertByDate.css";
-
 import { useUserContext } from "../contexts/useUserContext";
-
 import Search from "./Search";
 import SignUp from "./SignUp";
 import CurrentConcerts from "./CurrentConcerts";
@@ -27,6 +24,8 @@ import Checkout from "./checkoutcomponents/Checkout";
 import CheckoutSuccess from "./checkoutcomponents/CheckoutSuccess";
 import CheckoutCancel from "./checkoutcomponents/CheckoutCancel";
 import ConcertByDate from "./ConcertByDate";
+import StreamConcerts from "./StreamConcerts";
+import LiveConcerts from "./LiveConcerts";
 
 function MyRouter() {
   const { loggedIn } = useUserContext();
@@ -57,9 +56,8 @@ function MyRouter() {
         </div>
         <div className="navBar">
           <nav>
-            <Link to="/">Home</Link>
-            <Link to="ConcertByDate">Concert By Date</Link>
-            <Link to="streamconcerts">Stream Concerts</Link>
+            <Link to="StreamConcerts">Stream Concerts</Link>
+            <Link to="ConcertByDate">All concerts</Link>
             <Link to="LiveConcerts">Live Concerts</Link>
           </nav>
         </div>
@@ -93,16 +91,17 @@ function MyRouter() {
         </div> 
 
       </header>
-
       <main>
         <Routes>
           {
             <>
               <Route path="/SignUp" element={<SignUp />} />
+              <Route path="/StreamConcerts" element={<StreamConcerts />} />
+              <Route path="/LiveConcerts" element={<LiveConcerts />} />
               <Route path="/SignOut" element={<Signout />} />
-              <Route path="ConCertByDate" element={<ConcertByDate />} />
+              <Route path="ConcertByDate" element={<ConcertByDate />} />
               <Route path="/" element={<CurrentConcerts />}></Route>
-              <Route path="/streamconcerts/:id" element={<ConcertComponent />} />
+              <Route path="/ConcertComponent/:id" element={<ConcertComponent />} />
               <Route path="/videoPlayer/:url" element={<VideoPlayer/>}/>
               <Route path="/eventdetails/:id" element={<EventDetails />} />
               <Route path="/Lista" element={<Search />}></Route>
