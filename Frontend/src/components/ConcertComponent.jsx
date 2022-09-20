@@ -32,16 +32,6 @@ function ConcertComponent() {
       <div className="event-container">
         <ArtistInfo />
         <div className="concert">
-          <div className="ticketPrice">
-            {loggedIn ? (
-              <button>
-                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
-              </button>
-            ) : (
-              <p>Sign in to get tickets!</p>
-            )}
-          </div>
-
           <div className="moreConcerts">
             {data[0].location != undefined ? (
               data.map((conserts) => (
@@ -64,6 +54,15 @@ function ConcertComponent() {
               ))
             ) : (
               <p></p>
+            )}
+          </div>
+          <div className="ticketPrice">
+            {loggedIn ? (
+              <button className="buy-ticket-btn">
+                <Link to={"/eventdetails/" + id}>Tickets</Link>
+              </button>
+            ) : (
+              <p>Sign in to get tickets!</p>
             )}
           </div>
         </div>
