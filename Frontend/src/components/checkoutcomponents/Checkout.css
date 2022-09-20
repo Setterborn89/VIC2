@@ -1,0 +1,52 @@
+.checkout {
+  width: 100%;
+  text-shadow: none;
+  padding-top: 10px;
+}
+
+.checkout-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  padding: 10px;
+  border: solid rgba(0, 255, 255, 0.214) 2px;
+}
+
+.checkout-session {
+  padding: 5px;
+}
+.checkout-btn-container {
+  text-align: center;
+  margin: 3vh;
+}
+.checkout-btn {
+  background-color: rgba(0, 255, 255, 0.214);
+  color: white;
+  border-radius: 24px;
+  min-width: 240px;
+  height: 5vh;
+  font-size: 2.5vh;
+}
+
+.checkout-btn:hover {
+  background-color: #1b2530;
+  cursor: pointer;
+}
+
+.checkout-item-total {
+  grid-area: 3/1/3/3;
+}
+
+.sum {
+  border-top: solid rgba(0, 255, 255, 0.214) 3px;
+  padding-top: 2vh;
+}
+
+.checkout-title {
+  text-align: center;
+}
+
+.checkout-item.th {
+  padding-bottom: 1vh;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.214);
+}
