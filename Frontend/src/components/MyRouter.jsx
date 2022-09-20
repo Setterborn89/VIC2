@@ -85,8 +85,8 @@ function MyRouter() {
               <li>
                 <Link to="/">Home</Link>
                 <Link to="streamconcerts">Stream Concerts</Link>
-                <Link to="LiveConcerts">Live Concerts</Link>
-                <Link to="UserPage">UserPage</Link>
+                {/* <Link className="margin" to="LiveConcerts">Live Concert</Link> */}
+                <Link to="UserPage">Profile</Link>
               </li>
             </ul>
           </section>

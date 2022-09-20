@@ -50,8 +50,7 @@ function ConcertComponent() {
                   {conserts.id == id ? (
                     <p></p>
                   ) : (
-                    <div>
-                      <h3>Additional Conserts </h3>
+                    <div className="consert-link">
                       <Link
                         to={"/streamconcerts/" + conserts.id}
                         className="concert-location"
