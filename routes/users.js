@@ -20,8 +20,16 @@ module.exports = function (server, db) {
     let result;
     try {
       result = db
-        .prepare("INSERT INTO users (email, password) VALUES(?,?)")
-        .run([user.email, encryptedPassword]);
+        .prepare(
+          "INSERT INTO users (email, password, roles, firstname,lastname) VALUES(?,?,?,?,?)"
+        )
+        .run([
+          user.email,
+          encryptedPassword,
+          user.role,
+          user.firstName,
+          user.lastName,
+        ]);
     } catch (e) {
       console.error(e);
     }
