@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ConcertByDate() {
+function StreamConcerts() {
   const [concertList, updateConcertList] = useState([]);
 
   useEffect(() => {
@@ -29,15 +29,19 @@ function ConcertByDate() {
         return new Date(a.date) - new Date(b.date);
       });
 
-      updateConcertList(concerts);
-      // Sorted in ascending order
-      
+      let temp = []
+      concerts.forEach((concert)=>{
+        if(concert.stream)temp.push(concert)
+      })
+
+      updateConcertList(temp);
+
     }
     getConcerts();
   }, []);
 
   return (<div>
-    <h2>All concerts</h2>
+    <h2>Stream concerts</h2>
     <hr />
     <div className="sortByDate">
       {concertList.map((element) => (
@@ -64,4 +68,4 @@ function ConcertByDate() {
   );
 }
 
-export default ConcertByDate;
+export default StreamConcerts;

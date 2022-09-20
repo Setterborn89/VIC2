@@ -8,7 +8,8 @@ import ControlPanel from '../components/AudioControl/ControlPanel'
 import { BiMusic } from "react-icons/bi";
 
 function ConcertComponent() {
-  const [data, updateData] = useState([]);
+  const [data, updateData] = useState([{}]);
+  const [aditionalConcerts, setAditionalConcerts] = useState([{}]);
   const { id } = useParams();
   const { loggedIn } = useUserContext();
   const [artistsRes, setArtistsRes] = useState();
@@ -51,24 +52,31 @@ function ConcertComponent() {
   }
 
 
+  console.log(id)
+
   useEffect(() => {
     async function loadData() {
-      let concertResponse = await fetch("/data/concerts/");
-      concertResponse = await concertResponse.json();
-      // let artistResponse = await fetch("/data/artists/" + id);
-      // let artistResult = await artistResponse.json();
-      // setArtistsRes(artistResult.au)
+        let array1 = [];
+        let array2 = [];
+        let artistId
 
-      let array = [];
+        let concertResponse = await fetch("/data/concerts/");
+        concertResponse = await concertResponse.json();
 
-      concertResponse.map(pickConcerts);
-
-      function pickConcerts(item) {
-        if (item.artistId == id) {
-          array.push(item);
-        }
-      }
-      updateData(array);
+        concertResponse.forEach((item)=>{
+            if (item.id == id) {
+            array1.push(item);
+            artistId = item.artistId
+            }
+        })
+        concertResponse.forEach((item)=>{
+            if (item.artistId == artistId) {
+                array2.push(item);
+            }
+        })
+        
+        updateData(array1);
+        setAditionalConcerts(array2)
     }
     loadData();
   }, [id]);
@@ -79,7 +87,7 @@ function ConcertComponent() {
     <>
       <div className="event-container">
         <ArtistInfo />
-        <p>Preview music <BiMusic/></p>
+        <p className="preview-music">Preview music <BiMusic/></p>
             <div className="app-container">
              
             <ControlPanel
@@ -102,31 +110,17 @@ function ConcertComponent() {
              
             </div>
         <div className="concert">
-          <div className="ticketPrice">
-
-
-            
-            
-            {loggedIn ? (
-              <button>
-                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
-              </button>
-            ) : (
-              <p>Sign in to get tickets!</p>
-            )}
-          </div>
-
           <div className="moreConcerts">
+            <h3 className="additionalConserts">Additional Conserts </h3>
             {data[0].location != undefined ? (
-              data.map((conserts) => (
+              aditionalConcerts.map((conserts) => (
                 <section key={conserts.id}>
                   {conserts.id == id ? (
                     <p></p>
                   ) : (
-                    <div>
-                      <h3>Additional Conserts </h3>
+                    <div className="consert-link">
                       <Link
-                        to={"/streamconcerts/" + conserts.id}
+                        to={"/ConcertComponent/" + conserts.id}
                         className="concert-location"
                       >
                         {conserts.location}
