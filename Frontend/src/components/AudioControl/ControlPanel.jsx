@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button'
 import './control-panel.css'
 
-function ControlPanel({ play, isPlaying, duration, currentTime }) {
+function ControlPanel({ play, isPlaying, duration, currentTime, children }) {
   function secondsToHms(seconds) {
     if (!seconds) return '00m 00s'
 
@@ -33,9 +33,15 @@ function ControlPanel({ play, isPlaying, duration, currentTime }) {
 
   return (
     <div className='control-panel'>
-      <div className='timer'>{secondsToHms(currentTime)}</div>
-      <Button play={play} isPlaying={isPlaying} />
-      <div className='timer'>{secondsToHms(duration)}</div>
+      <div className='control-slider'>
+        <Button play={play} isPlaying={isPlaying} />
+        {children}
+      </div>
+      
+      <div className='timers'>  
+        <div className='timer'>{secondsToHms(currentTime)}</div>
+        <div className='timer'>{secondsToHms(duration)}</div>
+      </div>
     </div>
   )
 }
