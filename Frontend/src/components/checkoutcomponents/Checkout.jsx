@@ -58,16 +58,16 @@ function Checkout() {
             <p>{currentCart.location}</p>
             <div className="checkout-ticket-selector">
               <button
-                disabled={currentCart.quantity < 1}
+                disabled={tickets < 1}
                 id="minus-btn"
                 onClick={() => setCount(tickets - 1)}
               >
-                -
+                –
               </button>
               <p>{tickets}</p>
 
               <button
-                disabled={currentCart.quantity > 9}
+                disabled={tickets > 9}
                 onClick={() => setCount(tickets + 1)}
               >
                 +
@@ -95,7 +95,7 @@ function Checkout() {
           <button
             onClick={checkout}
             className="checkout-btn"
-            disabled={currentCart == null}
+            disabled={tickets == 0}
           >
             Proceed to payment
           </button>
