@@ -27,7 +27,7 @@ function Checkout() {
         },
       ],
       userId: currentCart.userId,
-      concertId: currentCart.concertId
+      concertId: currentCart.concertId,
     };
 
     let response = await fetch("/data/checkout", {
@@ -40,34 +40,6 @@ function Checkout() {
   }
 
   return (
-    // <>
-    //   <div className="checkout">
-    //     <form onSubmit={checkout}>
-    //       <div id="#checkout-session">
-    //         <h2 className="checkout-title">Checkout</h2>
-    //         <div className="checkout-container">
-    //           <p className="checkout-item th">Name</p>
-    //           <p className="checkout-item th">Quantity</p>
-    //           <p className="checkout-item th">Ticket price</p>
-    //           <p className="checkout-item td">{currentCart.artistName}</p>
-    //           <p className="checkout-item td">{currentCart.quantity}</p>
-    //           <p className="checkout-item td">{currentCart.price} kr</p>
-    //           <p className="checkout-item-total sum ">Total(SEK)</p>
-    //           <p className="checkout-item sum totalPrice">{totalPrice} kr</p>
-    //         </div>
-    //         <div className="checkout-btn-container">
-    //           <button
-    //             className="checkout-btn"
-    //             type="submit"
-    //             disabled={currentCart == null}
-    //           >
-    //             Pay
-    //           </button>
-    //         </div>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </>
     <>
       <div className="entire-container">
         <form onSubmit={checkout}>
