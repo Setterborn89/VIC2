@@ -332,3 +332,7 @@ footer {
     grid-column-end: span 6;
   }
 }
+
+.burger{
+  display: none;
+}

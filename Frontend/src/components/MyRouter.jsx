@@ -6,7 +6,8 @@ import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
 import "../Css/ticket.css"
 import "../Css/UserPage.css"
-import "../css/EventDetails.css"
+import "../css/EventDetails.css";
+import "../css/Mobileview.css";
 import "../css/ConcertByDate.css";
 import { useUserContext } from "../contexts/useUserContext";
 import Search from "./Search";
@@ -62,14 +63,32 @@ function MyRouter() {
         <div className="accountManagement">
           {!loggedIn ? 
           (
-            <Link to="SignUp">Sign Up/Sign In</Link>
-          ) : (
-            <div>
-              <Link to="Signout">Sign out</Link>
-              <Link to="UserPage">Profile</Link>
-            </div>
-          )}
+            <Link to="SignUp">Sign In/Up</Link>
+          ) 
+          : 
+          (<div>
+            <Link to="Signout">Sign out</Link>
+            <Link className="profilepage" to="UserPage">Profile</Link>
+          </div>)}
         </div>
+
+        <div className="burger">
+          <section class="top-nav">       
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+            <div class='menu-button'></div>
+          </label>
+            <ul class="menu">
+              <li>
+                <Link to="StreamConcerts">Stream Concerts</Link>
+                <Link to="ConcertByDate">All Concerts</Link>
+                <Link to="LiveConcerts">Live Concerts</Link>
+                <Link to="UserPage">Profile</Link>
+              </li>
+            </ul>
+          </section>
+        </div> 
+
       </header>
       <main>
         <Routes>

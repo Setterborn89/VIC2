@@ -144,10 +144,12 @@ function EventDetails() {
           </div>
         ) : (
           <div className="shoppingcart-next">
-            <span>Cart: </span>
-            <span className="hidden">
-              <BsCart3 /> Empty
-            </span>
+            <button className="continue-checkout-btn">
+              <span>Cart: </span>
+              <span className="hidden">
+                <BsCart3 /> Empty
+              </span>
+            </button>
           </div>
         )}
       </div>

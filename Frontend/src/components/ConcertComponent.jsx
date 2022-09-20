@@ -87,7 +87,7 @@ function ConcertComponent() {
     <>
       <div className="event-container">
         <ArtistInfo />
-        <p>Preview music <BiMusic/></p>
+        <p className="preview-music">Preview music <BiMusic/></p>
             <div className="app-container">
              
             <ControlPanel
@@ -110,30 +110,30 @@ function ConcertComponent() {
              
             </div>
         <div className="concert">
-            <div className="moreConcerts">
-                <h3>Additional Conserts </h3>
-                {data[0].location != undefined ? (
-                aditionalConcerts.map((conserts) => (
-                    <section key={conserts.id}>
-                    {conserts.id == id ? (
-                        <p></p>
-                    ) : (
-                        <div>
-                        <Link
-                            to={"/ConcertComponent/" + conserts.id}
-                            className="concert-location"
-                        >
-                            {conserts.location}
-                        </Link>
-                        <p className="concert-date">Date: {conserts.date}</p>
-                        </div>
-                    )}
-                    </section>
-                ))
-                ) : (
-                <p></p>
-                )}
-            </div>
+          <div className="moreConcerts">
+            <h3 className="additionalConserts">Additional Conserts </h3>
+            {data[0].location != undefined ? (
+              aditionalConcerts.map((conserts) => (
+                <section key={conserts.id}>
+                  {conserts.id == id ? (
+                    <p></p>
+                  ) : (
+                    <div className="consert-link">
+                      <Link
+                        to={"/ConcertComponent/" + conserts.id}
+                        className="concert-location"
+                      >
+                        {conserts.location}
+                      </Link>
+                      <p className="concert-date">Date: {conserts.date}</p>
+                    </div>
+                  )}
+                </section>
+              ))
+            ) : (
+              <p></p>
+            )}
+          </div>
           <div className="ticketPrice">
             {loggedIn ? (
                 <Link className="buy-ticket-btn" to={"/eventdetails/" + id}>Tickets</Link>
