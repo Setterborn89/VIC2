@@ -36,6 +36,7 @@ function EventDetails() {
         image: null,
         seats: null,
         concertId: null,
+        userId: null
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -52,6 +53,11 @@ function EventDetails() {
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
       eventData.artistName = artistResult.name;
+
+      let userResponse = await fetch("/data/login");
+      let userResult = await userResponse.json();
+      eventData.userId = userResult.id
+
       setEvent(eventData);
     }
     loadEvent();
@@ -76,6 +82,7 @@ function EventDetails() {
           price: event.price,
           concertId: event.concertId,
           artistName: event.artistName,
+          userId: event.userId,
         }
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
   }

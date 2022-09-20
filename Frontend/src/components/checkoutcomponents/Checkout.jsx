@@ -23,6 +23,8 @@ function Checkout() {
           quantity: currentCart.quantity,
         },
       ],
+      userId: currentCart.userId,
+      concertId: currentCart.concertId
     };
 
     let response = await fetch("/data/checkout", {
