@@ -37,6 +37,10 @@
     justify-content: space-around;
 }
 
+#TicketId > p {
+    font-size: 10px;
+}
+
 #validText{
     color: red
 }

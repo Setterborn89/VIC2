@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
 import { BsCart3 } from "react-icons/bs";
-import { BiAccessibility } from "react-icons/bi";
 import { HiOutlineTicket } from "react-icons/hi";
 
 function EventDetails() {
   const { id } = useParams();
 
   const [tickets, setCount] = useState(0);
-  const [accessibilityTickets, setAccessTickets] = useState(0);
 
   const [event, setEvent] = useState({});
   const [cost, updateCost] = useState(0);
@@ -37,6 +35,9 @@ function EventDetails() {
         price: null,
         image: null,
         seats: null,
+        concertId: null,
+        sampleMusic: null,
+        userId: null
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -48,28 +49,45 @@ function EventDetails() {
       eventData.seats = eventResult.seats;
       eventData.info = eventResult.info;
       eventData.image = eventResult.image;
+      eventData.concertId = eventResult.id;
+      eventData.sampleMusic = eventResult.sampleMusic;
 
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
       eventData.artistName = artistResult.name;
+
+      let userResponse = await fetch("/data/login");
+      let userResult = await userResponse.json();
+      eventData.userId = userResult.id
+
       setEvent(eventData);
     }
     loadEvent();
   }, []);
 
   useEffect(() => {
-    let totalPrice = tickets * event.price + accessibilityTickets * event.price;
+    let totalPrice = tickets * event.price;
     updateCost(totalPrice);
-  }, [tickets, accessibilityTickets, cost]);
+  }, [tickets, cost]);
 
   if (event.seats < 100 && event.seats != 0) {
     className += "message";
-    message = "Fåtal biljetter kvar";
+    message = "Few tickets left";
   } else if (event.seats === 0) {
     className += "soldout";
-    message = "Slutsålt";
+    message = "Soldout";
   }
 
+  function addToCart() {
+    let shoppingCart = {
+          quantity: tickets,
+          price: event.price,
+          concertId: event.concertId,
+          artistName: event.artistName,
+          userId: event.userId,
+        }
+    localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+  }
   return (
     <>
       <div className="event-container">
@@ -104,48 +122,28 @@ function EventDetails() {
               +
             </button>
           </div>
-
-          <BiAccessibility className="ticket-icons" />
-          <p>Accessibility</p>
-          <p> {event.price} SEK</p>
-          <div>
-            <div className="ticket-selector">
-              <button
-                disabled={accessibilityTickets < 1}
-                className="minus-btn"
-                id="minus-btn"
-                onClick={() => setAccessTickets(accessibilityTickets - 1)}
-              >
-                -
-              </button>
-              <h1>{accessibilityTickets}</h1>
-
-              <button
-                disabled={accessibilityTickets > 9}
-                className="plus-btn"
-                onClick={() => setAccessTickets(accessibilityTickets + 1)}
-              >
-                +
-              </button>
-            </div>
-          </div>
         </section>
         <div className="event-buy-ticket">
           <p className="max-tickets">Limit 10 tickets</p>
         </div>
         <div className="cart">
-          {tickets > 0 || accessibilityTickets > 0 ? (
+          {tickets > 0 ? (
             <>
               <p>
                 {" "}
                 <BsCart3 />
               </p>
               <p>
-                {tickets + accessibilityTickets}{" "}
-                {tickets == 1 ? "ticket" : "tickets"}
+                {tickets} {tickets == 1 ? "ticket" : "tickets"}
               </p>
               <p>{cost} SEK</p>
-              <button className="event-buy-ticket-link">Buy</button>
+              <Link
+                to="/checkout"
+                className="event-buy-ticket-link"
+                onClick={addToCart}
+              >
+                Buy
+              </Link>
             </>
           ) : (
             <p></p>

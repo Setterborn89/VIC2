@@ -21,7 +21,11 @@ function Filter(props) {
     
     
     <nav className="Navbar"> 
-    <h3>ADDITIONAL FILTERS </h3>
+     
+    <h4 >ADDITIONAL FILTERS </h4>
+
+   
+    
 
     <button className = {props.activeGenre === "all" ? "active" : ""} onClick={() => props.setActiveGenre("all")}>All</button>
    <button className = {props.activeGenre === "pop" ? "active" : ""} onClick={() => props.setActiveGenre("pop")}>Pop</button>
