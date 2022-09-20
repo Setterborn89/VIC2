@@ -81,10 +81,9 @@ function ArtistInfo() {
       let artistResult = await artistResponse.json();
       eventData.artistName = artistResult.name;
       setEvent(eventData);
-      console.log(eventData);
     }
     loadEvent();
-  }, []);
+  }, [id]);
 
   if (!event) return;
 

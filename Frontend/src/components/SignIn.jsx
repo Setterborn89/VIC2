@@ -15,20 +15,17 @@ function SignIn() {
       email: email,
       password: password,
     };
-    console.log(data);
     let dataResponse = await fetch("/data/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     let response = await dataResponse.json();
-
     if (response.loggedIn) {
       setLoggedIn(response.loggedIn);
       localStorage.setItem("user", JSON.stringify(response.loggedIn));
       navigate({ pathname: "/" });
     } else {
-      console.log("Could not login");
       SetMessage("Could not login")
     }
   };

@@ -1,5 +1,13 @@
+import { useEffect } from "react";
+
 function CheckoutSuccess() {
   localStorage.removeItem("shopping-cart");
+  useEffect(() => {
+    async function loadData() {
+      let response = await fetch("/data/checkout");
+    }
+    loadData();
+}, []);
 
   return (
     <>
