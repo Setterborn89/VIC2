@@ -33,31 +33,25 @@ function Search(){
             let response =  await fetch("/data/artists")
             response= await response.json()
             setArtists(response)
-            
         }
         loadArtists()
     }, [])
 
     useEffect(() => {
+        if(artists.length === 0) return;
+        
         async function loadConcerts(){
             let response =  await fetch("/data/concerts")
             response= await response.json()
+            response.map(concert => {
+                const matchingArtist = artists.find(artist => artist.id == concert.artistId);
+                concert.artistName = matchingArtist ? matchingArtist.name : "artist not found";
+                return concert;
+            });
             setConcerts(response)
-            response.forEach((concert) => {
-                for (const artist of artists) {
-                  if (concert.artistId == artist.id) {
-                    concert.artistName = artist.name;
-                    break;
-                  } else {
-                    concert.artistName = "artist not found";
-                  }
-                }
-        
-             });
-            
         }
         loadConcerts()
-    }, [])
+    }, [artists])
 
     
 
