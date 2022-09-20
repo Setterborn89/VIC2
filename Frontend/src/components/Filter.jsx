@@ -10,7 +10,6 @@ function Filter(props) {
   useEffect(() => {
     
     let tempList = []
-    tempList = props.searchList
     let filteredList = []
 
       console.log("Looking at all genres");
@@ -32,6 +31,8 @@ function Filter(props) {
             }
           }
         });
+      }else{
+        tempList = props.searchList
       }
 
       // Filter by genre
