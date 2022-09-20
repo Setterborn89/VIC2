@@ -193,6 +193,16 @@
         font-size: medium;
     }
 
+    main .app-container{
+      max-width: fit-content;
+      padding: 5px 10px;
+      margin-left: 2vw;
+    }
+
+    main .btn-container .btn-play{
+      border-width: 10px 0 10px 15px;
+    }
+
     /* ****** Buy Ticket Sidan ****** */
     main .event-buy-ticket{
         padding-top: 0;
