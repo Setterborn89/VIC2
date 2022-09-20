@@ -1,4 +1,6 @@
 const fs = require('fs')
+const path = require("path")
+const root = path.dirname(__dirname)
 
 module.exports = function(server, db){
 
@@ -13,7 +15,7 @@ module.exports = function(server, db){
       res.status(400).send("Requires Range header");
     }
 
-    const audioPath = __dirname + "/../audio/" + result.url;
+    const audioPath = root + "/audio/" + result.url;
     const audioSize = fs.statSync(audioPath).size;
 
     const CHUNK_SIZE = 10 ** 6; // 1MB

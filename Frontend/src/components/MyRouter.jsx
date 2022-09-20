@@ -50,7 +50,7 @@ function MyRouter() {
           <input
             type="text"
             placeholder="Search"
-            onKeyDown={searchText.bind(this)}
+            onChange={searchText.bind(this)}
           />
         </div>
         <div className="navBar">
