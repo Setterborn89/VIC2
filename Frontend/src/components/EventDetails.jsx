@@ -37,7 +37,7 @@ function EventDetails() {
         seats: null,
         concertId: null,
         sampleMusic: null,
-        userId: null
+        userId: null,
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -102,56 +102,56 @@ function EventDetails() {
 
         <span className={className}>{message}</span>
         <section className="tickets-table-container">
-          <HiOutlineTicket className="ticket-icons" />
+          <HiOutlineTicket className="ticket-icon" />
           <p>Standard</p>
           <p> {event.price} SEK</p>
-
           <div className="ticket-selector">
             <button
               disabled={tickets < 1}
-              className="minus-btn"
+              className="quantity-btn"
               id="minus-btn"
               onClick={() => setCount(tickets - 1)}
             >
-              -
+              –
             </button>
-            <h1>{tickets}</h1>
+            <p>{tickets}</p>
 
             <button
               disabled={tickets > 9}
-              className="plus-btn"
+              className="quantity-btn"
               onClick={() => setCount(tickets + 1)}
             >
               +
             </button>
           </div>
+          <div className="event-buy-ticket">
+            <p className="max-tickets">10 ticket limit</p>
+          </div>
         </section>
-        <div className="event-buy-ticket">
-          <p className="max-tickets">Limit 10 tickets</p>
-        </div>
-        <div className="cart">
-          {tickets > 0 ? (
-            <>
-              <p>
-                {" "}
-                <BsCart3 />
-              </p>
-              <p>
-                {tickets} {tickets == 1 ? "ticket" : "tickets"}
-              </p>
-              <p>{cost} SEK</p>
+        {tickets > 0 ? (
+          <div className="shoppingcart-next">
+            <button className="continue-checkout-btn">
               <Link
                 to="/checkout"
-                className="event-buy-ticket-link"
+                className="continue-checkout"
                 onClick={addToCart}
               >
-                Buy
+                <span className="btn-span">Cart:</span>
+                <span className="btn-span">
+                  <BsCart3 />
+                </span>
+                <span className="btn-span">{cost} SEK</span>
               </Link>
-            </>
-          ) : (
-            <p></p>
-          )}
-        </div>
+            </button>
+          </div>
+        ) : (
+          <div className="shoppingcart-next">
+            <span>Cart: </span>
+            <span className="hidden">
+              <BsCart3 /> Empty
+            </span>
+          </div>
+        )}
       </div>
     </>
   );

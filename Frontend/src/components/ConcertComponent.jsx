@@ -140,6 +140,15 @@ function ConcertComponent() {
               <p></p>
             )}
           </div>
+          <div className="ticketPrice">
+            {loggedIn ? (
+              <button className="buy-ticket-btn">
+                <Link to={"/eventdetails/" + id}>Tickets</Link>
+              </button>
+            ) : (
+              <p>Sign in to get tickets!</p>
+            )}
+          </div>
         </div>
       </div>
     </>
