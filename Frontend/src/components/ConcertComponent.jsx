@@ -87,7 +87,7 @@ function ConcertComponent() {
     <>
       <div className="event-container">
         <ArtistInfo />
-        <p>Preview music <BiMusic/></p>
+        <p className="preview-music">Preview music <BiMusic/></p>
             <div className="app-container">
              
             <ControlPanel
@@ -110,20 +110,6 @@ function ConcertComponent() {
              
             </div>
         <div className="concert">
-          <div className="ticketPrice">
-
-
-            
-            
-            {loggedIn ? (
-              <button>
-                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
-              </button>
-            ) : (
-              <p>Sign in to get tickets!</p>
-            )}
-          </div>
-
           <div className="moreConcerts">
             <h3 className="additionalConserts">Additional Conserts </h3>
             {data[0].location != undefined ? (

@@ -201,11 +201,19 @@
     main .app-container{
       max-width: fit-content;
       padding: 5px 10px;
-      margin-left: 2vw;
+      margin: auto;
+    }
+
+    main .event-container .preview-music{
+      margin: inherit;
     }
 
     main .btn-container .btn-play{
       border-width: 10px 0 10px 15px;
+    }
+
+    main .ticketPrice{
+      margin-top: -8vh;
     }
 
     /* ****** Buy Ticket Sidan ****** */
