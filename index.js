@@ -53,7 +53,7 @@ require("./routes/checkout.js")(server, db, host);
 
 // stream routes
 require('./routes/video-stream.js')(server, db)
-// require('./routes/audio-stream.js')(server, db)
+require('./routes/audio-stream.js')(server, db)
 
 // stripe payment api
 // require('./routes/checkout.js')(server, db, host)

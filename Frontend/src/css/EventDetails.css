@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: rgb(97 147 147);
+  background-color: #e21937;
   color: #fff;
   min-height: 13vh;
   width: 7vw;
@@ -167,4 +167,18 @@
   width: 5vw;
   height: 5vh;
   margin: 1vw;
+}
+
+
+.app-container {
+  width: 400px;
+  padding:  10px;
+  background-color: #272727;
+  padding: 20px 50px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
+}
+.detail-player{
+ margin-bottom: 0%;
+ margin-top:1px;
 }
