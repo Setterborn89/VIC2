@@ -1,4 +1,4 @@
-.checkout {
+/* .checkout {
   width: 100%;
   text-shadow: none;
   padding-top: 10px;
@@ -49,4 +49,66 @@
 .checkout-item.th {
   padding-bottom: 1vh;
   border-bottom: 2px solid rgba(0, 255, 255, 0.214);
+} */
+
+.entire-container {
+  min-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-container {
+  border: solid 1px white;
+  opacity: 0.7;
+  display: grid;
+}
+
+.form-container > div {
+  padding-left: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 30% 30% 20% 20%;
+}
+
+.form-container > .const-container {
+  border-bottom: solid 1px white;
+}
+
+.ticket-selector > button {
+  font-family: icomoon !important;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.form-container .concert-info {
+  font-size: small;
+  margin-top: 0;
+}
+
+.form-container > .sum-container {
+  border-top: solid 2px white;
+}
+
+.checkout-btn-container {
+  text-align: right;
+}
+
+.checkout-btn {
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.5);
+  color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-family: "Amazon Ember";
+  font-size: 120%;
+  min-width: 240px;
+  min-height: 40px;
+}
+
+.checkout-btn:hover {
+  background-color: #1b2530;
+  cursor: pointer;
 }

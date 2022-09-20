@@ -17,6 +17,7 @@ function EventDetails() {
 
   let className = "event-ticket-status ";
   let message;
+
   const options = {
     weekday: "long",
     year: "numeric",
@@ -36,7 +37,7 @@ function EventDetails() {
         image: null,
         seats: null,
         concertId: null,
-        userId: null
+        userId: null,
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -56,7 +57,7 @@ function EventDetails() {
 
       let userResponse = await fetch("/data/login");
       let userResult = await userResponse.json();
-      eventData.userId = userResult.id
+      eventData.userId = userResult.id;
 
       setEvent(eventData);
     }
@@ -73,19 +74,22 @@ function EventDetails() {
     message = "Few tickets left";
   } else if (event.seats === 0) {
     className += "soldout";
-    message = "Soldout";
+    message = "SOLD OUT";
   }
 
   function addToCart() {
     let shoppingCart = {
-          quantity: tickets,
-          price: event.price,
-          concertId: event.concertId,
-          artistName: event.artistName,
-          userId: event.userId,
-        }
+      quantity: tickets,
+      price: event.price,
+      date: event.date,
+      location: event.location,
+      concertId: event.concertId,
+      artistName: event.artistName,
+      userId: event.userId,
+    };
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
   }
+
   return (
     <>
       <div className="event-container">

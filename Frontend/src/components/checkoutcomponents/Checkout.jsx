@@ -5,6 +5,7 @@ function Checkout() {
   const cart = localStorage.getItem("shopping-cart");
   const currentCart = JSON.parse(cart);
 
+  const [tickets, setCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -19,6 +20,8 @@ function Checkout() {
       items: [
         {
           artistName: currentCart.artistName,
+          date: currentCart.date,
+          location: currentCart.location,
           price: currentCart.price,
           quantity: currentCart.quantity,
         },
@@ -37,30 +40,91 @@ function Checkout() {
   }
 
   return (
+    // <>
+    //   <div className="checkout">
+    //     <form onSubmit={checkout}>
+    //       <div id="#checkout-session">
+    //         <h2 className="checkout-title">Checkout</h2>
+    //         <div className="checkout-container">
+    //           <p className="checkout-item th">Name</p>
+    //           <p className="checkout-item th">Quantity</p>
+    //           <p className="checkout-item th">Ticket price</p>
+    //           <p className="checkout-item td">{currentCart.artistName}</p>
+    //           <p className="checkout-item td">{currentCart.quantity}</p>
+    //           <p className="checkout-item td">{currentCart.price} kr</p>
+    //           <p className="checkout-item-total sum ">Total(SEK)</p>
+    //           <p className="checkout-item sum totalPrice">{totalPrice} kr</p>
+    //         </div>
+    //         <div className="checkout-btn-container">
+    //           <button
+    //             className="checkout-btn"
+    //             type="submit"
+    //             disabled={currentCart == null}
+    //           >
+    //             Pay
+    //           </button>
+    //         </div>
+    //       </div>
+    //     </form>
+    //   </div>
+    // </>
     <>
-      <div className="checkout">
+      <div className="entire-container">
         <form onSubmit={checkout}>
-          <div id="#checkout-session">
-            <h2 className="checkout-title">Checkout</h2>
-            <div className="checkout-container">
-              <p className="checkout-item th">Name</p>
-              <p className="checkout-item th">Quantity</p>
-              <p className="checkout-item th">Ticket price</p>
-              <p className="checkout-item td">{currentCart.artistName}</p>
-              <p className="checkout-item td">{currentCart.quantity}</p>
-              <p className="checkout-item td">{currentCart.price} kr</p>
-              <p className="checkout-item-total sum ">Total(SEK)</p>
-              <p className="checkout-item sum totalPrice">{totalPrice} kr</p>
+          <div className="title-container">
+            <h1>Checkout</h1>
+          </div>
+          <div className="form-container">
+            <div className="const-container">
+              <p>Name</p>
+              <p>Location</p>
+              <p>Quantity</p>
+              <p>Ticket Price</p>
             </div>
-            <div className="checkout-btn-container">
+            <div className="var-container">
+              <p>{currentCart.artistName}</p>
+              <p>{currentCart.location}</p>
+              <div className="ticket-selector">
+                <button
+                  disabled={currentCart.quantity < 1}
+                  className="minus-btn"
+                  id="minus-btn"
+                  onClick={() => setCount(tickets - 1)}
+                >
+                  -
+                </button>
+                <p>{currentCart.quantity}</p>
+
+                <button
+                  disabled={currentCart.quantity > 9}
+                  className="plus-btn"
+                  onClick={() => setCount(tickets + 1)}
+                >
+                  +
+                </button>
+              </div>
+              <p>{currentCart.price},00 SEK</p>
+            </div>
+            <div className="concert-info">
+              <p>Monday September 26th | 20:30</p>
+            </div>
+            <div className="sum-container">
+              <p></p>
+              <p></p>
+              <p>Total</p>
+              <p>
+                <b>{totalPrice},00 SEK</b>
+              </p>
+            </div>
+          </div>
+          <div className="checkout-btn-container">
             <button
-              className="checkout-btn"
               type="submit"
+              className="checkout-btn"
               disabled={currentCart == null}
             >
-              Pay
+              Proceed to payment
             </button>
-          </div>
           </div>
         </form>
       </div>
