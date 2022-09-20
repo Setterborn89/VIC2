@@ -37,7 +37,8 @@ function EventDetails() {
         image: null,
         seats: null,
         concertId: null,
-        userId: null,
+        sampleMusic: null,
+        userId: null
       };
 
       let eventResponse = await fetch("/data/concerts/" + id);
@@ -50,6 +51,7 @@ function EventDetails() {
       eventData.info = eventResult.info;
       eventData.image = eventResult.image;
       eventData.concertId = eventResult.id;
+      eventData.sampleMusic = eventResult.sampleMusic;
 
       let artistResponse = await fetch("/data/artists/" + eventData.artistId);
       let artistResult = await artistResponse.json();
