@@ -36,9 +36,8 @@ function ConcertByDate() {
 
   return (
     <div className="sortByDate">
-      <div className="dateCards">
         {concertList.map((element) => (
-          <div key={element.id + Math.random()}>
+          <div className="dateCards" key={element.id + Math.random()}>
             <a
               className="sortByDateCards"
               href={"/streamconcerts/" + element.id}
@@ -56,7 +55,6 @@ function ConcertByDate() {
             </a>
           </div>
         ))}
-      </div>
     </div>
   );
 }

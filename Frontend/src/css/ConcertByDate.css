@@ -1,3 +1,9 @@
 .sortByDateCards {
   margin-bottom: 15px;
 }
+
+.sortByDate{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
