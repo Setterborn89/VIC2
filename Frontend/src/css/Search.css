@@ -25,7 +25,7 @@
   overflow-x: scroll;
   padding: 20px;
   flex-wrap: wrap;
-
+  gap: 20px
 }
 
 .card-Search{
@@ -51,10 +51,11 @@ a, a:hover, a:focus, a:active {
 
 
 
-hr{
+.searchLine{
   height: 1px;
   background-color: aqua;
   border: none;
+  margin-bottom: 0;
 }
 
 .card__price {

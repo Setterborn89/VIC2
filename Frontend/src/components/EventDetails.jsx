@@ -130,10 +130,9 @@ function EventDetails() {
         </section>
         {tickets > 0 ? (
           <div className="shoppingcart-next">
-            <button className="continue-checkout-btn">
               <Link
+                className="continue-checkout-btn"
                 to="/checkout"
-                className="continue-checkout"
                 onClick={addToCart}
               >
                 <span className="btn-span">Cart:</span>
@@ -142,7 +141,6 @@ function EventDetails() {
                 </span>
                 <span className="btn-span">{cost} SEK</span>
               </Link>
-            </button>
           </div>
         ) : (
           <div className="shoppingcart-next">

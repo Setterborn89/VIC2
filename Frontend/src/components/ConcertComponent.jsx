@@ -110,49 +110,33 @@ function ConcertComponent() {
              
             </div>
         <div className="concert">
-          <div className="ticketPrice">
-
-
-            
-            
-            {loggedIn ? (
-              <button>
-                <Link to={"/eventdetails/" + id}>Buy Tickets</Link>
-              </button>
-            ) : (
-              <p>Sign in to get tickets!</p>
-            )}
-          </div>
-
-          <div className="moreConcerts">
-            {data[0].location != undefined ? (
-              aditionalConcerts.map((conserts) => (
-                <section key={conserts.id}>
-                  {conserts.id == id ? (
-                    <p></p>
-                  ) : (
-                    <div>
-                      <h3>Additional Conserts </h3>
-                      <Link
-                        to={"/ConcertComponent/" + conserts.id}
-                        className="concert-location"
-                      >
-                        {conserts.location}
-                      </Link>
-                      <p className="concert-date">Date: {conserts.date}</p>
-                    </div>
-                  )}
-                </section>
-              ))
-            ) : (
-              <p></p>
-            )}
-          </div>
+            <div className="moreConcerts">
+                <h3>Additional Conserts </h3>
+                {data[0].location != undefined ? (
+                aditionalConcerts.map((conserts) => (
+                    <section key={conserts.id}>
+                    {conserts.id == id ? (
+                        <p></p>
+                    ) : (
+                        <div>
+                        <Link
+                            to={"/ConcertComponent/" + conserts.id}
+                            className="concert-location"
+                        >
+                            {conserts.location}
+                        </Link>
+                        <p className="concert-date">Date: {conserts.date}</p>
+                        </div>
+                    )}
+                    </section>
+                ))
+                ) : (
+                <p></p>
+                )}
+            </div>
           <div className="ticketPrice">
             {loggedIn ? (
-              <button className="buy-ticket-btn">
-                <Link to={"/eventdetails/" + id}>Tickets</Link>
-              </button>
+                <Link className="buy-ticket-btn" to={"/eventdetails/" + id}>Tickets</Link>
             ) : (
               <p>Sign in to get tickets!</p>
             )}

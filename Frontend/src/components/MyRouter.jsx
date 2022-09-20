@@ -35,7 +35,7 @@ function MyRouter() {
     handleChange();
   };
 
-  const handleChange = (event) => {
+  const handleChange = () => {
     navigate({ pathname: "/Lista", search: "?searchword=" + searchWord });
   };
 
@@ -49,7 +49,7 @@ function MyRouter() {
           <input
             type="text"
             placeholder="Search"
-            onChange={searchText.bind(this)}
+            onKeyDown={searchText.bind(this)}
           />
         </div>
         <div className="navBar">
