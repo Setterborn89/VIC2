@@ -46,7 +46,7 @@ function Ticket(props) {
         concertResponse = await concertResponse.json();
         responseData.artistId = concertResponse.artistId
         responseData.location = concertResponse.location
-        responseData.date = concertResponse.date
+        responseData.date = new Date(concertResponse.date).toDateString()
         responseData.stream = concertResponse.stream
 
         let artistResponse = await fetch(
