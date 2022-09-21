@@ -5,7 +5,7 @@ import "../css/Search.css"
 import { FcCalendar } from "react-icons/fc";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineTicket} from "react-icons/hi";
-import {BsCashCoin} from "react-icons/Bs";
+import {BsCashCoin} from "react-icons/bs";
 import { BiMusic } from "react-icons/bi";
 import { FiInfo} from "react-icons/fi";
 import { Carousel } from 'react-responsive-carousel';
