@@ -114,7 +114,7 @@ function ConcertComponent() {
         
         <div className="concert">
           <div className="moreConcerts">
-            <h3 className="additionalConserts">Additional Conserts </h3>
+            <h3 className="additionalConserts">Additional Concerts</h3>
             {data[0].location != undefined ? (
               aditionalConcerts.map((conserts) => (
                 <section key={conserts.id}>

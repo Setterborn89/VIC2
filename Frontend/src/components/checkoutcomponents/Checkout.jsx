@@ -45,6 +45,7 @@ function Checkout() {
       <div className="entire-container">
         <div className="title-container">
           <h1>Checkout</h1>
+          <hr />
         </div>
         <div className="form-container">
           <div className="const-container">

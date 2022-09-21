@@ -5,6 +5,7 @@
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: transform 350ms;
+  margin-bottom: 2vh;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -65,10 +66,17 @@ a, a:hover, a:focus, a:active {
 .card-Search > img{
   width:  300px;
   height: 200px;
-
+  
 }
 
 main .carousel .slide{
   text-align: left;
 }
 
+main .grwhite{
+  color: white;
+}
+
+main .carousel .control-dots{
+  margin: 0px 0;
+}

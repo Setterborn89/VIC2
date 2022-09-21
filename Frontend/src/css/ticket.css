@@ -32,9 +32,10 @@
     text-align: right;
 }
 
-#TicketId{
+#TicketId{  
     display: flex;
     justify-content: space-around;
+    background-color: white;
 }
 
 #TicketId > p {

@@ -5,7 +5,7 @@ import "../css/Search.css"
 import { FcCalendar } from "react-icons/fc";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineTicket} from "react-icons/hi";
-import {MdAttachMoney} from "react-icons/md";
+import {BsCashCoin} from "react-icons/Bs";
 import { BiMusic } from "react-icons/bi";
 import { FiInfo} from "react-icons/fi";
 import { Carousel } from 'react-responsive-carousel';
@@ -110,7 +110,7 @@ function Search(){
                                     
                                     <h3> <FcCalendar/> {concert.date.substring(0, 16)}</h3>
                                     <p><GoLocation/> {concert.location}</p>
-                                    <p><MdAttachMoney/> {concert.price} </p>
+                                    <p><BsCashCoin/> {concert.price} SEK</p>
                                     <h4><BiMusic/> {concert.genre}</h4>
                                     <button className ="card__price text--medium" >
                                     <Link to={"/ConcertComponent/"+ concert.id}>Get tickets <HiOutlineTicket/></Link>
@@ -139,7 +139,7 @@ function Search(){
                         </div>
                         <h3> <FcCalendar/> {item.date.substring(0, 16)}</h3>
                         <p><GoLocation/> {item.location}</p>
-                        <p><MdAttachMoney/> {item.price} </p>
+                        <p><BsCashCoin/> {item.price} SEK</p>
                         <h4><BiMusic/> {item.genre}</h4>
                         <button className ="card__price text--medium" >
                         <Link to={"/ConcertComponent/"+ item.id}>Get tickets <HiOutlineTicket/></Link>
