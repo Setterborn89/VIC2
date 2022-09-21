@@ -51,13 +51,14 @@ function Filter(props) {
       className="filters-btn"
       onClick={() => toggleFilters((showFilter) => !showFilters)}
     >
-      ADDITIONAL FILTERS
+      DATE
   </button>
 
     <button className = {props.activeGenre === "all" ? "active" : ""} onClick={() => props.setActiveGenre("all")}>All</button>
     <button className = {props.activeGenre === "pop" ? "active" : ""} onClick={() => props.setActiveGenre("pop")}>Pop</button>
     <button className = {props.activeGenre === "hiphop" ? "active" : ""} onClick={() => props.setActiveGenre("hiphop")}>hiphop</button>
     <button className = {props.activeGenre === "rap" ? "active" : ""} onClick={() => props.setActiveGenre("rap")}>rap</button>
+    <button className = {props.activeGenre === "rock" ? "active" : ""} onClick={() => props.setActiveGenre("rock")}>rock</button>
   </nav>
   <div className="filter-dates">
       {showFilters &&

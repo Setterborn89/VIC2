@@ -257,30 +257,28 @@
       text-align: center;
     }
 
-<<<<<<< Updated upstream
-=======
 
     /* ****** Search ****** */
 
->>>>>>> Stashed changes
     main .Navbar{
       display: inline-table;
+      width: 100%;
     }
 
     main .Navbar button{
       margin-top: 10px;
       padding: 10px;
-<<<<<<< Updated upstream
-    }
-
-    main .container-Search-wrapper{
-      margin-left: 4.5vw;
-=======
-      margin-right: 2vw;
     }
 
     main .container-Search-wrapper{
       width: 100%;
->>>>>>> Stashed changes
+    }
+
+    main .card-Search{
+      margin-right: inherit;
+    }
+
+    main .card-Search img{
+      width: -webkit-fill-available;
     }
 }

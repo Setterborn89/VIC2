@@ -137,7 +137,7 @@ function Search(){
                             item.stream == true ? <p>Stream </p> : <p>Live</p>
                             }
                         </div>
-                        <h3> <FcCalendar/> {item.date}</h3>
+                        <h3> <FcCalendar/> {item.date.substring(0, 16)}</h3>
                         <p><GoLocation/> {item.location}</p>
                         <p><MdAttachMoney/> {item.price} </p>
                         <h4><BiMusic/> {item.genre}</h4>

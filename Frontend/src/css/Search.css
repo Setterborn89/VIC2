@@ -25,7 +25,7 @@
   overflow-x: scroll;
   padding: 20px;
   flex-wrap: wrap;
-  gap: 20px
+  justify-content: space-evenly;
 }
 
 main .card_poster{
@@ -67,10 +67,8 @@ a, a:hover, a:focus, a:active {
   height: 200px;
 
 }
-<<<<<<< Updated upstream
-=======
 
 main .carousel .slide{
   text-align: left;
 }
->>>>>>> Stashed changes
+
