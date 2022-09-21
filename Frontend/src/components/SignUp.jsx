@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import SignIn from "./SignIn";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/useUserContext";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -7,6 +9,9 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { loggedIn, setLoggedIn } = useUserContext();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +31,29 @@ function SignUp() {
     });
 
     let response = await dataResponse.json();
+    if (response) {
+      login();
+    }
+  };
+
+  const login = async () => {
+    const data = {
+      email: email,
+      password: password,
+    };
+    let dataResponse = await fetch("/data/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    let response = await dataResponse.json();
+    if (response.loggedIn) {
+      setLoggedIn(response.loggedIn);
+      localStorage.setItem("user", JSON.stringify(response.loggedIn));
+      navigate({ pathname: "/" });
+    } else {
+      SetMessage("Could not login");
+    }
   };
 
   return (
