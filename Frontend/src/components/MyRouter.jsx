@@ -1,11 +1,11 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/SignIn.css";
 import "../App.css";
 import "../css/ConcertComponent.css";
 import "../css/SignUp.css";
-import "../Css/ticket.css"
-import "../Css/UserPage.css"
+import "../Css/ticket.css";
+import "../Css/UserPage.css";
 import "../css/EventDetails.css";
 import "../css/Mobileview.css";
 import "../css/ConcertByDate.css";
@@ -40,6 +40,12 @@ function MyRouter() {
     navigate({ pathname: "/Lista", search: "?searchword=" + searchWord });
   };
 
+  useEffect(() => {
+    if (!loggedIn) {
+      localStorage.removeItem("shopping-cart");
+    }
+  }, [loggedIn]);
+
   return (
     <div>
       <header>
@@ -61,23 +67,24 @@ function MyRouter() {
           </nav>
         </div>
         <div className="accountManagement">
-          {!loggedIn ? 
-          (
+          {!loggedIn ? (
             <Link to="SignUp">Sign In/Up</Link>
-          ) 
-          : 
-          (<div>
-            <Link to="Signout">Sign out</Link>
-            <Link className="profilepage" to="UserPage">Profile</Link>
-          </div>)}
+          ) : (
+            <div>
+              <Link to="Signout">Sign out</Link>
+              <Link className="profilepage" to="UserPage">
+                Profile
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="burger">
-          <section className="top-nav">       
+          <section className="top-nav">
             <input id="menu-toggle" type="checkbox" />
-            <label className='menu-button-container' htmlFor="menu-toggle">
-            <div className='menu-button'></div>
-          </label>
+            <label className="menu-button-container" htmlFor="menu-toggle">
+              <div className="menu-button"></div>
+            </label>
             <ul className="menu">
               <li>
                 <Link to="StreamConcerts">Stream Concerts</Link>
@@ -87,8 +94,7 @@ function MyRouter() {
               </li>
             </ul>
           </section>
-        </div> 
-
+        </div>
       </header>
       <main>
         <Routes>
@@ -100,8 +106,11 @@ function MyRouter() {
               <Route path="/SignOut" element={<Signout />} />
               <Route path="ConcertByDate" element={<ConcertByDate />} />
               <Route path="/" element={<CurrentConcerts />}></Route>
-              <Route path="/ConcertComponent/:id" element={<ConcertComponent />} />
-              <Route path="/videoPlayer/:url" element={<VideoPlayer/>}/>
+              <Route
+                path="/ConcertComponent/:id"
+                element={<ConcertComponent />}
+              />
+              <Route path="/videoPlayer/:url" element={<VideoPlayer />} />
               <Route path="/eventdetails/:id" element={<EventDetails />} />
               <Route path="/Lista" element={<Search />}></Route>
               <Route path="/UserPage" element={<UserPage />}></Route>
