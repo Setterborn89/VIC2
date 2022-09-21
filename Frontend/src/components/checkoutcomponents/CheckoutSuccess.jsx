@@ -5,6 +5,7 @@ function CheckoutSuccess() {
   useEffect(() => {
     async function loadData() {
       let response = await fetch("/data/checkout");
+      console.log(response)
     }
     loadData();
 }, []);

@@ -57,7 +57,7 @@ module.exports = function (server, db, host) {
         // They are complete urls
         success_url: host + "/checkout-success", // these should be client routes in the react app
         cancel_url: host + "/checkout-cancel",
-        metadata: {"userId":req.body.userId,"concertId":req.body.concertId}
+        metadata: {"userId":req.body.userId,"concertId":req.body.concertId,"seats":req.body.seats,"quantity":req.body.quantity}
       });
       // save current checkout session to user session, so we can check result after
       req.session.checkoutSession = checkoutSession;
@@ -75,9 +75,13 @@ module.exports = function (server, db, host) {
   server.get("/data/checkout", async (req, res) => {
     try {
       const checkoutSession = await stripe.checkout.sessions.retrieve(req.session.checkoutSession.id)
+      let updatedSeats=checkoutSession.metadata.seats-checkoutSession.metadata.quantity
       db
         .prepare("INSERT INTO tickets (id, concertId, userId, used) VALUES(?,?,?,?)")
         .run([checkoutSession.id, checkoutSession.metadata.concertId, checkoutSession.metadata.userId, "0"]);
+      db
+        .prepare("UPDATE concerts SET seats = ? WHERE id = ?")
+        .run([updatedSeats, checkoutSession.metadata.concertId]);
       res.json({ checkoutSession: checkoutSession });
       
     } catch (e) {

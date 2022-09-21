@@ -87,6 +87,7 @@ function EventDetails() {
       concertId: event.concertId,
       artistName: event.artistName,
       userId: event.userId,
+      seats: event.seats
     };
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
   }

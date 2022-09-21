@@ -88,7 +88,7 @@ function CurrentConcerts() {
           <div className="row_cards">
             {streamConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <Link to={"/streamconcerts/" + element.id}>
+                <Link to={"/ConcertComponent/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">

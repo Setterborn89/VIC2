@@ -43,7 +43,6 @@ a, a:hover, a:focus, a:active {
   width:100%;
 }
 
-
 .searchLine{
   height: 1px;
   background-color: aqua;
@@ -79,4 +78,8 @@ main .grwhite{
 
 main .carousel .control-dots{
   margin: 0px 0;
+}
+
+main .container-Search-wrapper{
+  width: 100%;
 }

@@ -29,6 +29,8 @@ function Checkout() {
       ],
       userId: currentCart.userId,
       concertId: currentCart.concertId,
+      seats: currentCart.seats,
+      quantity: tickets,
     };
 
     let response = await fetch("/data/checkout", {
