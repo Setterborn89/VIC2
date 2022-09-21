@@ -25,39 +25,42 @@ function ConcertByDate() {
         concerts.push(concert);
       });
 
-      updateConcertList(concerts);
-      // Sorted in ascending order
       concerts.sort(function (a, b) {
         return new Date(a.date) - new Date(b.date);
       });
+
+      updateConcertList(concerts);
+      // Sorted in ascending order
+      
     }
     getConcerts();
   }, []);
 
-  return (
+  return (<div>
+    <h2>All concerts</h2>
+    <hr />
     <div className="sortByDate">
-      <div className="dateCards">
-        {concertList.map((element) => (
-          <div key={element.id + Math.random()}>
-            <a
-              className="sortByDateCards"
-              href={"/streamconcerts/" + element.id}
-            >
-              <div className="card">
-                <img className="card_poster" src={element.image} />
-                <div className="container">
-                  <h4>
-                    <b>{element.artistName}</b>
-                  </h4>
-                  <h3>{element.date}</h3>
-                  <p>{element.location}</p>
-                </div>
+      {concertList.map((element) => (
+        <div className="dateCards" key={element.id + Math.random()}>
+          <a
+            className="sortByDateCards"
+            href={"/ConcertComponent/" + element.id}
+          >
+            <div className="card">
+              <img className="card_poster" src={element.image} />
+              <div className="container">
+                <h4>
+                  <b>{element.artistName}</b>
+                </h4>
+                <h3>{new Date(element.date).toDateString()}</h3>
+                <p>{element.location}</p>
               </div>
-            </a>
-          </div>
-        ))}
-      </div>
+            </div>
+          </a>
+        </div>
+      ))}
     </div>
+  </div>
   );
 }
 

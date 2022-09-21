@@ -30,10 +30,8 @@ function CurrentConcerts() {
           }
         }
         const concertDate = new Date(concert.date);
-        console.log(concertDate);
         const diffTime = Math.abs(concertDate - currentDate);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log("Days from today: " + diffDays);
 
         if (diffDays <= 31) {
           if (concert.stream) {
@@ -69,7 +67,7 @@ function CurrentConcerts() {
           <div className="row_cards">
             {liveConcertList.map((element) => (
               <div key={element.id + Math.random()}>
-                <Link to={"/streamconcerts/" + element.id}>
+                <Link to={"/ConcertComponent/" + element.id}>
                   <div className="card">
                     <img className="card_poster" src={element.image} />
                     <div className="container">

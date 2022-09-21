@@ -7,6 +7,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = useUserContext();
+  const [message, SetMessage] = useState("Sign In")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,20 +15,18 @@ function SignIn() {
       email: email,
       password: password,
     };
-    console.log(data);
     let dataResponse = await fetch("/data/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     let response = await dataResponse.json();
-
     if (response.loggedIn) {
       setLoggedIn(response.loggedIn);
       localStorage.setItem("user", JSON.stringify(response.loggedIn));
       navigate({ pathname: "/" });
     } else {
-      console.log("Could not login");
+      SetMessage("Could not login")
     }
   };
 
@@ -35,7 +34,7 @@ function SignIn() {
     <>
       <form onSubmit={handleSubmit} className="loginform">
         <div>
-          <h3>Sign In</h3>
+          <h3>{message}</h3>
           <div>
             <div>
               <label htmlFor="email">E-mail</label>

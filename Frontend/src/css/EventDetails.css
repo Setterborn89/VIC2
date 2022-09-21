@@ -1,12 +1,15 @@
 .event-container {
   width: 100%;
+  height: 90%;
   color: black;
   background-color: #0f171e;
   text-shadow: none;
   margin-left: 10vw;
   margin-right: 10vw;
-  margin-top: -20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: white;
+  padding-bottom: 1vh;
 }
 
 .artistInfo {
@@ -16,7 +19,7 @@
 }
 
 .artistInfo img {
-  max-height: 35vh;
+  max-height: 50vh;
   width: 100%;
   background-size: cover;
   border-bottom: solid #1b2530;
@@ -133,28 +136,10 @@
 .max-tickets {
   font-size: 10px;
 }
+
 .event-buy-ticket {
   padding: 10px;
   text-align: center;
-}
-
-.cart {
-  border-top: solid 1px #1b2530;
-  display: flex;
-  justify-content: center;
-  height: 5vh;
-}
-
-.cart > p {
-  margin-left: 1vw;
-}
-
-.cart > button {
-  align-self: center;
-  margin-left: 2vw;
-  width: 10vw;
-  height: 4vh;
-  background-color: rgb(49, 120, 187);
 }
 
 .tickets-table-container {
@@ -163,8 +148,68 @@
   grid-template-rows: 1fr 1fr;
 }
 
-.tickets-table-container > .ticket-icons {
+.tickets-table-container > .ticket-icon {
   width: 5vw;
   height: 5vh;
   margin: 1vw;
+}
+
+.app-container {
+  min-width: 200px;
+  margin-left: 2px;
+  /* width: 400px; */
+  margin-right: 22px;
+
+  justify-content: center;
+  padding: 5px 30px;
+  background-color: #272727;
+
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
+}
+.detail-player{
+ margin-bottom: 5px;
+ margin-top:3px;
+}
+
+.shoppingcart-next {
+  display: flex;
+  justify-content: center;
+  margin: 2vh 2vw;
+  padding: 2vh 2vw;
+  border-top: solid 1px black;
+  text-align: center;
+}
+
+.continue-checkout-btn {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 12%), 0 0 2px rgb(0 0 0 / 10%),
+    inset 0 -1em 1em -0.2em rgb(72 92 106 / 5%);
+  position: relative;
+  align-items: center;
+  border-radius: 24px;
+  border: none;
+  padding: 2vh 2vw;
+  gap: 5px;
+}
+
+.continue-checkout-btn:hover{
+  background-color: black;
+  color: white;
+  opacity: 0.2;
+}
+
+.quantity-btn {
+  background-color: #f7f7f7;
+  border-radius: 24px;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 12%), 0 0 2px rgb(0 0 0 / 10%),
+    inset 0 -1em 1em -0.2em rgb(72 92 106 / 5%);
+  border: none;
+  height: 30px;
+}
+
+.quantity-btn:hover {
+  background-color: black;
+  color: white;
+  opacity: 0.2;
 }

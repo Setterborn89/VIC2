@@ -1,17 +1,26 @@
 .Navbar {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
   overflow: hidden;
-  background-color:rgb(97, 147, 147);
+  background-color:#1b2530;
+  width: 65vw;
 }
 
-
-
-
+.Navbar > h4 {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  margin-top: 5px;
+  font-size: 20px;
+}
 
 .Navbar button{
   color:#999;
-  background:rgba(0, 0, 0, 0.5);
+  border-color: rgb(83, 190, 190);
+  background:rgb(97, 147, 147);
   padding: 25px;
-  
+  border-radius: 5px;
   font-size:12px;
   text-decoration:none;
   letter-spacing:2px;
@@ -20,10 +29,21 @@
   font-size: 16px;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 3px 60px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor:pointer;
   text-decoration: none;
+}
+
+.Navbar button:hover{
+  opacity: 0.5;
 }
  
 .Navbar > button.active{
-  background:rgb(97, 147, 147);
+  opacity: 0.5;
 }
+
+

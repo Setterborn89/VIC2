@@ -30,10 +30,10 @@ const acl = require('./services/acl.js')
 //server.use(acl) // kommentera bort för att tillfälligt stänga av all autentisering
 
 // start
-server.listen(port,() => {
-  console.log(host)
-  console.log('server running on port ' + port)
-})
+server.listen(port, () => {
+  console.log(host);
+  console.log("server running on port " + port);
+});
 
 // front end directories
 server.use('/', express.static('whatever-directory-for-react-build')) // change 
@@ -44,20 +44,23 @@ require('./routes/video-example.js')(server, db)
 require('./routes/audio-example.js')(server, db)
 
 // custom REST API routes
-require('./api-description.js')(host, server)
-require('./routes/users.js')(server, db)
-require('./routes/login.js')(server, db)
+require("./api-description.js")(host, server);
+require("./routes/users.js")(server, db);
+require("./routes/login.js")(server, db);
+
+// stripe payment api
+require("./routes/checkout.js")(server, db, host);
 
 // stream routes
 require('./routes/video-stream.js')(server, db)
-// require('./routes/audio-stream.js')(server, db)
+require('./routes/audio-stream.js')(server, db)
 
 // stripe payment api
 // require('./routes/checkout.js')(server, db, host)
 
 // generic REST API one-to-one table mappings
-require('./routes/generic-routes.js')(server, db)
+require("./routes/generic-routes.js")(server, db);
 
-server.get('*', (req, res)=>{
-  res.sendFile(__dirname + '/whatever-directory-for-react-build/index.html')
-})
+server.get("*", (req, res) => {
+  res.sendFile(__dirname + "/whatever-directory-for-react-build/index.html");
+});
