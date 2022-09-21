@@ -49,16 +49,16 @@ module.exports = function(host, server){
                 link: host  + "/data/audio_example"
             },
             {
-                route:"/data/audio_streams",
+                route:"/data/audio-streams",
                 methods: ["GET"],
                 description:"Get list of audio streams",
-                link: host  + "/data/audio_streams"
+                link: host  + "/data/audio-streams"
             },
             {
                 route:"/data/audio-stream/1",
                 methods: ["GET"],
                 description:"Get audio stream",
-                link: host  + "/data/audio_streams/1"
+                link: host  + "/data/audio-streams/1"
             }
         ])
     })
