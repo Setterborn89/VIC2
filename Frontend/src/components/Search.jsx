@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Filter from "./Filter"
 import "../css/Search.css"
 import { FcCalendar } from "react-icons/fc";
@@ -53,8 +53,6 @@ function Search(){
         loadConcerts()
     }, [artists])
 
-    
-
     useEffect(() => {
         function filterSearchList(){
             let artistSearch = artists.filter(item=>{
@@ -73,7 +71,6 @@ function Search(){
             
             setFilterGenre(searchList)
             setSearchList(searchList)
-            console.log(searchList)
         }
         filterSearchList()
         
@@ -107,7 +104,7 @@ function Search(){
                                     <p><MdAttachMoney/> {concert.price} </p>
                                     <h4><BiMusic/> {concert.genre}</h4>
                                     <button className ="card__price text--medium" >
-                                        <a href={"/EventDetails/" + concert.id}>Get tickets <HiOutlineTicket/></a>
+                                    <a href={"/streamconcerts/" + concert.id}>Get tickets <HiOutlineTicket/></a>
                                     </button>
                                 </div>
                             :
@@ -137,7 +134,7 @@ function Search(){
                             <p><MdAttachMoney/> {item.price} </p>
                             <h4><BiMusic/> {item.genre}</h4>
                             <button className ="card__price text--medium" >
-                            <a href={"/EventDetails/" + item.id}>Get tickets <HiOutlineTicket/></a>
+                            <a href={"/streamconcerts/" + item.id}>Get tickets <HiOutlineTicket/></a>
                             </button>
                         </div>
                     </div>

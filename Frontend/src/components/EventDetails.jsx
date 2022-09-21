@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import "../css/eventdetails.css";
 import ArtistInfo from "./ArtistInfo";
 
 import { BsCart3 } from "react-icons/bs";
@@ -147,10 +146,12 @@ function EventDetails() {
           </div>
         ) : (
           <div className="shoppingcart-next">
-            <span>Cart: </span>
-            <span className="hidden">
-              <BsCart3 /> Empty
-            </span>
+            <button className="continue-checkout-btn">
+              <span>Cart: </span>
+              <span className="hidden">
+                <BsCart3 /> Empty
+              </span>
+            </button>
           </div>
         )}
       </div>

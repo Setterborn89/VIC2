@@ -19,7 +19,6 @@ function Slider({ percentage , onChange }){
         setProgressBarWidth(centerProgressBar)
     }, [percentage])
 
-
     return(
         <div className='slider-container'>
         <div
