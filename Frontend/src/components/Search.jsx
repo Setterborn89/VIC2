@@ -90,65 +90,61 @@ function Search(){
         <div className="row">
             {filterGenre.map(item =>(
             item.location == undefined ? 
-                <div key={item.id + Math.random()}>
-                    <div className="card-Search">
-                        <img className="card_poster" src={item.image} />
-                        <div className="container">
-                            <h2>Artist</h2>
-                            <h3>
-                                <b>{item.name}</b>
-                            </h3>
-                            <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
-                            <hr className="searchLine"/>
-                            <Carousel showThumbs={false}>
-                                {sortConcerts(item.id).map(concert => (
-                                    <div key={concert.id + Math.random}>
-                                        <div>     
-                                            {
-                                            concert.stream == true ? <p>Stream </p> : <p>Live</p>
-                                            }
-                                        </div>
-                                        
-                                        <h3> <FcCalendar/> {concert.date.substring(0, 16)}</h3>
-                                        <p><GoLocation/> {concert.location}</p>
-                                        <p><MdAttachMoney/> {concert.price} </p>
-                                        <h4><BiMusic/> {concert.genre}</h4>
-                                        <button className ="card__price text--medium" >
-                                        <Link to={"/ConcertComponent/"+ concert.id}>Get tickets <HiOutlineTicket/></Link>
-                                        </button>
-                                        <hr className="searchLine"/>
+                <div className="card-Search" key={item.id + Math.random()}>
+                    <img className="card_poster" src={item.image} />
+                    <div className="container">
+                        <h2>Artist</h2>
+                        <h3>
+                            <b>{item.name}</b>
+                        </h3>
+                        <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
+                        <hr className="searchLine"/>
+                        <Carousel showThumbs={false}>
+                            {sortConcerts(item.id).map(concert => (
+                                <div key={concert.id + Math.random}>
+                                    <div>     
+                                        {
+                                        concert.stream == true ? <p>Stream </p> : <p>Live</p>
+                                        }
                                     </div>
-                                ))}
-                            </Carousel>
-                        </div>
+                                    
+                                    <h3> <FcCalendar/> {concert.date.substring(0, 16)}</h3>
+                                    <p><GoLocation/> {concert.location}</p>
+                                    <p><MdAttachMoney/> {concert.price} </p>
+                                    <h4><BiMusic/> {concert.genre}</h4>
+                                    <button className ="card__price text--medium" >
+                                    <Link to={"/ConcertComponent/"+ concert.id}>Get tickets <HiOutlineTicket/></Link>
+                                    </button>
+                                    <hr className="searchLine"/>
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
             :
                 <div key={item.id + Math.random()} className="card-Search">
-                    <div className="card-Search">
-                        <img className="card_poster" src={item.image} />
-                        <div className="container">
-                            <h2>Concert</h2>
-                           
-                            <h3>
-                                {<b>{item.artistName}</b>}
-                            </h3>
-                            <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
-                            <hr className="searchLine"/>
-                            <div>     
-                                {
-                                item.stream == true ? <p>Stream </p> : <p>Live</p>
-                                }
-                            </div>
-                            <h3> <FcCalendar/> {item.date}</h3>
-                            <p><GoLocation/> {item.location}</p>
-                            <p><MdAttachMoney/> {item.price} </p>
-                            <h4><BiMusic/> {item.genre}</h4>
-                            <button className ="card__price text--medium" >
-                            <Link to={"/ConcertComponent/"+ item.id}>Get tickets <HiOutlineTicket/></Link>
-                            </button>
-                            <hr className="searchLine"/>
+                    <img className="card_poster" src={item.image} />
+                    <div className="container">
+                        <h2>Concert</h2>
+                        
+                        <h3>
+                            {<b>{item.artistName}</b>}
+                        </h3>
+                        <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
+                        <hr className="searchLine"/>
+                        <div>     
+                            {
+                            item.stream == true ? <p>Stream </p> : <p>Live</p>
+                            }
                         </div>
+                        <h3> <FcCalendar/> {item.date}</h3>
+                        <p><GoLocation/> {item.location}</p>
+                        <p><MdAttachMoney/> {item.price} </p>
+                        <h4><BiMusic/> {item.genre}</h4>
+                        <button className ="card__price text--medium" >
+                        <Link to={"/ConcertComponent/"+ item.id}>Get tickets <HiOutlineTicket/></Link>
+                        </button>
+                        <hr className="searchLine"/>
                     </div>
                 </div>
             ))}

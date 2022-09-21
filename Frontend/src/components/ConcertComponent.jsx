@@ -86,29 +86,32 @@ function ConcertComponent() {
     <>
       <div className="event-container">
         <ArtistInfo />
-        <p className="preview-music">Preview music <BiMusic/></p>
-        <div className="app-container">
-            <ControlPanel
-            play={play}
-            isPlaying={isPlaying}
-            duration={duration}
-            currentTime={currentTime}
-            >
-                <Slider percentage={percentage} onChange={onChange}/>
-            </ControlPanel>
-            {data[0].audioId!=undefined?
-                <audio
-                ref={audioRef}
-                onTimeUpdate={getCurrDuration}
-                onLoadedData={(e) => {
-                    setDuration(e.currentTarget.duration.toFixed(2))
-                }}
-                src={"/data/audio-stream/" + data[0].audioId}
-                ></audio>
-                :
-                <p></p>
-            }
+        <div className="media-player">
+          <p className="preview-music">Preview music <BiMusic/></p>
+          <div className="app-container">
+              <ControlPanel
+              play={play}
+              isPlaying={isPlaying}
+              duration={duration}
+              currentTime={currentTime}
+              >
+                  <Slider percentage={percentage} onChange={onChange}/>
+              </ControlPanel>
+              {data[0].audioId!=undefined?
+                  <audio
+                  ref={audioRef}
+                  onTimeUpdate={getCurrDuration}
+                  onLoadedData={(e) => {
+                      setDuration(e.currentTarget.duration.toFixed(2))
+                  }}
+                  src={"/data/audio-stream/" + data[0].audioId}
+                  ></audio>
+                  :
+                  <p></p>
+              }
+          </div>
         </div>
+        
         <div className="concert">
           <div className="moreConcerts">
             <h3 className="additionalConserts">Additional Conserts </h3>

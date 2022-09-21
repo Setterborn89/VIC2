@@ -37,6 +37,8 @@
   box-shadow: 0 2px 0 rgb(0 0 0 / 12%), inset 1px -5px 6px 0px rgb(0 0 0 / 12%),
     inset 0 -1em 1em -0.2em rgb(72 92 106 / 5%);
   border: none;
+  align-self: flex-start;
+  margin-top: 1vh;
 }
 
 .ticketPrice{
@@ -45,4 +47,11 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.media-player{
+  display: flex;
+  flex-direction: column;
+  margin: 3vw;
+  justify-content: center;
 }
