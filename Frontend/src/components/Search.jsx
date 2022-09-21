@@ -8,6 +8,7 @@ import { HiOutlineTicket} from "react-icons/hi";
 import {MdAttachMoney} from "react-icons/md";
 import { BiMusic } from "react-icons/bi";
 import { FiInfo} from "react-icons/fi";
+import { Carousel } from 'react-responsive-carousel';
 
 function Search(){
     const {search} = useLocation()
@@ -20,6 +21,14 @@ function Search(){
 
     const queryParams = new URLSearchParams(search)
     const test = (queryParams.get('searchword'))
+
+    const sortConcerts = (id) => {
+        let temp = []
+        concerts.forEach(concert => {
+            if(concert.artistId == id)  temp.push(concert)
+        })
+        return temp
+    };
 
     useEffect(() => {
         function loadSearchWord(){
@@ -74,7 +83,7 @@ function Search(){
         }
         filterSearchList()
         
-    }, [test])
+    }, [test]);
 
     return <div className="container-Search-wrapper">
         <Filter searchList={searchList} setFilterGenre={setFilterGenre} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
@@ -90,26 +99,27 @@ function Search(){
                                 <b>{item.name}</b>
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
-                            {concerts.map(concert => (
-                            concert.artistId == item.id ?
-                                <div key={concert.id + Math.random}>
-                                    <div>     
-                                        {
-                                        concert.stream == true ? <p>Stream </p> : <p>Live</p>
-                                        }
+                            <hr className="searchLine"/>
+                            <Carousel showThumbs={false}>
+                                {sortConcerts(item.id).map(concert => (
+                                    <div key={concert.id + Math.random}>
+                                        <div>     
+                                            {
+                                            concert.stream == true ? <p>Stream </p> : <p>Live</p>
+                                            }
+                                        </div>
+                                        
+                                        <h3> <FcCalendar/> {concert.date.substring(0, 16)}</h3>
+                                        <p><GoLocation/> {concert.location}</p>
+                                        <p><MdAttachMoney/> {concert.price} </p>
+                                        <h4><BiMusic/> {concert.genre}</h4>
+                                        <button className ="card__price text--medium" >
+                                        <Link to={"/ConcertComponent/"+ concert.id}>Get tickets <HiOutlineTicket/></Link>
+                                        </button>
+                                        <hr className="searchLine"/>
                                     </div>
-                                    
-                                    <h3> <FcCalendar/> {concert.date}</h3>
-                                    <p><GoLocation/> {concert.location}</p>
-                                    <p><MdAttachMoney/> {concert.price} </p>
-                                    <h4><BiMusic/> {concert.genre}</h4>
-                                    <button className ="card__price text--medium" >
-                                    <a href={"/streamconcerts/" + concert.id}>Get tickets <HiOutlineTicket/></a>
-                                    </button>
-                                </div>
-                            :
-                                <p key={concert.id + 1}></p>
-                            ))}
+                                ))}
+                            </Carousel>
                         </div>
                     </div>
                 </div>
@@ -124,6 +134,7 @@ function Search(){
                                 {<b>{item.artistName}</b>}
                             </h3>
                             <a href ={item.wiki} className="text--medium"><FiInfo/> Artist info</a>
+                            <hr className="searchLine"/>
                             <div>     
                                 {
                                 item.stream == true ? <p>Stream </p> : <p>Live</p>
@@ -134,8 +145,9 @@ function Search(){
                             <p><MdAttachMoney/> {item.price} </p>
                             <h4><BiMusic/> {item.genre}</h4>
                             <button className ="card__price text--medium" >
-                            <a href={"/streamconcerts/" + item.id}>Get tickets <HiOutlineTicket/></a>
+                            <Link to={"/ConcertComponent/"+ item.id}>Get tickets <HiOutlineTicket/></Link>
                             </button>
+                            <hr className="searchLine"/>
                         </div>
                     </div>
                 </div>

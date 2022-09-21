@@ -59,15 +59,15 @@ function Checkout() {
             <div className="checkout-ticket-selector">
               <button
                 disabled={tickets < 1}
-                id="minus-btn"
+                className="quantity-btn"
                 onClick={() => setCount(tickets - 1)}
               >
                 –
               </button>
               <p>{tickets}</p>
-
               <button
                 disabled={tickets > 9}
+                className="quantity-btn"
                 onClick={() => setCount(tickets + 1)}
               >
                 +

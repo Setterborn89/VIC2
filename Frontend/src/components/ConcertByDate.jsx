@@ -52,7 +52,7 @@ function ConcertByDate() {
                 <h4>
                   <b>{element.artistName}</b>
                 </h4>
-                <h3>{element.date}</h3>
+                <h3>{new Date(element.date).toDateString()}</h3>
                 <p>{element.location}</p>
               </div>
             </div>
