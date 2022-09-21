@@ -19,12 +19,16 @@
   padding: 2px 16px;
 }
 
+.row{
+  padding:0;
+  justify-content: flex-start;
+}
+
 .row_cards{
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px;
-
+  padding: 0;
 }
 
 .card{
