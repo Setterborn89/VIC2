@@ -63,7 +63,7 @@ function CurrentConcerts() {
         <h2>Upcoming Concerts</h2>
         <hr />
         <h3>Live Concerts</h3>
-        <div className="row">
+        <div className="CCrow">
           <div className="row_cards">
             {liveConcertList.map((element) => (
               <div key={element.id + Math.random()}>
@@ -84,7 +84,7 @@ function CurrentConcerts() {
           </div>
         </div>
         <h3>Stream Concerts</h3>
-        <div className="row">
+        <div className="CCrow">
           <div className="row_cards">
             {streamConcertList.map((element) => (
               <div key={element.id + Math.random()}>
