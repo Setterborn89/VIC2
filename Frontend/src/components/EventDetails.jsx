@@ -108,7 +108,7 @@ function EventDetails() {
           <p> {event.price} SEK</p>
           <div className="ticket-selector">
             <button
-              disabled={tickets < 1}
+              disabled={tickets < 1 || event.seats == 0}
               className="quantity-btn"
               id="minus-btn"
               onClick={() => setCount(tickets - 1)}
@@ -118,7 +118,7 @@ function EventDetails() {
             <p>{tickets}</p>
 
             <button
-              disabled={tickets > 9}
+              disabled={tickets > 9 || event.seats == 0}
               className="quantity-btn"
               onClick={() => setCount(tickets + 1)}
             >
@@ -132,6 +132,7 @@ function EventDetails() {
         {tickets > 0 ? (
           <div className="shoppingcart-next">
               <Link
+                disabled={event.seats == 0}
                 className="continue-checkout-btn"
                 to="/checkout"
                 onClick={addToCart}
